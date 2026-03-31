@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-31T20:19:12.224Z",
+  "generatedAt": "2026-03-31T21:15:45.487Z",
   "summary": {
     "totalEmployees": 50,
     "working": 21,
@@ -9,506 +9,8 @@
   },
   "working": [
     {
-      "id": "696a29272f5075242f27ba64",
-      "name": "Krishna Harshith",
-      "status": "working",
-      "seat": {
-        "furnitureUid": "f-ws-cL01",
-        "type": "WOODEN_CHAIR_SIDE",
-        "col": 1,
-        "row": 2
-      },
-      "tasks": [
-        {
-          "title": "Issue with signup/login-mail service is being triggered",
-          "identifier": "PROJE-4",
-          "status": "In Progress",
-          "priority": 2
-        },
-        {
-          "title": "Collect shareable credentials for all cloud resources and subscription",
-          "identifier": "HARSH-2",
-          "status": "In Progress",
-          "priority": 0
-        },
-        {
-          "title": "Monthly Report for Developers",
-          "identifier": "PROJE-2",
-          "status": "In Progress",
-          "priority": 0
-        },
-        {
-          "title": "test issue to check postgres",
-          "identifier": "HARSH-6",
-          "status": "Backlog",
-          "priority": 0
-        }
-      ]
-    },
-    {
-      "id": "696de154ae6a2db5c852f542",
-      "name": "Raj,Lakshya",
-      "status": "working",
-      "seat": {
-        "furnitureUid": "f-ws-cR01",
-        "type": "WOODEN_CHAIR_SIDE:left",
-        "col": 4,
-        "row": 2
-      },
-      "tasks": [
-        {
-          "title": "Raise Invoice for Website development with Ilios Digital",
-          "identifier": "DHRNI-2",
-          "status": "In Progress",
-          "priority": 2
-        },
-        {
-          "title": "Identify, Scale Down and Terminate redundant DigitalOcean resources",
-          "identifier": "RWSEC-2",
-          "status": "Backlog",
-          "priority": 0
-        },
-        {
-          "title": "Migrate All Randomwalk domains to Cloudflare",
-          "identifier": "RWSEC-1",
-          "status": "Backlog",
-          "priority": 0
-        },
-        {
-          "title": "Create Implementation plan for Unit Testing automation for Knowledge nudge",
-          "identifier": "AITST-2",
-          "status": "Backlog",
-          "priority": 0
-        }
-      ]
-    },
-    {
-      "id": "696e0a766237bf45b55fc599",
-      "name": "V,Shankar",
-      "status": "working",
-      "seat": {
-        "furnitureUid": "f-ws-cL02",
-        "type": "WOODEN_CHAIR_SIDE",
-        "col": 5,
-        "row": 2
-      },
-      "tasks": [
-        {
-          "title": "Backend Issues",
-          "identifier": "ZC_BU-126",
-          "status": "In Progress",
-          "priority": 0
-        },
-        {
-          "title": "Frontend + Backend Issues",
-          "identifier": "ZC_BU-127",
-          "status": "In Progress",
-          "priority": 0
-        },
-        {
-          "title": "Changing the json output to include doors and windows table data",
-          "identifier": "ZC_BU-122",
-          "status": "In Progress",
-          "priority": 0
-        },
-        {
-          "title": "Create DAGs for scraping news and performing sentiment analysis on them",
-          "identifier": "WHITE-135",
-          "status": "In Progress",
-          "priority": 0
-        },
-        {
-          "title": "JSON schema change",
-          "identifier": "ZC_BU-123",
-          "status": "In Progress",
-          "priority": 0
-        },
-        {
-          "title": "Backend issues",
-          "identifier": "ZC_BU-124",
-          "status": "Backlog",
-          "priority": 0
-        }
-      ]
-    },
-    {
-      "id": "696f1462c363e494889e9a84",
-      "name": "kumar,Praveen",
-      "status": "working",
-      "seat": {
-        "furnitureUid": "f-ws-cR02",
-        "type": "WOODEN_CHAIR_SIDE:left",
-        "col": 8,
-        "row": 2
-      },
-      "tasks": [
-        {
-          "title": "UI inconsistency fixes",
-          "identifier": "K_NDG-5629",
-          "status": "In Progress",
-          "priority": 0
-        },
-        {
-          "title": "Turn the Fortune Cookie input system into a demo walk through  like format for users to explore features",
-          "identifier": "FC-623",
-          "status": "Backlog",
-          "priority": 0
-        }
-      ]
-    },
-    {
-      "id": "696f5d1c68e2807dac66d4f8",
-      "name": "M,Vaishnavi",
-      "status": "working",
-      "seat": {
-        "furnitureUid": "f-ws-cL03",
-        "type": "WOODEN_CHAIR_SIDE",
-        "col": 10,
-        "row": 2
-      },
-      "tasks": [
-        {
-          "title": "Testing automation update",
-          "identifier": "K_NDG-5630",
-          "status": "In Progress",
-          "priority": 0
-        }
-      ]
-    },
-    {
-      "id": "69720147efa1d20506e4cfb0",
-      "name": "Ashwin,Joseph",
-      "status": "working",
-      "seat": {
-        "furnitureUid": "f-ws-cR03",
-        "type": "WOODEN_CHAIR_SIDE:left",
-        "col": 13,
-        "row": 2
-      },
-      "tasks": [
-        {
-          "title": "Email News Letter",
-          "identifier": "DESIG-2",
-          "status": "In Progress",
-          "priority": 2
-        }
-      ]
-    },
-    {
-      "id": "697201482d3bcf07d71d5435",
-      "name": "S,Nowfal",
-      "status": "working",
-      "seat": {
-        "furnitureUid": "f-ws-cL04",
-        "type": "WOODEN_CHAIR_SIDE",
-        "col": 14,
-        "row": 2
-      },
-      "tasks": [
-        {
-          "title": "Chateleon UI",
-          "identifier": "DESIG-1",
-          "status": "In Progress",
-          "priority": 2
-        },
-        {
-          "title": "Design for brochure",
-          "identifier": "BROC-2",
-          "status": "In Progress",
-          "priority": 0
-        },
-        {
-          "title": "Design Audit",
-          "identifier": "K_NDG-5631",
-          "status": "In Progress",
-          "priority": 0
-        },
-        {
-          "title": "huly videos",
-          "identifier": "CHATE-65",
-          "status": "Backlog",
-          "priority": 0
-        },
-        {
-          "title": "UI design",
-          "identifier": "CHATE-1",
-          "status": "Backlog",
-          "priority": 0
-        }
-      ]
-    },
-    {
-      "id": "69789a4251b38790fd705a8f",
-      "name": "RW,Aathan",
-      "status": "working",
-      "seat": {
-        "furnitureUid": "f-ws-cR04",
-        "type": "WOODEN_CHAIR_SIDE:left",
-        "col": 17,
-        "row": 2
-      },
-      "tasks": [
-        {
-          "title": "GIF creation",
-          "identifier": "RWLAT-4",
-          "status": "In Progress",
-          "priority": 0
-        },
-        {
-          "title": "Alignment Testing (enhancing step)",
-          "identifier": "RWLAT-5",
-          "status": "In Progress",
-          "priority": 0
-        },
-        {
-          "title": "Footer Signature",
-          "identifier": "RWLAT-3",
-          "status": "In Progress",
-          "priority": 0
-        }
-      ]
-    },
-    {
-      "id": "6979a8217abb9ccc62cdf905",
-      "name": ".,Chhavi",
-      "status": "working",
-      "seat": {
-        "furnitureUid": "f-ws-cL05",
-        "type": "WOODEN_CHAIR_SIDE",
-        "col": 1,
-        "row": 4
-      },
-      "tasks": [
-        {
-          "title": "Enforce Huly Usage for Task Updates and Repository Linking",
-          "identifier": "HULY_-12",
-          "status": "In Progress",
-          "priority": 0
-        }
-      ]
-    },
-    {
-      "id": "6979b626cdff9246b1b070ba",
-      "name": "Kannan,Vengatesh",
-      "status": "working",
-      "seat": {
-        "furnitureUid": "f-ws-cR05",
-        "type": "WOODEN_CHAIR_SIDE:left",
-        "col": 4,
-        "row": 4
-      },
-      "tasks": [
-        {
-          "title": "Integrate generative-ui lib with react sdk",
-          "identifier": "CHATE-89",
-          "status": "In Progress",
-          "priority": 2
-        },
-        {
-          "title": "Move Sdk.js to React tech stack",
-          "identifier": "CHATE-86",
-          "status": "In Progress",
-          "priority": 2
-        },
-        {
-          "title": "Add Separate Scrollbar for Live Preview Section in Mascot Creation – Step 4",
-          "identifier": "CHATE-51",
-          "status": "Backlog",
-          "priority": 0
-        }
-      ]
-    },
-    {
-      "id": "6979b72f9c7ffcb09ed225bc",
-      "name": "peddisetty,jashwanth",
-      "status": "working",
-      "seat": {
-        "furnitureUid": "f-ws-cL06",
-        "type": "WOODEN_CHAIR_SIDE",
-        "col": 5,
-        "row": 4
-      },
-      "tasks": [
-        {
-          "title": "WebRTCPlayer",
-          "identifier": "VISUA-376",
-          "status": "In Progress",
-          "priority": 0
-        },
-        {
-          "title": "Congestion point alerts",
-          "identifier": "VISUA-351",
-          "status": "Backlog",
-          "priority": 4
-        },
-        {
-          "title": "Segregated alerts for control room",
-          "identifier": "VISUA-352",
-          "status": "Backlog",
-          "priority": 3
-        },
-        {
-          "title": "Fix parking monitoring settings toggles and add viewer mode access",
-          "identifier": "VISUA-380",
-          "status": "Backlog",
-          "priority": 3
-        },
-        {
-          "title": "WhatsApp alerts",
-          "identifier": "VISUA-355",
-          "status": "Backlog",
-          "priority": 3
-        },
-        {
-          "title": "When creating a parallel instance to an already existing instance took sometime",
-          "identifier": "VISUA-348",
-          "status": "Backlog",
-          "priority": 3
-        },
-        {
-          "title": "Traffic use cases in a diff route with CSK IPL theme",
-          "identifier": "VISUA-362",
-          "status": "Backlog",
-          "priority": 0
-        }
-      ]
-    },
-    {
-      "id": "6979b86a7d46c055655f0a72",
-      "name": "Muthusamy,Ratish",
-      "status": "working",
-      "seat": {
-        "furnitureUid": "f-ws-cR06",
-        "type": "WOODEN_CHAIR_SIDE:left",
-        "col": 8,
-        "row": 4
-      },
-      "tasks": [
-        {
-          "title": "ANPR – stolen / flagged vehicles",
-          "identifier": "VISUA-354",
-          "status": "In Progress",
-          "priority": 3
-        }
-      ]
-    },
-    {
-      "id": "69848d3cecb15cad1af64d6d",
-      "name": "Maini [Active],Raviesh",
-      "status": "working",
-      "seat": {
-        "furnitureUid": "f-ws-cL07",
-        "type": "WOODEN_CHAIR_SIDE",
-        "col": 10,
-        "row": 4
-      },
-      "tasks": [
-        {
-          "title": "Mascot Integrated State as ACTIVE and other states",
-          "identifier": "CHATE-54",
-          "status": "In Progress",
-          "priority": 0
-        }
-      ]
-    },
-    {
-      "id": "698575254acb595c9f9d3589",
-      "name": "K,Amrin",
-      "status": "working",
-      "seat": {
-        "furnitureUid": "f-ws-cR07",
-        "type": "WOODEN_CHAIR_SIDE:left",
-        "col": 13,
-        "row": 4
-      },
-      "tasks": [
-        {
-          "title": "Integrating Sentry with K-Nudge",
-          "identifier": "K_NDG-5634",
-          "status": "In Progress",
-          "priority": 0
-        },
-        {
-          "title": "Adding InstanceId to get user info",
-          "identifier": "K_NDG-5657",
-          "status": "In Progress",
-          "priority": 0
-        },
-        {
-          "title": "Frontend bugs",
-          "identifier": "ZC_BU-125",
-          "status": "Backlog",
-          "priority": 0
-        }
-      ]
-    },
-    {
-      "id": "698ab5bf3f6ec0c0ba66b013",
-      "name": "John,Deepu",
-      "status": "working",
-      "seat": {
-        "furnitureUid": "f-ws-cL08",
-        "type": "WOODEN_CHAIR_SIDE",
-        "col": 14,
-        "row": 4
-      },
-      "tasks": [
-        {
-          "title": "Adding dassault logo and stylization",
-          "identifier": "DASSA-1",
-          "status": "In Progress",
-          "priority": 0
-        }
-      ]
-    },
-    {
-      "id": "698aba6d9d5a1c66df595d50",
-      "name": "G.K.V,Yazhini Devi",
-      "status": "working",
-      "seat": {
-        "furnitureUid": "f-ws-cR08",
-        "type": "WOODEN_CHAIR_SIDE:left",
-        "col": 17,
-        "row": 4
-      },
-      "tasks": [
-        {
-          "title": "Integrating Mixpanel with K-Nudge",
-          "identifier": "K_NDG-5633",
-          "status": "In Progress",
-          "priority": 0
-        }
-      ]
-    },
-    {
-      "id": "698abf078c48bdbcf5dbad90",
-      "name": "SAI CHARAN,GAJJELA",
-      "status": "working",
-      "seat": {
-        "furnitureUid": "f-ws-cL09",
-        "type": "WOODEN_CHAIR_SIDE",
-        "col": 1,
-        "row": 6
-      },
-      "tasks": [
-        {
-          "title": "new component (file upload) in ui",
-          "identifier": "EMAIL-7",
-          "status": "In Progress",
-          "priority": 0
-        }
-      ]
-    },
-    {
       "id": "698ac7035033d0ed4bc9d311",
       "name": "Antony,Jarosh",
-      "status": "working",
-      "seat": {
-        "furnitureUid": "f-ws-cR09",
-        "type": "WOODEN_CHAIR_SIDE:left",
-        "col": 4,
-        "row": 6
-      },
       "tasks": [
         {
           "title": "conductiv-api-service: Move Clarifi based services to conductiv-zzz submodule",
@@ -576,56 +78,156 @@
           "status": "Backlog",
           "priority": 3
         }
-      ]
-    },
-    {
-      "id": "698dabf9656ba274ad49a8fe",
-      "name": "raman,siva",
+      ],
       "status": "working",
       "seat": {
-        "furnitureUid": "f-ws-cL10",
+        "furnitureUid": "f-ws-cL01",
+        "type": "WOODEN_CHAIR_SIDE",
+        "col": 1,
+        "row": 2
+      }
+    },
+    {
+      "id": "69720147efa1d20506e4cfb0",
+      "name": "Ashwin,Joseph",
+      "tasks": [
+        {
+          "title": "Email News Letter",
+          "identifier": "DESIG-2",
+          "status": "In Progress",
+          "priority": 2
+        }
+      ],
+      "status": "working",
+      "seat": {
+        "furnitureUid": "f-ws-cR01",
+        "type": "WOODEN_CHAIR_SIDE:left",
+        "col": 4,
+        "row": 2
+      }
+    },
+    {
+      "id": "6979a8217abb9ccc62cdf905",
+      "name": ".,Chhavi",
+      "tasks": [
+        {
+          "title": "Enforce Huly Usage for Task Updates and Repository Linking",
+          "identifier": "HULY_-12",
+          "status": "In Progress",
+          "priority": 0
+        }
+      ],
+      "status": "working",
+      "seat": {
+        "furnitureUid": "f-ws-cL02",
         "type": "WOODEN_CHAIR_SIDE",
         "col": 5,
-        "row": 6
-      },
-      "tasks": [
-        {
-          "title": "GUI visualization for vehicle tracking to find out where its inaccurate",
-          "identifier": "VISUA-375",
-          "status": "In Progress",
-          "priority": 0
-        }
-      ]
+        "row": 2
+      }
     },
     {
-      "id": "6993ffad5a9919281761a456",
-      "name": "Singha,Sudip",
-      "status": "working",
-      "seat": {
-        "furnitureUid": "f-ws-cR10",
-        "type": "WOODEN_CHAIR_SIDE:left",
-        "col": 8,
-        "row": 6
-      },
+      "id": "698aba6d9d5a1c66df595d50",
+      "name": "G.K.V,Yazhini Devi",
       "tasks": [
         {
-          "title": "New api for file uploding.",
-          "identifier": "EMAIL-6",
+          "title": "Integrating Mixpanel with K-Nudge",
+          "identifier": "K_NDG-5633",
           "status": "In Progress",
           "priority": 0
         }
-      ]
+      ],
+      "status": "working",
+      "seat": {
+        "furnitureUid": "f-ws-cR02",
+        "type": "WOODEN_CHAIR_SIDE:left",
+        "col": 8,
+        "row": 2
+      }
+    },
+    {
+      "id": "698ab5bf3f6ec0c0ba66b013",
+      "name": "John,Deepu",
+      "tasks": [
+        {
+          "title": "Adding dassault logo and stylization",
+          "identifier": "DASSA-1",
+          "status": "In Progress",
+          "priority": 0
+        }
+      ],
+      "status": "working",
+      "seat": {
+        "furnitureUid": "f-ws-cL03",
+        "type": "WOODEN_CHAIR_SIDE",
+        "col": 10,
+        "row": 2
+      }
+    },
+    {
+      "id": "698575254acb595c9f9d3589",
+      "name": "K,Amrin",
+      "tasks": [
+        {
+          "title": "Integrating Sentry with K-Nudge",
+          "identifier": "K_NDG-5634",
+          "status": "In Progress",
+          "priority": 0
+        },
+        {
+          "title": "Adding InstanceId to get user info",
+          "identifier": "K_NDG-5657",
+          "status": "In Progress",
+          "priority": 0
+        },
+        {
+          "title": "Frontend bugs",
+          "identifier": "ZC_BU-125",
+          "status": "Backlog",
+          "priority": 0
+        }
+      ],
+      "status": "working",
+      "seat": {
+        "furnitureUid": "f-ws-cR03",
+        "type": "WOODEN_CHAIR_SIDE:left",
+        "col": 13,
+        "row": 2
+      }
+    },
+    {
+      "id": "6979b626cdff9246b1b070ba",
+      "name": "Kannan,Vengatesh",
+      "tasks": [
+        {
+          "title": "Integrate generative-ui lib with react sdk",
+          "identifier": "CHATE-89",
+          "status": "In Progress",
+          "priority": 2
+        },
+        {
+          "title": "Move Sdk.js to React tech stack",
+          "identifier": "CHATE-86",
+          "status": "In Progress",
+          "priority": 2
+        },
+        {
+          "title": "Add Separate Scrollbar for Live Preview Section in Mascot Creation – Step 4",
+          "identifier": "CHATE-51",
+          "status": "Backlog",
+          "priority": 0
+        }
+      ],
+      "status": "working",
+      "seat": {
+        "furnitureUid": "f-ws-cL04",
+        "type": "WOODEN_CHAIR_SIDE",
+        "col": 14,
+        "row": 2
+      }
     },
     {
       "id": "69942df978751053a9fd3482",
       "name": "Katta,Priyatham",
-      "status": "working",
-      "seat": {
-        "furnitureUid": "f-ws-cL11",
-        "type": "WOODEN_CHAIR_SIDE",
-        "col": 10,
-        "row": 6
-      },
       "tasks": [
         {
           "title": "Twitter Follower Count Inconsistency",
@@ -639,32 +241,423 @@
           "status": "Backlog",
           "priority": 0
         }
-      ]
+      ],
+      "status": "working",
+      "seat": {
+        "furnitureUid": "f-ws-cR04",
+        "type": "WOODEN_CHAIR_SIDE:left",
+        "col": 17,
+        "row": 2
+      }
+    },
+    {
+      "id": "696a29272f5075242f27ba64",
+      "name": "Krishna Harshith",
+      "tasks": [
+        {
+          "title": "Issue with signup/login-mail service is being triggered",
+          "identifier": "PROJE-4",
+          "status": "In Progress",
+          "priority": 2
+        },
+        {
+          "title": "Collect shareable credentials for all cloud resources and subscription",
+          "identifier": "HARSH-2",
+          "status": "In Progress",
+          "priority": 0
+        },
+        {
+          "title": "Monthly Report for Developers",
+          "identifier": "PROJE-2",
+          "status": "In Progress",
+          "priority": 0
+        },
+        {
+          "title": "test issue to check postgres",
+          "identifier": "HARSH-6",
+          "status": "Backlog",
+          "priority": 0
+        }
+      ],
+      "status": "working",
+      "seat": {
+        "furnitureUid": "f-ws-cL05",
+        "type": "WOODEN_CHAIR_SIDE",
+        "col": 1,
+        "row": 4
+      }
+    },
+    {
+      "id": "696f1462c363e494889e9a84",
+      "name": "kumar,Praveen",
+      "tasks": [
+        {
+          "title": "UI inconsistency fixes",
+          "identifier": "K_NDG-5629",
+          "status": "In Progress",
+          "priority": 0
+        },
+        {
+          "title": "Turn the Fortune Cookie input system into a demo walk through  like format for users to explore features",
+          "identifier": "FC-623",
+          "status": "Backlog",
+          "priority": 0
+        }
+      ],
+      "status": "working",
+      "seat": {
+        "furnitureUid": "f-ws-cR05",
+        "type": "WOODEN_CHAIR_SIDE:left",
+        "col": 4,
+        "row": 4
+      }
+    },
+    {
+      "id": "69848d3cecb15cad1af64d6d",
+      "name": "Maini [Active],Raviesh",
+      "tasks": [
+        {
+          "title": "Mascot Integrated State as ACTIVE and other states",
+          "identifier": "CHATE-54",
+          "status": "In Progress",
+          "priority": 0
+        }
+      ],
+      "status": "working",
+      "seat": {
+        "furnitureUid": "f-ws-cL06",
+        "type": "WOODEN_CHAIR_SIDE",
+        "col": 5,
+        "row": 4
+      }
+    },
+    {
+      "id": "6979b86a7d46c055655f0a72",
+      "name": "Muthusamy,Ratish",
+      "tasks": [
+        {
+          "title": "ANPR – stolen / flagged vehicles",
+          "identifier": "VISUA-354",
+          "status": "In Progress",
+          "priority": 3
+        }
+      ],
+      "status": "working",
+      "seat": {
+        "furnitureUid": "f-ws-cR06",
+        "type": "WOODEN_CHAIR_SIDE:left",
+        "col": 8,
+        "row": 4
+      }
+    },
+    {
+      "id": "696f5d1c68e2807dac66d4f8",
+      "name": "M,Vaishnavi",
+      "tasks": [
+        {
+          "title": "Testing automation update",
+          "identifier": "K_NDG-5630",
+          "status": "In Progress",
+          "priority": 0
+        }
+      ],
+      "status": "working",
+      "seat": {
+        "furnitureUid": "f-ws-cL07",
+        "type": "WOODEN_CHAIR_SIDE",
+        "col": 10,
+        "row": 4
+      }
+    },
+    {
+      "id": "6979b72f9c7ffcb09ed225bc",
+      "name": "peddisetty,jashwanth",
+      "tasks": [
+        {
+          "title": "WebRTCPlayer",
+          "identifier": "VISUA-376",
+          "status": "In Progress",
+          "priority": 0
+        },
+        {
+          "title": "Congestion point alerts",
+          "identifier": "VISUA-351",
+          "status": "Backlog",
+          "priority": 4
+        },
+        {
+          "title": "Segregated alerts for control room",
+          "identifier": "VISUA-352",
+          "status": "Backlog",
+          "priority": 3
+        },
+        {
+          "title": "Fix parking monitoring settings toggles and add viewer mode access",
+          "identifier": "VISUA-380",
+          "status": "Backlog",
+          "priority": 3
+        },
+        {
+          "title": "WhatsApp alerts",
+          "identifier": "VISUA-355",
+          "status": "Backlog",
+          "priority": 3
+        },
+        {
+          "title": "When creating a parallel instance to an already existing instance took sometime",
+          "identifier": "VISUA-348",
+          "status": "Backlog",
+          "priority": 3
+        },
+        {
+          "title": "Traffic use cases in a diff route with CSK IPL theme",
+          "identifier": "VISUA-362",
+          "status": "Backlog",
+          "priority": 0
+        }
+      ],
+      "status": "working",
+      "seat": {
+        "furnitureUid": "f-ws-cR07",
+        "type": "WOODEN_CHAIR_SIDE:left",
+        "col": 13,
+        "row": 4
+      }
+    },
+    {
+      "id": "696de154ae6a2db5c852f542",
+      "name": "Raj,Lakshya",
+      "tasks": [
+        {
+          "title": "Raise Invoice for Website development with Ilios Digital",
+          "identifier": "DHRNI-2",
+          "status": "In Progress",
+          "priority": 2
+        },
+        {
+          "title": "Identify, Scale Down and Terminate redundant DigitalOcean resources",
+          "identifier": "RWSEC-2",
+          "status": "Backlog",
+          "priority": 0
+        },
+        {
+          "title": "Migrate All Randomwalk domains to Cloudflare",
+          "identifier": "RWSEC-1",
+          "status": "Backlog",
+          "priority": 0
+        },
+        {
+          "title": "Create Implementation plan for Unit Testing automation for Knowledge nudge",
+          "identifier": "AITST-2",
+          "status": "Backlog",
+          "priority": 0
+        }
+      ],
+      "status": "working",
+      "seat": {
+        "furnitureUid": "f-ws-cL08",
+        "type": "WOODEN_CHAIR_SIDE",
+        "col": 14,
+        "row": 4
+      }
+    },
+    {
+      "id": "698dabf9656ba274ad49a8fe",
+      "name": "raman,siva",
+      "tasks": [
+        {
+          "title": "GUI visualization for vehicle tracking to find out where its inaccurate",
+          "identifier": "VISUA-375",
+          "status": "In Progress",
+          "priority": 0
+        }
+      ],
+      "status": "working",
+      "seat": {
+        "furnitureUid": "f-ws-cR08",
+        "type": "WOODEN_CHAIR_SIDE:left",
+        "col": 17,
+        "row": 4
+      }
+    },
+    {
+      "id": "69789a4251b38790fd705a8f",
+      "name": "RW,Aathan",
+      "tasks": [
+        {
+          "title": "GIF creation",
+          "identifier": "RWLAT-4",
+          "status": "In Progress",
+          "priority": 0
+        },
+        {
+          "title": "Alignment Testing (enhancing step)",
+          "identifier": "RWLAT-5",
+          "status": "In Progress",
+          "priority": 0
+        },
+        {
+          "title": "Footer Signature",
+          "identifier": "RWLAT-3",
+          "status": "In Progress",
+          "priority": 0
+        }
+      ],
+      "status": "working",
+      "seat": {
+        "furnitureUid": "f-ws-cL09",
+        "type": "WOODEN_CHAIR_SIDE",
+        "col": 1,
+        "row": 6
+      }
+    },
+    {
+      "id": "698abf078c48bdbcf5dbad90",
+      "name": "SAI CHARAN,GAJJELA",
+      "tasks": [
+        {
+          "title": "new component (file upload) in ui",
+          "identifier": "EMAIL-7",
+          "status": "In Progress",
+          "priority": 0
+        }
+      ],
+      "status": "working",
+      "seat": {
+        "furnitureUid": "f-ws-cR09",
+        "type": "WOODEN_CHAIR_SIDE:left",
+        "col": 4,
+        "row": 6
+      }
+    },
+    {
+      "id": "6993ffad5a9919281761a456",
+      "name": "Singha,Sudip",
+      "tasks": [
+        {
+          "title": "New api for file uploding.",
+          "identifier": "EMAIL-6",
+          "status": "In Progress",
+          "priority": 0
+        }
+      ],
+      "status": "working",
+      "seat": {
+        "furnitureUid": "f-ws-cL10",
+        "type": "WOODEN_CHAIR_SIDE",
+        "col": 5,
+        "row": 6
+      }
+    },
+    {
+      "id": "697201482d3bcf07d71d5435",
+      "name": "S,Nowfal",
+      "tasks": [
+        {
+          "title": "Chateleon UI",
+          "identifier": "DESIG-1",
+          "status": "In Progress",
+          "priority": 2
+        },
+        {
+          "title": "Design for brochure",
+          "identifier": "BROC-2",
+          "status": "In Progress",
+          "priority": 0
+        },
+        {
+          "title": "Design Audit",
+          "identifier": "K_NDG-5631",
+          "status": "In Progress",
+          "priority": 0
+        },
+        {
+          "title": "huly videos",
+          "identifier": "CHATE-65",
+          "status": "Backlog",
+          "priority": 0
+        },
+        {
+          "title": "UI design",
+          "identifier": "CHATE-1",
+          "status": "Backlog",
+          "priority": 0
+        }
+      ],
+      "status": "working",
+      "seat": {
+        "furnitureUid": "f-ws-cR10",
+        "type": "WOODEN_CHAIR_SIDE:left",
+        "col": 8,
+        "row": 6
+      }
+    },
+    {
+      "id": "696e0a766237bf45b55fc599",
+      "name": "V,Shankar",
+      "tasks": [
+        {
+          "title": "Backend Issues",
+          "identifier": "ZC_BU-126",
+          "status": "In Progress",
+          "priority": 0
+        },
+        {
+          "title": "Frontend + Backend Issues",
+          "identifier": "ZC_BU-127",
+          "status": "In Progress",
+          "priority": 0
+        },
+        {
+          "title": "Changing the json output to include doors and windows table data",
+          "identifier": "ZC_BU-122",
+          "status": "In Progress",
+          "priority": 0
+        },
+        {
+          "title": "Create DAGs for scraping news and performing sentiment analysis on them",
+          "identifier": "WHITE-135",
+          "status": "In Progress",
+          "priority": 0
+        },
+        {
+          "title": "JSON schema change",
+          "identifier": "ZC_BU-123",
+          "status": "In Progress",
+          "priority": 0
+        },
+        {
+          "title": "Backend issues",
+          "identifier": "ZC_BU-124",
+          "status": "Backlog",
+          "priority": 0
+        }
+      ],
+      "status": "working",
+      "seat": {
+        "furnitureUid": "f-ws-cL11",
+        "type": "WOODEN_CHAIR_SIDE",
+        "col": 10,
+        "row": 6
+      }
     }
   ],
   "idle": [
     {
       "id": "6984be2d1978d0a978351ac5",
       "name": "A,Abisek",
+      "tasks": [],
       "status": "idle",
       "seat": {
         "furnitureUid": "f-bench-01",
         "type": "WOODEN_BENCH",
         "col": 2,
         "row": 23
-      },
-      "tasks": []
+      }
     },
     {
       "id": "6978995b0f9df2d5eb32d13b",
       "name": "Aathan RW",
-      "status": "idle",
-      "seat": {
-        "furnitureUid": "f-bench-02",
-        "type": "WOODEN_BENCH",
-        "col": 3,
-        "row": 23
-      },
       "tasks": [
         {
           "title": "Welcome to Huly! 🌟",
@@ -720,30 +713,30 @@
           "status": "Backlog",
           "priority": 0
         }
-      ]
+      ],
+      "status": "idle",
+      "seat": {
+        "furnitureUid": "f-bench-02",
+        "type": "WOODEN_BENCH",
+        "col": 3,
+        "row": 23
+      }
     },
     {
       "id": "696f259025815a985fce9f9b",
       "name": "A,Deepak",
+      "tasks": [],
       "status": "idle",
       "seat": {
         "furnitureUid": "f-bench-03",
         "type": "WOODEN_BENCH",
         "col": 4,
         "row": 23
-      },
-      "tasks": []
+      }
     },
     {
       "id": "6979a8779f51c364ceabafa3",
       "name": "A S,Hariharan",
-      "status": "idle",
-      "seat": {
-        "furnitureUid": "f-bench-04",
-        "type": "WOODEN_BENCH",
-        "col": 5,
-        "row": 23
-      },
       "tasks": [
         {
           "title": "Add League Data to Database",
@@ -751,90 +744,90 @@
           "status": "Backlog",
           "priority": 0
         }
-      ]
+      ],
+      "status": "idle",
+      "seat": {
+        "furnitureUid": "f-bench-04",
+        "type": "WOODEN_BENCH",
+        "col": 5,
+        "row": 23
+      }
     },
     {
       "id": "69841d140d3d7ea075b5c4ad",
       "name": "Ayappan,Vishak",
+      "tasks": [],
       "status": "idle",
       "seat": {
         "furnitureUid": "f-bench-05",
         "type": "WOODEN_BENCH",
         "col": 6,
         "row": 23
-      },
-      "tasks": []
+      }
     },
     {
       "id": "697aef4b23812491d4c6cc49",
       "name": "Dhamodaran,Pranav",
+      "tasks": [],
       "status": "idle",
       "seat": {
         "furnitureUid": "f-bench-06",
         "type": "WOODEN_BENCH",
         "col": 13,
         "row": 23
-      },
-      "tasks": []
+      }
     },
     {
       "id": "696f634c88b9ea2b82a30cdf",
       "name": "G,Aadra",
+      "tasks": [],
       "status": "idle",
       "seat": {
         "furnitureUid": "f-bench-07",
         "type": "WOODEN_BENCH",
         "col": 14,
         "row": 23
-      },
-      "tasks": []
+      }
     },
     {
       "id": "698460cb1384d0c63f58aeec",
       "name": "G,Prabhakaran",
+      "tasks": [],
       "status": "idle",
       "seat": {
         "furnitureUid": "f-bench-08",
         "type": "WOODEN_BENCH",
         "col": 15,
         "row": 23
-      },
-      "tasks": []
+      }
     },
     {
       "id": "69842aaaa8e5e9322292adbb",
       "name": "Jagadeesan,Balaganesh",
+      "tasks": [],
       "status": "idle",
       "seat": {
         "furnitureUid": "f-bench-09",
         "type": "WOODEN_BENCH",
         "col": 16,
         "row": 23
-      },
-      "tasks": []
+      }
     },
     {
       "id": "696f18d05dd328a75646ae42",
       "name": "Jagannathan,Sriram",
+      "tasks": [],
       "status": "idle",
       "seat": {
         "furnitureUid": "f-bench-10",
         "type": "WOODEN_BENCH",
         "col": 17,
         "row": 23
-      },
-      "tasks": []
+      }
     },
     {
       "id": "696f2204be62fb158381b252",
       "name": "Khan,Ashish",
-      "status": "idle",
-      "seat": {
-        "furnitureUid": "f-bench-11",
-        "type": "WOODEN_BENCH",
-        "col": 2,
-        "row": 25
-      },
       "tasks": [
         {
           "title": "Sync microsoft teams calendar to huly's task planner",
@@ -842,42 +835,42 @@
           "status": "Backlog",
           "priority": 0
         }
-      ]
+      ],
+      "status": "idle",
+      "seat": {
+        "furnitureUid": "f-bench-11",
+        "type": "WOODEN_BENCH",
+        "col": 2,
+        "row": 25
+      }
     },
     {
       "id": "698ab71cf098c6e2d9f186f6",
       "name": "Kintali,Sahil",
+      "tasks": [],
       "status": "idle",
       "seat": {
         "furnitureUid": "f-bench-12",
         "type": "WOODEN_BENCH",
         "col": 3,
         "row": 25
-      },
-      "tasks": []
+      }
     },
     {
       "id": "69841fc9f12f5955becf5a49",
       "name": "kumar,manoj",
+      "tasks": [],
       "status": "idle",
       "seat": {
         "furnitureUid": "f-bench-13",
         "type": "WOODEN_BENCH",
         "col": 4,
         "row": 25
-      },
-      "tasks": []
+      }
     },
     {
       "id": "698421d3b08e2e65bc139ef0",
       "name": "Kumbhar,Ganesh",
-      "status": "idle",
-      "seat": {
-        "furnitureUid": "f-bench-14",
-        "type": "WOODEN_BENCH",
-        "col": 5,
-        "row": 25
-      },
       "tasks": [
         {
           "title": "Tiktok scraping for Namal",
@@ -885,42 +878,42 @@
           "status": "Backlog",
           "priority": 0
         }
-      ]
+      ],
+      "status": "idle",
+      "seat": {
+        "furnitureUid": "f-bench-14",
+        "type": "WOODEN_BENCH",
+        "col": 5,
+        "row": 25
+      }
     },
     {
       "id": "69842e72166b98ff3ce24ae2",
       "name": "Maini,Raviesh",
+      "tasks": [],
       "status": "idle",
       "seat": {
         "furnitureUid": "f-bench-15",
         "type": "WOODEN_BENCH",
         "col": 6,
         "row": 25
-      },
-      "tasks": []
+      }
     },
     {
       "id": "698b09d26aa5b11d572aba8e",
       "name": "Mani,Anant",
+      "tasks": [],
       "status": "idle",
       "seat": {
         "furnitureUid": "f-bench-16",
         "type": "WOODEN_BENCH",
         "col": 13,
         "row": 25
-      },
-      "tasks": []
+      }
     },
     {
       "id": "69704107c23cc38d43083dc5",
       "name": "Prasad,Nirmal",
-      "status": "idle",
-      "seat": {
-        "furnitureUid": "f-bench-17",
-        "type": "WOODEN_BENCH",
-        "col": 14,
-        "row": 25
-      },
       "tasks": [
         {
           "title": "Knowledge Nudge - Story",
@@ -934,18 +927,18 @@
           "status": "Backlog",
           "priority": 0
         }
-      ]
+      ],
+      "status": "idle",
+      "seat": {
+        "furnitureUid": "f-bench-17",
+        "type": "WOODEN_BENCH",
+        "col": 14,
+        "row": 25
+      }
     },
     {
       "id": "69a98f4a6ebaa3e5e54208fa",
       "name": "Priyatham Katta",
-      "status": "idle",
-      "seat": {
-        "furnitureUid": "f-bench-18",
-        "type": "WOODEN_BENCH",
-        "col": 15,
-        "row": 25
-      },
       "tasks": [
         {
           "title": "Welcome to Huly! 🌟",
@@ -1001,90 +994,90 @@
           "status": "Backlog",
           "priority": 0
         }
-      ]
+      ],
+      "status": "idle",
+      "seat": {
+        "furnitureUid": "f-bench-18",
+        "type": "WOODEN_BENCH",
+        "col": 15,
+        "row": 25
+      }
     },
     {
       "id": "699406a9b789ffffb4c3e46e",
       "name": "Ram,Akshay",
+      "tasks": [],
       "status": "idle",
       "seat": {
         "furnitureUid": "f-bench-19",
         "type": "WOODEN_BENCH",
         "col": 16,
         "row": 25
-      },
-      "tasks": []
+      }
     },
     {
       "id": "69832b7ee39d12ab3937b2c7",
       "name": "Reddy,Manisrivas",
+      "tasks": [],
       "status": "idle",
       "seat": {
         "furnitureUid": "f-bench-20",
         "type": "WOODEN_BENCH",
         "col": 17,
         "row": 25
-      },
-      "tasks": []
+      }
     },
     {
       "id": "696f73f0c2fb89c8c0e6e2f7",
       "name": "sama,sai tejeshwar",
+      "tasks": [],
       "status": "idle",
       "seat": {
         "furnitureUid": "f-bench-21",
         "type": "WOODEN_BENCH",
         "col": 2,
         "row": 27
-      },
-      "tasks": []
+      }
     },
     {
       "id": "6973a7dc3410ffacd122ed77",
       "name": "Sashidhar,Dhivya",
+      "tasks": [],
       "status": "idle",
       "seat": {
         "furnitureUid": "f-bench-22",
         "type": "WOODEN_BENCH",
         "col": 3,
         "row": 27
-      },
-      "tasks": []
+      }
     },
     {
       "id": "698ad499e9a4f05312eea926",
       "name": "Shanmugam,Sharmila",
+      "tasks": [],
       "status": "idle",
       "seat": {
         "furnitureUid": "f-bench-23",
         "type": "WOODEN_BENCH",
         "col": 4,
         "row": 27
-      },
-      "tasks": []
+      }
     },
     {
       "id": "6978451af5024d9fa4cca6f1",
       "name": "S,Ramesh",
+      "tasks": [],
       "status": "idle",
       "seat": {
         "furnitureUid": "f-bench-24",
         "type": "WOODEN_BENCH",
         "col": 5,
         "row": 27
-      },
-      "tasks": []
+      }
     },
     {
       "id": "6983306ab5a18796aa1acbf1",
       "name": "Sundar,Kaushik",
-      "status": "idle",
-      "seat": {
-        "furnitureUid": "f-bench-25",
-        "type": "WOODEN_BENCH",
-        "col": 6,
-        "row": 27
-      },
       "tasks": [
         {
           "title": "[BUG] Unable to add external links to the knowledge base",
@@ -1128,55 +1121,62 @@
           "status": "Backlog",
           "priority": 0
         }
-      ]
+      ],
+      "status": "idle",
+      "seat": {
+        "furnitureUid": "f-bench-25",
+        "type": "WOODEN_BENCH",
+        "col": 6,
+        "row": 27
+      }
     },
     {
       "id": "698333b808eb3d3e752de998",
       "name": "Supriya,Dereddy",
+      "tasks": [],
       "status": "idle",
       "seat": {
         "furnitureUid": "f-bench-26",
         "type": "WOODEN_BENCH",
         "col": 13,
         "row": 27
-      },
-      "tasks": []
+      }
     },
     {
       "id": "698b032934be969fc3d3c946",
       "name": "T,Ranjith",
+      "tasks": [],
       "status": "idle",
       "seat": {
         "furnitureUid": "f-bench-27",
         "type": "WOODEN_BENCH",
         "col": 14,
         "row": 27
-      },
-      "tasks": []
+      }
     },
     {
       "id": "696f4e764bcb76064c4fd2f3",
       "name": "V,Amaraja",
+      "tasks": [],
       "status": "idle",
       "seat": {
         "furnitureUid": "f-bench-28",
         "type": "WOODEN_BENCH",
         "col": 15,
         "row": 27
-      },
-      "tasks": []
+      }
     },
     {
       "id": "698b0a42fd31061b5a7fb0c5",
       "name": "Vijayakumar,Sai Prasad",
+      "tasks": [],
       "status": "idle",
       "seat": {
         "furnitureUid": "f-bench-29",
         "type": "WOODEN_BENCH",
         "col": 16,
         "row": 27
-      },
-      "tasks": []
+      }
     }
   ]
 }
