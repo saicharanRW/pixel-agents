@@ -1,0 +1,564 @@
+{
+  "generatedAt": "2026-03-31T20:19:12.224Z",
+  "summary": {
+    "totalEmployees": 50,
+    "working": 21,
+    "idle": 29,
+    "pcChairs": 30,
+    "benches": 30
+  },
+  "working": [
+    {
+      "id": "696a29272f5075242f27ba64",
+      "name": "Krishna Harshith",
+      "status": "working",
+      "seat": {
+        "furnitureUid": "f-ws-cL01",
+        "type": "WOODEN_CHAIR_SIDE",
+        "col": 1,
+        "row": 2
+      }
+    },
+    {
+      "id": "696de154ae6a2db5c852f542",
+      "name": "Raj,Lakshya",
+      "status": "working",
+      "seat": {
+        "furnitureUid": "f-ws-cR01",
+        "type": "WOODEN_CHAIR_SIDE:left",
+        "col": 4,
+        "row": 2
+      }
+    },
+    {
+      "id": "696e0a766237bf45b55fc599",
+      "name": "V,Shankar",
+      "status": "working",
+      "seat": {
+        "furnitureUid": "f-ws-cL02",
+        "type": "WOODEN_CHAIR_SIDE",
+        "col": 5,
+        "row": 2
+      }
+    },
+    {
+      "id": "696f1462c363e494889e9a84",
+      "name": "kumar,Praveen",
+      "status": "working",
+      "seat": {
+        "furnitureUid": "f-ws-cR02",
+        "type": "WOODEN_CHAIR_SIDE:left",
+        "col": 8,
+        "row": 2
+      }
+    },
+    {
+      "id": "696f5d1c68e2807dac66d4f8",
+      "name": "M,Vaishnavi",
+      "status": "working",
+      "seat": {
+        "furnitureUid": "f-ws-cL03",
+        "type": "WOODEN_CHAIR_SIDE",
+        "col": 10,
+        "row": 2
+      }
+    },
+    {
+      "id": "69720147efa1d20506e4cfb0",
+      "name": "Ashwin,Joseph",
+      "status": "working",
+      "seat": {
+        "furnitureUid": "f-ws-cR03",
+        "type": "WOODEN_CHAIR_SIDE:left",
+        "col": 13,
+        "row": 2
+      }
+    },
+    {
+      "id": "697201482d3bcf07d71d5435",
+      "name": "S,Nowfal",
+      "status": "working",
+      "seat": {
+        "furnitureUid": "f-ws-cL04",
+        "type": "WOODEN_CHAIR_SIDE",
+        "col": 14,
+        "row": 2
+      }
+    },
+    {
+      "id": "69789a4251b38790fd705a8f",
+      "name": "RW,Aathan",
+      "status": "working",
+      "seat": {
+        "furnitureUid": "f-ws-cR04",
+        "type": "WOODEN_CHAIR_SIDE:left",
+        "col": 17,
+        "row": 2
+      }
+    },
+    {
+      "id": "6979a8217abb9ccc62cdf905",
+      "name": ".,Chhavi",
+      "status": "working",
+      "seat": {
+        "furnitureUid": "f-ws-cL05",
+        "type": "WOODEN_CHAIR_SIDE",
+        "col": 1,
+        "row": 4
+      }
+    },
+    {
+      "id": "6979b626cdff9246b1b070ba",
+      "name": "Kannan,Vengatesh",
+      "status": "working",
+      "seat": {
+        "furnitureUid": "f-ws-cR05",
+        "type": "WOODEN_CHAIR_SIDE:left",
+        "col": 4,
+        "row": 4
+      }
+    },
+    {
+      "id": "6979b72f9c7ffcb09ed225bc",
+      "name": "peddisetty,jashwanth",
+      "status": "working",
+      "seat": {
+        "furnitureUid": "f-ws-cL06",
+        "type": "WOODEN_CHAIR_SIDE",
+        "col": 5,
+        "row": 4
+      }
+    },
+    {
+      "id": "6979b86a7d46c055655f0a72",
+      "name": "Muthusamy,Ratish",
+      "status": "working",
+      "seat": {
+        "furnitureUid": "f-ws-cR06",
+        "type": "WOODEN_CHAIR_SIDE:left",
+        "col": 8,
+        "row": 4
+      }
+    },
+    {
+      "id": "69848d3cecb15cad1af64d6d",
+      "name": "Maini [Active],Raviesh",
+      "status": "working",
+      "seat": {
+        "furnitureUid": "f-ws-cL07",
+        "type": "WOODEN_CHAIR_SIDE",
+        "col": 10,
+        "row": 4
+      }
+    },
+    {
+      "id": "698575254acb595c9f9d3589",
+      "name": "K,Amrin",
+      "status": "working",
+      "seat": {
+        "furnitureUid": "f-ws-cR07",
+        "type": "WOODEN_CHAIR_SIDE:left",
+        "col": 13,
+        "row": 4
+      }
+    },
+    {
+      "id": "698ab5bf3f6ec0c0ba66b013",
+      "name": "John,Deepu",
+      "status": "working",
+      "seat": {
+        "furnitureUid": "f-ws-cL08",
+        "type": "WOODEN_CHAIR_SIDE",
+        "col": 14,
+        "row": 4
+      }
+    },
+    {
+      "id": "698aba6d9d5a1c66df595d50",
+      "name": "G.K.V,Yazhini Devi",
+      "status": "working",
+      "seat": {
+        "furnitureUid": "f-ws-cR08",
+        "type": "WOODEN_CHAIR_SIDE:left",
+        "col": 17,
+        "row": 4
+      }
+    },
+    {
+      "id": "698abf078c48bdbcf5dbad90",
+      "name": "SAI CHARAN,GAJJELA",
+      "status": "working",
+      "seat": {
+        "furnitureUid": "f-ws-cL09",
+        "type": "WOODEN_CHAIR_SIDE",
+        "col": 1,
+        "row": 6
+      }
+    },
+    {
+      "id": "698ac7035033d0ed4bc9d311",
+      "name": "Antony,Jarosh",
+      "status": "working",
+      "seat": {
+        "furnitureUid": "f-ws-cR09",
+        "type": "WOODEN_CHAIR_SIDE:left",
+        "col": 4,
+        "row": 6
+      }
+    },
+    {
+      "id": "698dabf9656ba274ad49a8fe",
+      "name": "raman,siva",
+      "status": "working",
+      "seat": {
+        "furnitureUid": "f-ws-cL10",
+        "type": "WOODEN_CHAIR_SIDE",
+        "col": 5,
+        "row": 6
+      }
+    },
+    {
+      "id": "6993ffad5a9919281761a456",
+      "name": "Singha,Sudip",
+      "status": "working",
+      "seat": {
+        "furnitureUid": "f-ws-cR10",
+        "type": "WOODEN_CHAIR_SIDE:left",
+        "col": 8,
+        "row": 6
+      }
+    },
+    {
+      "id": "69942df978751053a9fd3482",
+      "name": "Katta,Priyatham",
+      "status": "working",
+      "seat": {
+        "furnitureUid": "f-ws-cL11",
+        "type": "WOODEN_CHAIR_SIDE",
+        "col": 10,
+        "row": 6
+      }
+    }
+  ],
+  "idle": [
+    {
+      "id": "6984be2d1978d0a978351ac5",
+      "name": "A,Abisek",
+      "status": "idle",
+      "seat": {
+        "furnitureUid": "f-bench-01",
+        "type": "WOODEN_BENCH",
+        "col": 2,
+        "row": 23
+      }
+    },
+    {
+      "id": "6978995b0f9df2d5eb32d13b",
+      "name": "Aathan RW",
+      "status": "idle",
+      "seat": {
+        "furnitureUid": "f-bench-02",
+        "type": "WOODEN_BENCH",
+        "col": 3,
+        "row": 23
+      }
+    },
+    {
+      "id": "696f259025815a985fce9f9b",
+      "name": "A,Deepak",
+      "status": "idle",
+      "seat": {
+        "furnitureUid": "f-bench-03",
+        "type": "WOODEN_BENCH",
+        "col": 4,
+        "row": 23
+      }
+    },
+    {
+      "id": "6979a8779f51c364ceabafa3",
+      "name": "A S,Hariharan",
+      "status": "idle",
+      "seat": {
+        "furnitureUid": "f-bench-04",
+        "type": "WOODEN_BENCH",
+        "col": 5,
+        "row": 23
+      }
+    },
+    {
+      "id": "69841d140d3d7ea075b5c4ad",
+      "name": "Ayappan,Vishak",
+      "status": "idle",
+      "seat": {
+        "furnitureUid": "f-bench-05",
+        "type": "WOODEN_BENCH",
+        "col": 6,
+        "row": 23
+      }
+    },
+    {
+      "id": "697aef4b23812491d4c6cc49",
+      "name": "Dhamodaran,Pranav",
+      "status": "idle",
+      "seat": {
+        "furnitureUid": "f-bench-06",
+        "type": "WOODEN_BENCH",
+        "col": 13,
+        "row": 23
+      }
+    },
+    {
+      "id": "696f634c88b9ea2b82a30cdf",
+      "name": "G,Aadra",
+      "status": "idle",
+      "seat": {
+        "furnitureUid": "f-bench-07",
+        "type": "WOODEN_BENCH",
+        "col": 14,
+        "row": 23
+      }
+    },
+    {
+      "id": "698460cb1384d0c63f58aeec",
+      "name": "G,Prabhakaran",
+      "status": "idle",
+      "seat": {
+        "furnitureUid": "f-bench-08",
+        "type": "WOODEN_BENCH",
+        "col": 15,
+        "row": 23
+      }
+    },
+    {
+      "id": "69842aaaa8e5e9322292adbb",
+      "name": "Jagadeesan,Balaganesh",
+      "status": "idle",
+      "seat": {
+        "furnitureUid": "f-bench-09",
+        "type": "WOODEN_BENCH",
+        "col": 16,
+        "row": 23
+      }
+    },
+    {
+      "id": "696f18d05dd328a75646ae42",
+      "name": "Jagannathan,Sriram",
+      "status": "idle",
+      "seat": {
+        "furnitureUid": "f-bench-10",
+        "type": "WOODEN_BENCH",
+        "col": 17,
+        "row": 23
+      }
+    },
+    {
+      "id": "696f2204be62fb158381b252",
+      "name": "Khan,Ashish",
+      "status": "idle",
+      "seat": {
+        "furnitureUid": "f-bench-11",
+        "type": "WOODEN_BENCH",
+        "col": 2,
+        "row": 25
+      }
+    },
+    {
+      "id": "698ab71cf098c6e2d9f186f6",
+      "name": "Kintali,Sahil",
+      "status": "idle",
+      "seat": {
+        "furnitureUid": "f-bench-12",
+        "type": "WOODEN_BENCH",
+        "col": 3,
+        "row": 25
+      }
+    },
+    {
+      "id": "69841fc9f12f5955becf5a49",
+      "name": "kumar,manoj",
+      "status": "idle",
+      "seat": {
+        "furnitureUid": "f-bench-13",
+        "type": "WOODEN_BENCH",
+        "col": 4,
+        "row": 25
+      }
+    },
+    {
+      "id": "698421d3b08e2e65bc139ef0",
+      "name": "Kumbhar,Ganesh",
+      "status": "idle",
+      "seat": {
+        "furnitureUid": "f-bench-14",
+        "type": "WOODEN_BENCH",
+        "col": 5,
+        "row": 25
+      }
+    },
+    {
+      "id": "69842e72166b98ff3ce24ae2",
+      "name": "Maini,Raviesh",
+      "status": "idle",
+      "seat": {
+        "furnitureUid": "f-bench-15",
+        "type": "WOODEN_BENCH",
+        "col": 6,
+        "row": 25
+      }
+    },
+    {
+      "id": "698b09d26aa5b11d572aba8e",
+      "name": "Mani,Anant",
+      "status": "idle",
+      "seat": {
+        "furnitureUid": "f-bench-16",
+        "type": "WOODEN_BENCH",
+        "col": 13,
+        "row": 25
+      }
+    },
+    {
+      "id": "69704107c23cc38d43083dc5",
+      "name": "Prasad,Nirmal",
+      "status": "idle",
+      "seat": {
+        "furnitureUid": "f-bench-17",
+        "type": "WOODEN_BENCH",
+        "col": 14,
+        "row": 25
+      }
+    },
+    {
+      "id": "69a98f4a6ebaa3e5e54208fa",
+      "name": "Priyatham Katta",
+      "status": "idle",
+      "seat": {
+        "furnitureUid": "f-bench-18",
+        "type": "WOODEN_BENCH",
+        "col": 15,
+        "row": 25
+      }
+    },
+    {
+      "id": "699406a9b789ffffb4c3e46e",
+      "name": "Ram,Akshay",
+      "status": "idle",
+      "seat": {
+        "furnitureUid": "f-bench-19",
+        "type": "WOODEN_BENCH",
+        "col": 16,
+        "row": 25
+      }
+    },
+    {
+      "id": "69832b7ee39d12ab3937b2c7",
+      "name": "Reddy,Manisrivas",
+      "status": "idle",
+      "seat": {
+        "furnitureUid": "f-bench-20",
+        "type": "WOODEN_BENCH",
+        "col": 17,
+        "row": 25
+      }
+    },
+    {
+      "id": "696f73f0c2fb89c8c0e6e2f7",
+      "name": "sama,sai tejeshwar",
+      "status": "idle",
+      "seat": {
+        "furnitureUid": "f-bench-21",
+        "type": "WOODEN_BENCH",
+        "col": 2,
+        "row": 27
+      }
+    },
+    {
+      "id": "6973a7dc3410ffacd122ed77",
+      "name": "Sashidhar,Dhivya",
+      "status": "idle",
+      "seat": {
+        "furnitureUid": "f-bench-22",
+        "type": "WOODEN_BENCH",
+        "col": 3,
+        "row": 27
+      }
+    },
+    {
+      "id": "698ad499e9a4f05312eea926",
+      "name": "Shanmugam,Sharmila",
+      "status": "idle",
+      "seat": {
+        "furnitureUid": "f-bench-23",
+        "type": "WOODEN_BENCH",
+        "col": 4,
+        "row": 27
+      }
+    },
+    {
+      "id": "6978451af5024d9fa4cca6f1",
+      "name": "S,Ramesh",
+      "status": "idle",
+      "seat": {
+        "furnitureUid": "f-bench-24",
+        "type": "WOODEN_BENCH",
+        "col": 5,
+        "row": 27
+      }
+    },
+    {
+      "id": "6983306ab5a18796aa1acbf1",
+      "name": "Sundar,Kaushik",
+      "status": "idle",
+      "seat": {
+        "furnitureUid": "f-bench-25",
+        "type": "WOODEN_BENCH",
+        "col": 6,
+        "row": 27
+      }
+    },
+    {
+      "id": "698333b808eb3d3e752de998",
+      "name": "Supriya,Dereddy",
+      "status": "idle",
+      "seat": {
+        "furnitureUid": "f-bench-26",
+        "type": "WOODEN_BENCH",
+        "col": 13,
+        "row": 27
+      }
+    },
+    {
+      "id": "698b032934be969fc3d3c946",
+      "name": "T,Ranjith",
+      "status": "idle",
+      "seat": {
+        "furnitureUid": "f-bench-27",
+        "type": "WOODEN_BENCH",
+        "col": 14,
+        "row": 27
+      }
+    },
+    {
+      "id": "696f4e764bcb76064c4fd2f3",
+      "name": "V,Amaraja",
+      "status": "idle",
+      "seat": {
+        "furnitureUid": "f-bench-28",
+        "type": "WOODEN_BENCH",
+        "col": 15,
+        "row": 27
+      }
+    },
+    {
+      "id": "698b0a42fd31061b5a7fb0c5",
+      "name": "Vijayakumar,Sai Prasad",
+      "status": "idle",
+      "seat": {
+        "furnitureUid": "f-bench-29",
+        "type": "WOODEN_BENCH",
+        "col": 16,
+        "row": 27
+      }
+    }
+  ]
+}
