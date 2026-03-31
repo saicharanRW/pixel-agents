@@ -329,6 +329,7 @@ export class OfficeState {
     displayName: string,
     isWorking: boolean,
     skipSpawnEffect?: boolean,
+    tasks?: Array<{ title: string; identifier: string; status: string; priority: number }>,
   ): void {
     if (this.characters.has(id)) return;
 
@@ -355,6 +356,7 @@ export class OfficeState {
     ch.displayName = displayName;
     ch.isStatic = true;
     ch.isActive = isWorking;
+    ch.tasks = tasks;
     if (!isWorking) {
       ch.state = CharacterState.IDLE;
     }

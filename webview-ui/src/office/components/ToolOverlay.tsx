@@ -251,6 +251,110 @@ export function ToolOverlay({
                 </button>
               )}
             </div>
+            {/* Task panel for selected static characters */}
+            {isStatic && isSelected && ch.tasks && ch.tasks.length > 0 && (
+              <div
+                style={{
+                  marginTop: 4,
+                  background: 'var(--pixel-bg)',
+                  border: '2px solid var(--pixel-border-light)',
+                  borderRadius: 0,
+                  padding: '6px 8px',
+                  boxShadow: 'var(--pixel-shadow)',
+                  maxWidth: 300,
+                  minWidth: 200,
+                  maxHeight: 240,
+                  overflowY: 'auto',
+                  pointerEvents: 'auto',
+                }}
+                onClick={(e) => e.stopPropagation()}
+              >
+                <div
+                  style={{
+                    fontSize: '16px',
+                    color: 'var(--pixel-text-dim)',
+                    marginBottom: 4,
+                    borderBottom: '1px solid var(--pixel-border)',
+                    paddingBottom: 3,
+                  }}
+                >
+                  Tasks ({ch.tasks.length})
+                </div>
+                {ch.tasks.map((task, i) => (
+                  <div
+                    key={i}
+                    style={{
+                      padding: '3px 0',
+                      borderBottom:
+                        i < ch.tasks!.length - 1 ? '1px solid var(--pixel-border)' : 'none',
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                      <span
+                        style={{
+                          fontSize: '14px',
+                          color:
+                            task.status === 'In Progress'
+                              ? '#4ade80'
+                              : task.status === 'Todo'
+                                ? '#60a5fa'
+                                : 'var(--pixel-text-dim)',
+                          flexShrink: 0,
+                          width: 6,
+                          height: 6,
+                          borderRadius: '50%',
+                          background:
+                            task.status === 'In Progress'
+                              ? '#4ade80'
+                              : task.status === 'Todo'
+                                ? '#60a5fa'
+                                : '#6b7280',
+                          display: 'inline-block',
+                        }}
+                      />
+                      <span
+                        style={{
+                          fontSize: '13px',
+                          color: 'var(--pixel-accent)',
+                          flexShrink: 0,
+                        }}
+                      >
+                        {task.identifier}
+                      </span>
+                    </div>
+                    <div
+                      style={{
+                        fontSize: '15px',
+                        color: 'var(--pixel-text)',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                        whiteSpace: 'nowrap',
+                        paddingLeft: 10,
+                      }}
+                      title={task.title}
+                    >
+                      {task.title}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+            {isStatic && isSelected && (!ch.tasks || ch.tasks.length === 0) && (
+              <div
+                style={{
+                  marginTop: 4,
+                  background: 'var(--pixel-bg)',
+                  border: '2px solid var(--pixel-border)',
+                  borderRadius: 0,
+                  padding: '6px 10px',
+                  boxShadow: 'var(--pixel-shadow)',
+                  fontSize: '16px',
+                  color: 'var(--pixel-text-dim)',
+                }}
+              >
+                No tasks assigned
+              </div>
+            )}
           </div>
         );
       })}

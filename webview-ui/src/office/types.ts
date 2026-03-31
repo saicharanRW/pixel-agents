@@ -194,4 +194,6 @@ export interface Character {
   displayName?: string;
   /** Whether this is a static character (not tied to a terminal) */
   isStatic?: boolean;
+  /** Tasks assigned to this person (static characters only) */
+  tasks?: Array<{ title: string; identifier: string; status: string; priority: number }>;
 }

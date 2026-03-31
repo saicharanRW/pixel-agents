@@ -643,11 +643,23 @@ export class PixelAgentsViewProvider implements vscode.WebviewViewProvider {
     }
 
     try {
+      interface TaskInfo {
+        title: string;
+        identifier: string;
+        status: string;
+        priority: number;
+      }
       const assignments = JSON.parse(data) as {
-        working: Array<{ id: string; name: string; seat: { furnitureUid: string } }>;
-        idle: Array<{ id: string; name: string; seat: { furnitureUid: string } }>;
+        working: Array<{ id: string; name: string; seat: { furnitureUid: string }; tasks?: TaskInfo[] }>;
+        idle: Array<{ id: string; name: string; seat: { furnitureUid: string }; tasks?: TaskInfo[] }>;
       };
-      const agents: Array<{ id: number; name: string; seatUid: string; isWorking: boolean }> = [];
+      const agents: Array<{
+        id: number;
+        name: string;
+        seatUid: string;
+        isWorking: boolean;
+        tasks: TaskInfo[];
+      }> = [];
       // Use large IDs (1000+) to avoid collision with real agent IDs
       let nextId = 1000;
       for (const person of assignments.working) {
@@ -656,6 +668,7 @@ export class PixelAgentsViewProvider implements vscode.WebviewViewProvider {
           name: person.name,
           seatUid: person.seat.furnitureUid,
           isWorking: true,
+          tasks: person.tasks || [],
         });
       }
       for (const person of assignments.idle) {
@@ -664,6 +677,7 @@ export class PixelAgentsViewProvider implements vscode.WebviewViewProvider {
           name: person.name,
           seatUid: person.seat.furnitureUid,
           isWorking: false,
+          tasks: person.tasks || [],
         });
       }
       console.log(`[Extension] Sending ${agents.length} static agents to webview`);
