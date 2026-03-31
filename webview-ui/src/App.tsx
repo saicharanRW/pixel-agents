@@ -4,6 +4,7 @@ import { toMajorMinor } from './changelogData.js';
 import { BottomToolbar } from './components/BottomToolbar.js';
 import { ChangelogModal } from './components/ChangelogModal.js';
 import { DebugView } from './components/DebugView.js';
+import { TeamPanel } from './components/TeamPanel.js';
 import { VersionIndicator } from './components/VersionIndicator.js';
 import { ZoomControls } from './components/ZoomControls.js';
 import { PULSE_ANIMATION_DURATION_SEC } from './constants.js';
@@ -298,6 +299,10 @@ function App() {
       />
 
       {!isDebugMode && <ZoomControls zoom={editor.zoom} onZoomChange={editor.handleZoomChange} />}
+
+      {!isDebugMode && !editor.isEditMode && (
+        <TeamPanel officeState={officeState} agentsTick={agents.length} />
+      )}
 
       {/* Vignette overlay */}
       <div
