@@ -205,7 +205,7 @@ export function ToolOverlay({
                       display: 'block',
                     }}
                   >
-                    {ch.isActive ? 'Working' : 'Idle'}
+                    {ch.isActive ? 'Working' : 'Idle'}{ch.projectName ? ` - ${ch.projectName}` : ''}
                   </span>
                 )}
                 {ch.folderName && (

@@ -196,4 +196,6 @@ export interface Character {
   isStatic?: boolean;
   /** Tasks assigned to this person (static characters only) */
   tasks?: Array<{ title: string; identifier: string; status: string; priority: number }>;
+  /** Project name this person belongs to (static characters only) */
+  projectName?: string;
 }

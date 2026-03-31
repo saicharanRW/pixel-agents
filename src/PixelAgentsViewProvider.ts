@@ -650,8 +650,8 @@ export class PixelAgentsViewProvider implements vscode.WebviewViewProvider {
         priority: number;
       }
       const assignments = JSON.parse(data) as {
-        working: Array<{ id: string; name: string; seat: { furnitureUid: string }; tasks?: TaskInfo[] }>;
-        idle: Array<{ id: string; name: string; seat: { furnitureUid: string }; tasks?: TaskInfo[] }>;
+        working: Array<{ id: string; name: string; seat: { furnitureUid: string }; tasks?: TaskInfo[]; project?: string }>;
+        idle: Array<{ id: string; name: string; seat: { furnitureUid: string }; tasks?: TaskInfo[]; project?: string }>;
       };
       const agents: Array<{
         id: number;
@@ -659,6 +659,7 @@ export class PixelAgentsViewProvider implements vscode.WebviewViewProvider {
         seatUid: string;
         isWorking: boolean;
         tasks: TaskInfo[];
+        project: string;
       }> = [];
       // Use large IDs (1000+) to avoid collision with real agent IDs
       let nextId = 1000;
@@ -669,6 +670,7 @@ export class PixelAgentsViewProvider implements vscode.WebviewViewProvider {
           seatUid: person.seat.furnitureUid,
           isWorking: true,
           tasks: person.tasks || [],
+          project: person.project || '',
         });
       }
       for (const person of assignments.idle) {
@@ -678,6 +680,7 @@ export class PixelAgentsViewProvider implements vscode.WebviewViewProvider {
           seatUid: person.seat.furnitureUid,
           isWorking: false,
           tasks: person.tasks || [],
+          project: person.project || '',
         });
       }
       console.log(`[Extension] Sending ${agents.length} static agents to webview`);

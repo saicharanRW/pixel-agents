@@ -118,6 +118,7 @@ export function useExtensionMessages(
       seatUid: string;
       isWorking: boolean;
       tasks: Array<{ title: string; identifier: string; status: string; priority: number }>;
+      project: string;
     }> = [];
 
     const handler = (e: MessageEvent) => {
@@ -147,7 +148,7 @@ export function useExtensionMessages(
         // Flush buffered static agents (database-sourced)
         if (pendingStaticAgents.length > 0) {
           for (const agent of pendingStaticAgents) {
-            os.addStaticCharacter(agent.id, agent.seatUid, agent.name, agent.isWorking, true, agent.tasks);
+            os.addStaticCharacter(agent.id, agent.seatUid, agent.name, agent.isWorking, true, agent.tasks, agent.project);
           }
           pendingStaticAgents = [];
         }
@@ -167,6 +168,7 @@ export function useExtensionMessages(
           seatUid: string;
           isWorking: boolean;
           tasks: Array<{ title: string; identifier: string; status: string; priority: number }>;
+          project: string;
         }>;
         if (!layoutReadyRef.current) {
           // Buffer until layout is loaded — will be processed after layoutLoaded
@@ -174,7 +176,7 @@ export function useExtensionMessages(
         } else {
           os.clearStaticCharacters();
           for (const agent of agents) {
-            os.addStaticCharacter(agent.id, agent.seatUid, agent.name, agent.isWorking, true, agent.tasks);
+            os.addStaticCharacter(agent.id, agent.seatUid, agent.name, agent.isWorking, true, agent.tasks, agent.project);
           }
         }
       } else if (msg.type === 'agentCreated') {
