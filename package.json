@@ -46,6 +46,41 @@
           "name": "Pixel Agents"
         }
       ]
+    },
+    "configuration": {
+      "title": "Pixel Agents",
+      "properties": {
+        "pixel-agents.hulyDbHost": {
+          "type": "string",
+          "default": "huly-db-do-user-16457911-0.e.db.ondigitalocean.com",
+          "description": "Huly database host"
+        },
+        "pixel-agents.hulyDbPort": {
+          "type": "number",
+          "default": 25060,
+          "description": "Huly database port"
+        },
+        "pixel-agents.hulyDbUser": {
+          "type": "string",
+          "default": "huly_readonly",
+          "description": "Huly database user"
+        },
+        "pixel-agents.hulyDbPassword": {
+          "type": "string",
+          "default": "",
+          "description": "Huly database password"
+        },
+        "pixel-agents.hulyDbName": {
+          "type": "string",
+          "default": "defaultdb",
+          "description": "Huly database name"
+        },
+        "pixel-agents.hulyDbSsl": {
+          "type": "boolean",
+          "default": true,
+          "description": "Use SSL for Huly database connection"
+        }
+      }
     }
   },
   "scripts": {
@@ -73,6 +108,7 @@
     "@anthropic-ai/sdk": "^0.80.0",
     "@playwright/test": "^1.58.2",
     "@types/node": "25.x",
+    "@types/pg": "^8.20.0",
     "@types/pngjs": "^6.0.5",
     "@types/vscode": "^1.105.0",
     "@vscode/test-electron": "^2.5.2",
@@ -94,5 +130,8 @@
     "webview-ui/src/**/*.{ts,tsx}": "eslint --fix",
     "*.{ts,tsx,js,mjs,css,json,md}": "prettier --write",
     "webview-ui/**/*.{ts,tsx,js,css,json}": "prettier --write"
+  },
+  "dependencies": {
+    "pg": "^8.20.0"
   }
 }

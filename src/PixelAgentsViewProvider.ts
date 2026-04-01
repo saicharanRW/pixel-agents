@@ -12,6 +12,8 @@ import {
   sendExistingAgents,
   sendLayout,
 } from './agentManager.js';
+import type { HulyPerson } from './hulyClient.js';
+import { getHulyDbConfig, startHulyPolling, stopHulyPolling } from './hulyClient.js';
 import type { LoadedAssets } from './assetLoader.js';
 import {
   loadCharacterSprites,
@@ -31,6 +33,7 @@ import {
   GLOBAL_KEY_LAST_SEEN_VERSION,
   GLOBAL_KEY_SOUND_ENABLED,
   GLOBAL_KEY_WATCH_ALL_SESSIONS,
+  HULY_AGENT_ID_OFFSET,
   LAYOUT_REVISION_KEY,
   WORKSPACE_KEY_AGENT_SEATS,
 } from './constants.js';
@@ -70,6 +73,11 @@ export class PixelAgentsViewProvider implements vscode.WebviewViewProvider {
   // Global session scanning (opt-in "Watch All Sessions" toggle)
   watchAllSessions = { current: false };
   globalDismissedFiles = new Set<string>();
+
+  // Huly integration
+  /** Maps Huly person string ID to numeric agent ID */
+  hulyPersonIdMap = new Map<string, number>();
+  hulyNextId = HULY_AGENT_ID_OFFSET;
 
   // Bundled default layout (loaded from assets/default-layout.json)
   defaultLayout: Record<string, unknown> | null = null;
@@ -406,6 +414,8 @@ export class PixelAgentsViewProvider implements vscode.WebviewViewProvider {
             this.startLayoutWatcher();
             // Send static agents from seat-assignments.json (database-sourced people)
             this.sendStaticAgents();
+            // Start Huly DB polling for live person/task updates
+            this.startHulyIntegration();
           }
         })();
         sendExistingAgents(this.agents, this.context, this.webview);
@@ -690,7 +700,62 @@ export class PixelAgentsViewProvider implements vscode.WebviewViewProvider {
     }
   }
 
+  private startHulyIntegration(): void {
+    const config = getHulyDbConfig();
+
+    console.log(`[Pixel Agents] Huly integration: connecting to ${config.host}:${config.port}`);
+
+    startHulyPolling(config, (persons) => {
+      console.log(`[Pixel Agents] Huly: loaded ${persons.length} persons`);
+      this.sendHulyPersonsToWebview(persons);
+    });
+  }
+
+  private sendHulyPersonsToWebview(persons: HulyPerson[]): void {
+    if (!this.webview) return;
+
+    // Map Huly person string IDs to stable numeric IDs
+    const webviewPersons = persons.map((person) => {
+      let numericId = this.hulyPersonIdMap.get(person.id);
+      if (numericId === undefined) {
+        numericId = this.hulyNextId++;
+        this.hulyPersonIdMap.set(person.id, numericId);
+      }
+      return {
+        id: numericId,
+        name: person.name,
+        status: person.status,
+        currentTask: person.currentTask,
+        currentTaskStatus: person.currentTaskStatus,
+        activeTaskCount: person.activeTaskCount,
+      };
+    });
+
+    this.webview.postMessage({
+      type: 'hulyPersons',
+      persons: webviewPersons,
+    });
+
+    // Clean up persisted Huly seat data when persons list changes
+    const agentMeta = this.context.workspaceState.get<
+      Record<string, { palette?: number; seatId?: string }>
+    >(WORKSPACE_KEY_AGENT_SEATS, {});
+    const activeHulyIds = new Set(webviewPersons.map((p) => String(p.id)));
+    let changed = false;
+    for (const key of Object.keys(agentMeta)) {
+      const numKey = Number(key);
+      if (numKey >= HULY_AGENT_ID_OFFSET && !activeHulyIds.has(key)) {
+        delete agentMeta[key];
+        changed = true;
+      }
+    }
+    if (changed) {
+      this.context.workspaceState.update(WORKSPACE_KEY_AGENT_SEATS, agentMeta);
+    }
+  }
+
   dispose() {
+    stopHulyPolling();
     this.layoutWatcher?.dispose();
     this.layoutWatcher = null;
     for (const id of [...this.agents.keys()]) {

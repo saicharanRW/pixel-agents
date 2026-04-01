@@ -43,6 +43,12 @@ export const GLOBAL_KEY_SOUND_ENABLED = 'pixel-agents.soundEnabled';
 export const GLOBAL_KEY_LAST_SEEN_VERSION = 'pixel-agents.lastSeenVersion';
 export const GLOBAL_KEY_ALWAYS_SHOW_LABELS = 'pixel-agents.alwaysShowLabels';
 
+// ── Huly Integration ────────────────────────────────────────
+/** How often to poll Huly DB for person/task updates (ms) */
+export const HULY_POLL_INTERVAL_MS = 600_000; // 10 minutes
+/** Agent ID offset for Huly persons (avoids collision with Claude agents) */
+export const HULY_AGENT_ID_OFFSET = 10_000;
+
 // ── VS Code Identifiers ─────────────────────────────────────
 export const VIEW_ID = 'pixel-agents.panelView';
 export const COMMAND_SHOW_PANEL = 'pixel-agents.showPanel';
