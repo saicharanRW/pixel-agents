@@ -408,6 +408,38 @@ export function useExtensionMessages(
         setSubagentCharacters((prev) =>
           prev.filter((s) => !(s.parentAgentId === id && s.parentToolId === parentToolId)),
         );
+      } else if (msg.type === 'hulyPersons') {
+        // Live DB update — refresh status of existing static characters (placed by seat-assignments.json)
+        const persons = msg.persons as Array<{
+          id: number;
+          name: string;
+          status: 'busy' | 'idle';
+          currentTask: string | null;
+          currentTaskStatus: string | null;
+          activeTaskCount: number;
+        }>;
+        console.log(`[Webview] Huly status update: ${persons.length} persons`);
+        // Build a name→status lookup from DB data
+        const statusByName = new Map<string, { isWorking: boolean; task: string | null; taskStatus: string | null }>();
+        for (const p of persons) {
+          statusByName.set(p.name, {
+            isWorking: p.status === 'busy',
+            task: p.currentTask,
+            taskStatus: p.currentTaskStatus,
+          });
+        }
+        // Update existing static characters' working status
+        for (const ch of os.characters.values()) {
+          if (!ch.isStatic || !ch.displayName) continue;
+          const update = statusByName.get(ch.displayName);
+          if (update) {
+            os.setAgentActive(ch.id, update.isWorking);
+            ch.isActive = update.isWorking;
+            if (update.task) {
+              ch.tasks = [{ title: update.task, identifier: '', status: update.taskStatus || '', priority: 0 }];
+            }
+          }
+        }
       } else if (msg.type === 'characterSpritesLoaded') {
         const characters = msg.characters as Array<{
           down: string[][][];

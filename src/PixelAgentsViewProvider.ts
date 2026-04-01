@@ -78,6 +78,8 @@ export class PixelAgentsViewProvider implements vscode.WebviewViewProvider {
   /** Maps Huly person string ID to numeric agent ID */
   hulyPersonIdMap = new Map<string, number>();
   hulyNextId = HULY_AGENT_ID_OFFSET;
+  /** Cache last fetched persons so we can re-send on webview reload */
+  lastHulyPersons: HulyPerson[] = [];
 
   // Bundled default layout (loaded from assets/default-layout.json)
   defaultLayout: Record<string, unknown> | null = null;
@@ -701,12 +703,19 @@ export class PixelAgentsViewProvider implements vscode.WebviewViewProvider {
   }
 
   private startHulyIntegration(): void {
+    // Re-send cached persons immediately so characters appear instantly on webview reload
+    if (this.lastHulyPersons.length > 0) {
+      console.log(`[Pixel Agents] Huly: re-sending ${this.lastHulyPersons.length} cached persons`);
+      this.sendHulyPersonsToWebview(this.lastHulyPersons);
+    }
+
     const config = getHulyDbConfig();
 
     console.log(`[Pixel Agents] Huly integration: connecting to ${config.host}:${config.port}`);
 
     startHulyPolling(config, (persons) => {
       console.log(`[Pixel Agents] Huly: loaded ${persons.length} persons`);
+      this.lastHulyPersons = persons;
       this.sendHulyPersonsToWebview(persons);
     });
   }

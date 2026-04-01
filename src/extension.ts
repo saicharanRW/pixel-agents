@@ -1,3 +1,6 @@
+import * as path from 'path';
+
+import dotenv from 'dotenv';
 import * as vscode from 'vscode';
 
 import { COMMAND_EXPORT_DEFAULT_LAYOUT, COMMAND_SHOW_PANEL, VIEW_ID } from './constants.js';
@@ -6,6 +9,9 @@ import { PixelAgentsViewProvider } from './PixelAgentsViewProvider.js';
 let providerInstance: PixelAgentsViewProvider | undefined;
 
 export function activate(context: vscode.ExtensionContext) {
+  // Load .env from extension root (works in both dev and production)
+  dotenv.config({ path: path.join(context.extensionPath, '.env') });
+
   const provider = new PixelAgentsViewProvider(context);
   providerInstance = provider;
 
