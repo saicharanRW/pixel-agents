@@ -4,6 +4,7 @@ import { toMajorMinor } from './changelogData.js';
 import { BottomToolbar } from './components/BottomToolbar.js';
 import { ChangelogModal } from './components/ChangelogModal.js';
 import { DebugView } from './components/DebugView.js';
+import { DetailPanel } from './components/DetailPanel.js';
 import { TeamPanel } from './components/TeamPanel.js';
 import { VersionIndicator } from './components/VersionIndicator.js';
 import { ZoomControls } from './components/ZoomControls.js';
@@ -230,6 +231,11 @@ function App() {
     vscode.postMessage({ type: 'closeAgent', id });
   }, []);
 
+  const handleCloseDetail = useCallback(() => {
+    const os = getOfficeState();
+    os.selectedAgentId = null;
+  }, []);
+
   const handleClick = useCallback((agentId: number) => {
     const os = getOfficeState();
     // Static characters (database-sourced) have no terminal to focus
@@ -317,6 +323,10 @@ function App() {
 
       {!isDebugMode && !editor.isEditMode && (
         <TeamPanel officeState={officeState} agentsTick={agents.length} />
+      )}
+
+      {!isDebugMode && !editor.isEditMode && (
+        <DetailPanel officeState={officeState} onClose={handleCloseDetail} />
       )}
 
       {/* Vignette overlay */}
