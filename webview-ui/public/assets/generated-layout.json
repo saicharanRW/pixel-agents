@@ -4392,1114 +4392,2038 @@
       "row": 0
     },
     {
-      "uid": "CONDU-pl-5",
+      "uid": "CONDU-hp-4",
+      "type": "HANGING_PLANT",
+      "col": 7,
+      "row": 0
+    },
+    {
+      "uid": "CONDU-pl-6",
       "type": "PLANT_2",
       "col": 1,
       "row": 5
     },
     {
-      "uid": "CONDU-pot-7",
+      "uid": "CONDU-pl-7",
+      "type": "CACTUS",
+      "col": 10,
+      "row": 5
+    },
+    {
+      "uid": "CONDU-pot-10",
       "type": "POT",
       "col": 4,
       "row": 6
     },
     {
-      "uid": "CONDU-pot-8",
+      "uid": "CONDU-pot-11",
       "type": "POT",
       "col": 7,
       "row": 6
     },
     {
-      "uid": "CONDU-cof-9",
+      "uid": "CONDU-pot-12",
+      "type": "POT",
+      "col": 1,
+      "row": 1
+    },
+    {
+      "uid": "CONDU-cof1-13",
       "type": "COFFEE",
       "col": 3,
       "row": 2
     },
     {
-      "uid": "DESIG-wb-10",
+      "uid": "CONDU-cof2-14",
+      "type": "COFFEE",
+      "col": 8,
+      "row": 2
+    },
+    {
+      "uid": "CONDU-bs-16",
+      "type": "BOOKSHELF",
+      "col": 9,
+      "row": 0
+    },
+    {
+      "uid": "CONDU-cb-17",
+      "type": "CUSHIONED_BENCH",
+      "col": 6,
+      "row": 6
+    },
+    {
+      "uid": "DESIG-wb-18",
       "type": "WHITEBOARD",
       "col": 18,
       "row": 0
     },
     {
-      "uid": "DESIG-pt1-11",
+      "uid": "DESIG-pt1-19",
       "type": "SMALL_PAINTING",
       "col": 15,
       "row": 0
     },
     {
-      "uid": "DESIG-pt2-12",
+      "uid": "DESIG-pt2-20",
       "type": "SMALL_PAINTING_2",
       "col": 24,
       "row": 0
     },
     {
-      "uid": "DESIG-clk-13",
+      "uid": "DESIG-clk-21",
       "type": "CLOCK",
       "col": 22,
       "row": 0
     },
     {
-      "uid": "DESIG-pl-15",
-      "type": "PLANT_2",
+      "uid": "DESIG-hp-22",
+      "type": "HANGING_PLANT",
+      "col": 21,
+      "row": 0
+    },
+    {
+      "uid": "DESIG-pl-24",
+      "type": "CACTUS",
       "col": 15,
       "row": 5
     },
     {
-      "uid": "DESIG-pot-17",
+      "uid": "DESIG-pl-25",
+      "type": "PLANT",
+      "col": 24,
+      "row": 5
+    },
+    {
+      "uid": "DESIG-pot-28",
       "type": "POT",
       "col": 18,
       "row": 6
     },
     {
-      "uid": "DESIG-pot-18",
+      "uid": "DESIG-pot-29",
       "type": "POT",
       "col": 21,
       "row": 6
     },
     {
-      "uid": "DESIG-cof-19",
+      "uid": "DESIG-pot-30",
+      "type": "POT",
+      "col": 15,
+      "row": 1
+    },
+    {
+      "uid": "DESIG-cof1-31",
       "type": "COFFEE",
       "col": 17,
       "row": 2
     },
     {
-      "uid": "HULY-wb-20",
+      "uid": "DESIG-cof2-32",
+      "type": "COFFEE",
+      "col": 22,
+      "row": 2
+    },
+    {
+      "uid": "DESIG-bs-34",
+      "type": "BOOKSHELF",
+      "col": 23,
+      "row": 0
+    },
+    {
+      "uid": "DESIG-cb-35",
+      "type": "CUSHIONED_BENCH",
+      "col": 20,
+      "row": 6
+    },
+    {
+      "uid": "HULY-wb-36",
       "type": "WHITEBOARD",
       "col": 32,
       "row": 0
     },
     {
-      "uid": "HULY-pt1-21",
+      "uid": "HULY-pt1-37",
       "type": "SMALL_PAINTING",
       "col": 29,
       "row": 0
     },
     {
-      "uid": "HULY-pt2-22",
+      "uid": "HULY-pt2-38",
       "type": "SMALL_PAINTING_2",
       "col": 38,
       "row": 0
     },
     {
-      "uid": "HULY-clk-23",
+      "uid": "HULY-clk-39",
       "type": "CLOCK",
       "col": 36,
       "row": 0
     },
     {
-      "uid": "HULY-pl-25",
-      "type": "PLANT_2",
+      "uid": "HULY-hp-40",
+      "type": "HANGING_PLANT",
+      "col": 35,
+      "row": 0
+    },
+    {
+      "uid": "HULY-pl-42",
+      "type": "PLANT",
       "col": 29,
       "row": 5
     },
     {
-      "uid": "HULY-pot-27",
+      "uid": "HULY-pl-43",
+      "type": "PLANT_2",
+      "col": 38,
+      "row": 5
+    },
+    {
+      "uid": "HULY-pot-46",
       "type": "POT",
       "col": 32,
       "row": 6
     },
     {
-      "uid": "HULY-pot-28",
+      "uid": "HULY-pot-47",
       "type": "POT",
       "col": 35,
       "row": 6
     },
     {
-      "uid": "HULY-cof-29",
+      "uid": "HULY-pot-48",
+      "type": "POT",
+      "col": 29,
+      "row": 1
+    },
+    {
+      "uid": "HULY-cof1-49",
       "type": "COFFEE",
       "col": 31,
       "row": 2
     },
     {
-      "uid": "KNDG-wb-30",
+      "uid": "HULY-cof2-50",
+      "type": "COFFEE",
+      "col": 36,
+      "row": 2
+    },
+    {
+      "uid": "HULY-bs-52",
+      "type": "BOOKSHELF",
+      "col": 37,
+      "row": 0
+    },
+    {
+      "uid": "HULY-cb-53",
+      "type": "CUSHIONED_BENCH",
+      "col": 34,
+      "row": 6
+    },
+    {
+      "uid": "KNDG-wb-54",
       "type": "WHITEBOARD",
       "col": 46,
       "row": 0
     },
     {
-      "uid": "KNDG-pt1-31",
+      "uid": "KNDG-pt1-55",
       "type": "SMALL_PAINTING",
       "col": 43,
       "row": 0
     },
     {
-      "uid": "KNDG-pt2-32",
+      "uid": "KNDG-pt2-56",
       "type": "SMALL_PAINTING_2",
       "col": 52,
       "row": 0
     },
     {
-      "uid": "KNDG-clk-33",
+      "uid": "KNDG-clk-57",
       "type": "CLOCK",
       "col": 50,
       "row": 0
     },
     {
-      "uid": "KNDG-pl-35",
+      "uid": "KNDG-hp-58",
+      "type": "HANGING_PLANT",
+      "col": 49,
+      "row": 0
+    },
+    {
+      "uid": "KNDG-pl-60",
       "type": "PLANT_2",
       "col": 43,
       "row": 10
     },
     {
-      "uid": "KNDG-pl-36",
+      "uid": "KNDG-pl-61",
       "type": "CACTUS",
       "col": 52,
       "row": 10
     },
     {
-      "uid": "KNDG-pot-38",
+      "uid": "KNDG-cac-64",
+      "type": "CACTUS",
+      "col": 52,
+      "row": 4
+    },
+    {
+      "uid": "KNDG-pot-67",
       "type": "POT",
       "col": 46,
       "row": 11
     },
     {
-      "uid": "KNDG-pot-39",
+      "uid": "KNDG-pot-68",
       "type": "POT",
       "col": 49,
       "row": 11
     },
     {
-      "uid": "KNDG-cof-40",
+      "uid": "KNDG-pot-69",
+      "type": "POT",
+      "col": 43,
+      "row": 1
+    },
+    {
+      "uid": "KNDG-cof1-70",
       "type": "COFFEE",
       "col": 45,
       "row": 2
     },
     {
-      "uid": "DASSA-wb-42",
+      "uid": "KNDG-cof2-71",
+      "type": "COFFEE",
+      "col": 50,
+      "row": 2
+    },
+    {
+      "uid": "KNDG-bs-73",
+      "type": "BOOKSHELF",
+      "col": 51,
+      "row": 0
+    },
+    {
+      "uid": "KNDG-cb-74",
+      "type": "CUSHIONED_BENCH",
+      "col": 48,
+      "row": 11
+    },
+    {
+      "uid": "DASSA-wb-75",
       "type": "WHITEBOARD",
       "col": 4,
       "row": 15
     },
     {
-      "uid": "DASSA-pt1-43",
+      "uid": "DASSA-pt1-76",
       "type": "SMALL_PAINTING",
       "col": 1,
       "row": 15
     },
     {
-      "uid": "DASSA-pt2-44",
+      "uid": "DASSA-pt2-77",
       "type": "SMALL_PAINTING_2",
       "col": 10,
       "row": 15
     },
     {
-      "uid": "DASSA-clk-45",
+      "uid": "DASSA-clk-78",
       "type": "CLOCK",
       "col": 8,
       "row": 15
     },
     {
-      "uid": "DASSA-pl-47",
-      "type": "PLANT_2",
+      "uid": "DASSA-hp-79",
+      "type": "HANGING_PLANT",
+      "col": 7,
+      "row": 15
+    },
+    {
+      "uid": "DASSA-pl-81",
+      "type": "CACTUS",
       "col": 1,
       "row": 20
     },
     {
-      "uid": "DASSA-pot-49",
+      "uid": "DASSA-pl-82",
+      "type": "PLANT",
+      "col": 10,
+      "row": 20
+    },
+    {
+      "uid": "DASSA-pot-85",
       "type": "POT",
       "col": 4,
       "row": 21
     },
     {
-      "uid": "DASSA-pot-50",
+      "uid": "DASSA-pot-86",
       "type": "POT",
       "col": 7,
       "row": 21
     },
     {
-      "uid": "DASSA-cof-51",
+      "uid": "DASSA-pot-87",
+      "type": "POT",
+      "col": 1,
+      "row": 16
+    },
+    {
+      "uid": "DASSA-cof1-88",
       "type": "COFFEE",
       "col": 3,
       "row": 17
     },
     {
-      "uid": "CHATE-wb-52",
+      "uid": "DASSA-cof2-89",
+      "type": "COFFEE",
+      "col": 8,
+      "row": 17
+    },
+    {
+      "uid": "DASSA-bs-91",
+      "type": "BOOKSHELF",
+      "col": 9,
+      "row": 15
+    },
+    {
+      "uid": "DASSA-cb-92",
+      "type": "CUSHIONED_BENCH",
+      "col": 6,
+      "row": 21
+    },
+    {
+      "uid": "CHATE-wb-93",
       "type": "WHITEBOARD",
       "col": 18,
       "row": 15
     },
     {
-      "uid": "CHATE-pt1-53",
+      "uid": "CHATE-pt1-94",
       "type": "SMALL_PAINTING",
       "col": 15,
       "row": 15
     },
     {
-      "uid": "CHATE-pt2-54",
+      "uid": "CHATE-pt2-95",
       "type": "SMALL_PAINTING_2",
       "col": 24,
       "row": 15
     },
     {
-      "uid": "CHATE-clk-55",
+      "uid": "CHATE-clk-96",
       "type": "CLOCK",
       "col": 22,
       "row": 15
     },
     {
-      "uid": "CHATE-pl-58",
-      "type": "CACTUS",
+      "uid": "CHATE-hp-97",
+      "type": "HANGING_PLANT",
+      "col": 21,
+      "row": 15
+    },
+    {
+      "uid": "CHATE-pl-100",
+      "type": "PLANT_2",
       "col": 24,
       "row": 21
     },
     {
-      "uid": "CHATE-bin-59",
+      "uid": "CHATE-cac-101",
+      "type": "CACTUS",
+      "col": 24,
+      "row": 19
+    },
+    {
+      "uid": "CHATE-bin-102",
       "type": "BIN",
       "col": 15,
       "row": 22
     },
     {
-      "uid": "CHATE-pot-60",
+      "uid": "CHATE-pot-104",
       "type": "POT",
       "col": 18,
       "row": 22
     },
     {
-      "uid": "CHATE-pot-61",
+      "uid": "CHATE-pot-105",
       "type": "POT",
       "col": 21,
       "row": 22
     },
     {
-      "uid": "CHATE-cof-62",
+      "uid": "CHATE-pot-106",
+      "type": "POT",
+      "col": 15,
+      "row": 16
+    },
+    {
+      "uid": "CHATE-cof1-107",
       "type": "COFFEE",
       "col": 17,
       "row": 17
     },
     {
-      "uid": "WHITE-wb-63",
+      "uid": "CHATE-cof2-108",
+      "type": "COFFEE",
+      "col": 22,
+      "row": 17
+    },
+    {
+      "uid": "CHATE-bs-110",
+      "type": "BOOKSHELF",
+      "col": 23,
+      "row": 15
+    },
+    {
+      "uid": "CHATE-cb-111",
+      "type": "CUSHIONED_BENCH",
+      "col": 20,
+      "row": 22
+    },
+    {
+      "uid": "WHITE-wb-112",
       "type": "WHITEBOARD",
       "col": 32,
       "row": 15
     },
     {
-      "uid": "WHITE-pt1-64",
+      "uid": "WHITE-pt1-113",
       "type": "SMALL_PAINTING",
       "col": 29,
       "row": 15
     },
     {
-      "uid": "WHITE-pt2-65",
+      "uid": "WHITE-pt2-114",
       "type": "SMALL_PAINTING_2",
       "col": 38,
       "row": 15
     },
     {
-      "uid": "WHITE-clk-66",
+      "uid": "WHITE-clk-115",
       "type": "CLOCK",
       "col": 36,
       "row": 15
     },
     {
-      "uid": "WHITE-pl-69",
+      "uid": "WHITE-hp-116",
+      "type": "HANGING_PLANT",
+      "col": 35,
+      "row": 15
+    },
+    {
+      "uid": "WHITE-pl-119",
       "type": "CACTUS",
       "col": 38,
       "row": 24
     },
     {
-      "uid": "WHITE-bin-70",
+      "uid": "WHITE-cac-122",
+      "type": "CACTUS",
+      "col": 38,
+      "row": 19
+    },
+    {
+      "uid": "WHITE-bin-123",
       "type": "BIN",
       "col": 29,
       "row": 25
     },
     {
-      "uid": "WHITE-pot-71",
+      "uid": "WHITE-pot-125",
       "type": "POT",
       "col": 32,
       "row": 25
     },
     {
-      "uid": "WHITE-pot-72",
+      "uid": "WHITE-pot-126",
       "type": "POT",
       "col": 35,
       "row": 25
     },
     {
-      "uid": "WHITE-cof-73",
+      "uid": "WHITE-pot-127",
+      "type": "POT",
+      "col": 29,
+      "row": 16
+    },
+    {
+      "uid": "WHITE-cof1-128",
       "type": "COFFEE",
       "col": 31,
       "row": 17
     },
     {
-      "uid": "WHITE-ct-74",
+      "uid": "WHITE-cof2-129",
+      "type": "COFFEE",
+      "col": 36,
+      "row": 17
+    },
+    {
+      "uid": "WHITE-ct-130",
       "type": "COFFEE_TABLE",
-      "col": 32,
+      "col": 31,
       "row": 23
     },
     {
-      "uid": "HARSH-wb-76",
+      "uid": "WHITE-bs-132",
+      "type": "BOOKSHELF",
+      "col": 37,
+      "row": 15
+    },
+    {
+      "uid": "WHITE-cb-133",
+      "type": "CUSHIONED_BENCH",
+      "col": 34,
+      "row": 25
+    },
+    {
+      "uid": "HARSH-wb-134",
       "type": "WHITEBOARD",
       "col": 46,
       "row": 15
     },
     {
-      "uid": "HARSH-pt1-77",
+      "uid": "HARSH-pt1-135",
       "type": "SMALL_PAINTING",
       "col": 43,
       "row": 15
     },
     {
-      "uid": "HARSH-pt2-78",
+      "uid": "HARSH-pt2-136",
       "type": "SMALL_PAINTING_2",
       "col": 52,
       "row": 15
     },
     {
-      "uid": "HARSH-clk-79",
+      "uid": "HARSH-clk-137",
       "type": "CLOCK",
       "col": 50,
       "row": 15
     },
     {
-      "uid": "HARSH-pl-81",
-      "type": "PLANT_2",
+      "uid": "HARSH-hp-138",
+      "type": "HANGING_PLANT",
+      "col": 49,
+      "row": 15
+    },
+    {
+      "uid": "HARSH-pl-140",
+      "type": "CACTUS",
       "col": 43,
       "row": 20
     },
     {
-      "uid": "HARSH-pot-83",
+      "uid": "HARSH-pl-141",
+      "type": "PLANT",
+      "col": 52,
+      "row": 20
+    },
+    {
+      "uid": "HARSH-pot-144",
       "type": "POT",
       "col": 46,
       "row": 21
     },
     {
-      "uid": "HARSH-pot-84",
+      "uid": "HARSH-pot-145",
       "type": "POT",
       "col": 49,
       "row": 21
     },
     {
-      "uid": "HARSH-cof-85",
+      "uid": "HARSH-pot-146",
+      "type": "POT",
+      "col": 43,
+      "row": 16
+    },
+    {
+      "uid": "HARSH-cof1-147",
       "type": "COFFEE",
       "col": 45,
       "row": 17
     },
     {
-      "uid": "PROJE-wb-86",
+      "uid": "HARSH-cof2-148",
+      "type": "COFFEE",
+      "col": 50,
+      "row": 17
+    },
+    {
+      "uid": "HARSH-bs-150",
+      "type": "BOOKSHELF",
+      "col": 51,
+      "row": 15
+    },
+    {
+      "uid": "HARSH-cb-151",
+      "type": "CUSHIONED_BENCH",
+      "col": 48,
+      "row": 21
+    },
+    {
+      "uid": "PROJE-wb-152",
       "type": "WHITEBOARD",
       "col": 4,
       "row": 29
     },
     {
-      "uid": "PROJE-pt1-87",
+      "uid": "PROJE-pt1-153",
       "type": "SMALL_PAINTING",
       "col": 1,
       "row": 29
     },
     {
-      "uid": "PROJE-pt2-88",
+      "uid": "PROJE-pt2-154",
       "type": "SMALL_PAINTING_2",
       "col": 10,
       "row": 29
     },
     {
-      "uid": "PROJE-clk-89",
+      "uid": "PROJE-clk-155",
       "type": "CLOCK",
       "col": 8,
       "row": 29
     },
     {
-      "uid": "PROJE-pl-91",
-      "type": "PLANT_2",
+      "uid": "PROJE-hp-156",
+      "type": "HANGING_PLANT",
+      "col": 7,
+      "row": 29
+    },
+    {
+      "uid": "PROJE-pl-158",
+      "type": "PLANT",
       "col": 1,
       "row": 34
     },
     {
-      "uid": "PROJE-pot-93",
+      "uid": "PROJE-pl-159",
+      "type": "PLANT_2",
+      "col": 10,
+      "row": 34
+    },
+    {
+      "uid": "PROJE-pot-162",
       "type": "POT",
       "col": 4,
       "row": 35
     },
     {
-      "uid": "PROJE-pot-94",
+      "uid": "PROJE-pot-163",
       "type": "POT",
       "col": 7,
       "row": 35
     },
     {
-      "uid": "PROJE-cof-95",
+      "uid": "PROJE-pot-164",
+      "type": "POT",
+      "col": 1,
+      "row": 30
+    },
+    {
+      "uid": "PROJE-cof1-165",
       "type": "COFFEE",
       "col": 3,
       "row": 31
     },
     {
-      "uid": "VISUA-wb-96",
+      "uid": "PROJE-cof2-166",
+      "type": "COFFEE",
+      "col": 8,
+      "row": 31
+    },
+    {
+      "uid": "PROJE-bs-168",
+      "type": "BOOKSHELF",
+      "col": 9,
+      "row": 29
+    },
+    {
+      "uid": "PROJE-cb-169",
+      "type": "CUSHIONED_BENCH",
+      "col": 6,
+      "row": 35
+    },
+    {
+      "uid": "VISUA-wb-170",
       "type": "WHITEBOARD",
       "col": 18,
       "row": 29
     },
     {
-      "uid": "VISUA-pt1-97",
+      "uid": "VISUA-pt1-171",
       "type": "SMALL_PAINTING",
       "col": 15,
       "row": 29
     },
     {
-      "uid": "VISUA-pt2-98",
+      "uid": "VISUA-pt2-172",
       "type": "SMALL_PAINTING_2",
       "col": 24,
       "row": 29
     },
     {
-      "uid": "VISUA-clk-99",
+      "uid": "VISUA-clk-173",
       "type": "CLOCK",
       "col": 22,
       "row": 29
     },
     {
-      "uid": "VISUA-pl-101",
+      "uid": "VISUA-hp-174",
+      "type": "HANGING_PLANT",
+      "col": 21,
+      "row": 29
+    },
+    {
+      "uid": "VISUA-pl-176",
       "type": "PLANT_2",
       "col": 15,
       "row": 34
     },
     {
-      "uid": "VISUA-pot-103",
+      "uid": "VISUA-pl-177",
+      "type": "CACTUS",
+      "col": 24,
+      "row": 34
+    },
+    {
+      "uid": "VISUA-pot-180",
       "type": "POT",
       "col": 18,
       "row": 35
     },
     {
-      "uid": "VISUA-pot-104",
+      "uid": "VISUA-pot-181",
       "type": "POT",
       "col": 21,
       "row": 35
     },
     {
-      "uid": "VISUA-cof-105",
+      "uid": "VISUA-pot-182",
+      "type": "POT",
+      "col": 15,
+      "row": 30
+    },
+    {
+      "uid": "VISUA-cof1-183",
       "type": "COFFEE",
       "col": 17,
       "row": 31
     },
     {
-      "uid": "RWLAT-wb-106",
+      "uid": "VISUA-cof2-184",
+      "type": "COFFEE",
+      "col": 22,
+      "row": 31
+    },
+    {
+      "uid": "VISUA-bs-186",
+      "type": "BOOKSHELF",
+      "col": 23,
+      "row": 29
+    },
+    {
+      "uid": "VISUA-cb-187",
+      "type": "CUSHIONED_BENCH",
+      "col": 20,
+      "row": 35
+    },
+    {
+      "uid": "RWLAT-wb-188",
       "type": "WHITEBOARD",
       "col": 32,
       "row": 29
     },
     {
-      "uid": "RWLAT-pt1-107",
+      "uid": "RWLAT-pt1-189",
       "type": "SMALL_PAINTING",
       "col": 29,
       "row": 29
     },
     {
-      "uid": "RWLAT-pt2-108",
+      "uid": "RWLAT-pt2-190",
       "type": "SMALL_PAINTING_2",
       "col": 38,
       "row": 29
     },
     {
-      "uid": "RWLAT-clk-109",
+      "uid": "RWLAT-clk-191",
       "type": "CLOCK",
       "col": 36,
       "row": 29
     },
     {
-      "uid": "RWLAT-pl-111",
-      "type": "PLANT_2",
+      "uid": "RWLAT-hp-192",
+      "type": "HANGING_PLANT",
+      "col": 35,
+      "row": 29
+    },
+    {
+      "uid": "RWLAT-pl-194",
+      "type": "CACTUS",
       "col": 29,
       "row": 34
     },
     {
-      "uid": "RWLAT-pot-113",
+      "uid": "RWLAT-pl-195",
+      "type": "PLANT",
+      "col": 38,
+      "row": 34
+    },
+    {
+      "uid": "RWLAT-pot-198",
       "type": "POT",
       "col": 32,
       "row": 35
     },
     {
-      "uid": "RWLAT-pot-114",
+      "uid": "RWLAT-pot-199",
       "type": "POT",
       "col": 35,
       "row": 35
     },
     {
-      "uid": "RWLAT-cof-115",
+      "uid": "RWLAT-pot-200",
+      "type": "POT",
+      "col": 29,
+      "row": 30
+    },
+    {
+      "uid": "RWLAT-cof1-201",
       "type": "COFFEE",
       "col": 31,
       "row": 31
     },
     {
-      "uid": "EMAIL-wb-116",
+      "uid": "RWLAT-cof2-202",
+      "type": "COFFEE",
+      "col": 36,
+      "row": 31
+    },
+    {
+      "uid": "RWLAT-bs-204",
+      "type": "BOOKSHELF",
+      "col": 37,
+      "row": 29
+    },
+    {
+      "uid": "RWLAT-cb-205",
+      "type": "CUSHIONED_BENCH",
+      "col": 34,
+      "row": 35
+    },
+    {
+      "uid": "EMAIL-wb-206",
       "type": "WHITEBOARD",
       "col": 46,
       "row": 29
     },
     {
-      "uid": "EMAIL-pt1-117",
+      "uid": "EMAIL-pt1-207",
       "type": "SMALL_PAINTING",
       "col": 43,
       "row": 29
     },
     {
-      "uid": "EMAIL-pt2-118",
+      "uid": "EMAIL-pt2-208",
       "type": "SMALL_PAINTING_2",
       "col": 52,
       "row": 29
     },
     {
-      "uid": "EMAIL-clk-119",
+      "uid": "EMAIL-clk-209",
       "type": "CLOCK",
       "col": 50,
       "row": 29
     },
     {
-      "uid": "EMAIL-pl-121",
-      "type": "PLANT_2",
+      "uid": "EMAIL-hp-210",
+      "type": "HANGING_PLANT",
+      "col": 49,
+      "row": 29
+    },
+    {
+      "uid": "EMAIL-pl-212",
+      "type": "PLANT",
       "col": 43,
       "row": 34
     },
     {
-      "uid": "EMAIL-pot-123",
+      "uid": "EMAIL-pl-213",
+      "type": "PLANT_2",
+      "col": 52,
+      "row": 34
+    },
+    {
+      "uid": "EMAIL-pot-216",
       "type": "POT",
       "col": 46,
       "row": 35
     },
     {
-      "uid": "EMAIL-pot-124",
+      "uid": "EMAIL-pot-217",
       "type": "POT",
       "col": 49,
       "row": 35
     },
     {
-      "uid": "EMAIL-cof-125",
+      "uid": "EMAIL-pot-218",
+      "type": "POT",
+      "col": 43,
+      "row": 30
+    },
+    {
+      "uid": "EMAIL-cof1-219",
       "type": "COFFEE",
       "col": 45,
       "row": 31
     },
     {
-      "uid": "PIXEL-wb-126",
+      "uid": "EMAIL-cof2-220",
+      "type": "COFFEE",
+      "col": 50,
+      "row": 31
+    },
+    {
+      "uid": "EMAIL-bs-222",
+      "type": "BOOKSHELF",
+      "col": 51,
+      "row": 29
+    },
+    {
+      "uid": "EMAIL-cb-223",
+      "type": "CUSHIONED_BENCH",
+      "col": 48,
+      "row": 35
+    },
+    {
+      "uid": "PIXEL-wb-224",
       "type": "WHITEBOARD",
       "col": 4,
       "row": 39
     },
     {
-      "uid": "PIXEL-pt1-127",
+      "uid": "PIXEL-pt1-225",
       "type": "SMALL_PAINTING",
       "col": 1,
       "row": 39
     },
     {
-      "uid": "PIXEL-pt2-128",
+      "uid": "PIXEL-pt2-226",
       "type": "SMALL_PAINTING_2",
       "col": 10,
       "row": 39
     },
     {
-      "uid": "PIXEL-clk-129",
+      "uid": "PIXEL-clk-227",
       "type": "CLOCK",
       "col": 8,
       "row": 39
     },
     {
-      "uid": "PIXEL-pl-131",
+      "uid": "PIXEL-hp-228",
+      "type": "HANGING_PLANT",
+      "col": 7,
+      "row": 39
+    },
+    {
+      "uid": "PIXEL-pl-230",
       "type": "PLANT_2",
       "col": 1,
       "row": 44
     },
     {
-      "uid": "PIXEL-pot-133",
+      "uid": "PIXEL-pl-231",
+      "type": "CACTUS",
+      "col": 10,
+      "row": 44
+    },
+    {
+      "uid": "PIXEL-pot-234",
       "type": "POT",
       "col": 4,
       "row": 45
     },
     {
-      "uid": "PIXEL-pot-134",
+      "uid": "PIXEL-pot-235",
       "type": "POT",
       "col": 7,
       "row": 45
     },
     {
-      "uid": "PIXEL-cof-135",
+      "uid": "PIXEL-pot-236",
+      "type": "POT",
+      "col": 1,
+      "row": 40
+    },
+    {
+      "uid": "PIXEL-cof1-237",
       "type": "COFFEE",
       "col": 3,
       "row": 41
     },
     {
-      "uid": "BROC-wb-136",
+      "uid": "PIXEL-cof2-238",
+      "type": "COFFEE",
+      "col": 8,
+      "row": 41
+    },
+    {
+      "uid": "PIXEL-bs-240",
+      "type": "BOOKSHELF",
+      "col": 9,
+      "row": 39
+    },
+    {
+      "uid": "PIXEL-cb-241",
+      "type": "CUSHIONED_BENCH",
+      "col": 6,
+      "row": 45
+    },
+    {
+      "uid": "BROC-wb-242",
       "type": "WHITEBOARD",
       "col": 18,
       "row": 39
     },
     {
-      "uid": "BROC-pt1-137",
+      "uid": "BROC-pt1-243",
       "type": "SMALL_PAINTING",
       "col": 15,
       "row": 39
     },
     {
-      "uid": "BROC-pt2-138",
+      "uid": "BROC-pt2-244",
       "type": "SMALL_PAINTING_2",
       "col": 24,
       "row": 39
     },
     {
-      "uid": "BROC-clk-139",
+      "uid": "BROC-clk-245",
       "type": "CLOCK",
       "col": 22,
       "row": 39
     },
     {
-      "uid": "BROC-pl-141",
-      "type": "PLANT_2",
+      "uid": "BROC-hp-246",
+      "type": "HANGING_PLANT",
+      "col": 21,
+      "row": 39
+    },
+    {
+      "uid": "BROC-pl-248",
+      "type": "CACTUS",
       "col": 15,
       "row": 44
     },
     {
-      "uid": "BROC-pot-143",
+      "uid": "BROC-pl-249",
+      "type": "PLANT",
+      "col": 24,
+      "row": 44
+    },
+    {
+      "uid": "BROC-pot-252",
       "type": "POT",
       "col": 18,
       "row": 45
     },
     {
-      "uid": "BROC-pot-144",
+      "uid": "BROC-pot-253",
       "type": "POT",
       "col": 21,
       "row": 45
     },
     {
-      "uid": "BROC-cof-145",
+      "uid": "BROC-pot-254",
+      "type": "POT",
+      "col": 15,
+      "row": 40
+    },
+    {
+      "uid": "BROC-cof1-255",
       "type": "COFFEE",
       "col": 17,
       "row": 41
     },
     {
-      "uid": "ZCBU-wb-146",
+      "uid": "BROC-cof2-256",
+      "type": "COFFEE",
+      "col": 22,
+      "row": 41
+    },
+    {
+      "uid": "BROC-bs-258",
+      "type": "BOOKSHELF",
+      "col": 23,
+      "row": 39
+    },
+    {
+      "uid": "BROC-cb-259",
+      "type": "CUSHIONED_BENCH",
+      "col": 20,
+      "row": 45
+    },
+    {
+      "uid": "ZCBU-wb-260",
       "type": "WHITEBOARD",
       "col": 32,
       "row": 39
     },
     {
-      "uid": "ZCBU-pt1-147",
+      "uid": "ZCBU-pt1-261",
       "type": "SMALL_PAINTING",
       "col": 29,
       "row": 39
     },
     {
-      "uid": "ZCBU-pt2-148",
+      "uid": "ZCBU-pt2-262",
       "type": "SMALL_PAINTING_2",
       "col": 38,
       "row": 39
     },
     {
-      "uid": "ZCBU-clk-149",
+      "uid": "ZCBU-clk-263",
       "type": "CLOCK",
       "col": 36,
       "row": 39
     },
     {
-      "uid": "ZCBU-pl-152",
-      "type": "CACTUS",
+      "uid": "ZCBU-hp-264",
+      "type": "HANGING_PLANT",
+      "col": 35,
+      "row": 39
+    },
+    {
+      "uid": "ZCBU-pl-267",
+      "type": "PLANT_2",
       "col": 38,
       "row": 45
     },
     {
-      "uid": "ZCBU-bin-153",
+      "uid": "ZCBU-cac-268",
+      "type": "CACTUS",
+      "col": 38,
+      "row": 43
+    },
+    {
+      "uid": "ZCBU-bin-269",
       "type": "BIN",
       "col": 29,
       "row": 46
     },
     {
-      "uid": "ZCBU-pot-154",
+      "uid": "ZCBU-pot-271",
       "type": "POT",
       "col": 32,
       "row": 46
     },
     {
-      "uid": "ZCBU-pot-155",
+      "uid": "ZCBU-pot-272",
       "type": "POT",
       "col": 35,
       "row": 46
     },
     {
-      "uid": "ZCBU-cof-156",
+      "uid": "ZCBU-pot-273",
+      "type": "POT",
+      "col": 29,
+      "row": 40
+    },
+    {
+      "uid": "ZCBU-cof1-274",
       "type": "COFFEE",
       "col": 31,
       "row": 41
     },
     {
-      "uid": "GAME-wb-157",
+      "uid": "ZCBU-cof2-275",
+      "type": "COFFEE",
+      "col": 36,
+      "row": 41
+    },
+    {
+      "uid": "ZCBU-ct-276",
+      "type": "COFFEE_TABLE",
+      "col": 31,
+      "row": 44
+    },
+    {
+      "uid": "ZCBU-bs-278",
+      "type": "BOOKSHELF",
+      "col": 37,
+      "row": 39
+    },
+    {
+      "uid": "ZCBU-cb-279",
+      "type": "CUSHIONED_BENCH",
+      "col": 34,
+      "row": 46
+    },
+    {
+      "uid": "GAME-wb-280",
       "type": "WHITEBOARD",
       "col": 46,
       "row": 39
     },
     {
-      "uid": "GAME-pt1-158",
+      "uid": "GAME-pt1-281",
       "type": "SMALL_PAINTING",
       "col": 43,
       "row": 39
     },
     {
-      "uid": "GAME-pt2-159",
+      "uid": "GAME-pt2-282",
       "type": "SMALL_PAINTING_2",
       "col": 52,
       "row": 39
     },
     {
-      "uid": "GAME-clk-160",
+      "uid": "GAME-clk-283",
       "type": "CLOCK",
       "col": 50,
       "row": 39
     },
     {
-      "uid": "GAME-pl-162",
+      "uid": "GAME-hp-284",
+      "type": "HANGING_PLANT",
+      "col": 49,
+      "row": 39
+    },
+    {
+      "uid": "GAME-pl-286",
       "type": "PLANT_2",
       "col": 43,
       "row": 44
     },
     {
-      "uid": "GAME-pot-164",
+      "uid": "GAME-pl-287",
+      "type": "CACTUS",
+      "col": 52,
+      "row": 44
+    },
+    {
+      "uid": "GAME-pot-290",
       "type": "POT",
       "col": 46,
       "row": 45
     },
     {
-      "uid": "GAME-pot-165",
+      "uid": "GAME-pot-291",
       "type": "POT",
       "col": 49,
       "row": 45
     },
     {
-      "uid": "GAME-cof-166",
+      "uid": "GAME-pot-292",
+      "type": "POT",
+      "col": 43,
+      "row": 40
+    },
+    {
+      "uid": "GAME-cof1-293",
       "type": "COFFEE",
       "col": 45,
       "row": 41
     },
     {
-      "uid": "HULY-wb-167",
+      "uid": "GAME-cof2-294",
+      "type": "COFFEE",
+      "col": 50,
+      "row": 41
+    },
+    {
+      "uid": "GAME-bs-296",
+      "type": "BOOKSHELF",
+      "col": 51,
+      "row": 39
+    },
+    {
+      "uid": "GAME-cb-297",
+      "type": "CUSHIONED_BENCH",
+      "col": 48,
+      "row": 45
+    },
+    {
+      "uid": "HULY-wb-298",
       "type": "WHITEBOARD",
       "col": 4,
       "row": 50
     },
     {
-      "uid": "HULY-pt1-168",
+      "uid": "HULY-pt1-299",
       "type": "SMALL_PAINTING",
       "col": 1,
       "row": 50
     },
     {
-      "uid": "HULY-pt2-169",
+      "uid": "HULY-pt2-300",
       "type": "SMALL_PAINTING_2",
       "col": 10,
       "row": 50
     },
     {
-      "uid": "HULY-clk-170",
+      "uid": "HULY-clk-301",
       "type": "CLOCK",
       "col": 8,
       "row": 50
     },
     {
-      "uid": "HULY-pl-172",
-      "type": "PLANT_2",
+      "uid": "HULY-hp-302",
+      "type": "HANGING_PLANT",
+      "col": 7,
+      "row": 50
+    },
+    {
+      "uid": "HULY-pl-304",
+      "type": "CACTUS",
       "col": 1,
       "row": 55
     },
     {
-      "uid": "HULY-pot-174",
+      "uid": "HULY-pl-305",
+      "type": "PLANT",
+      "col": 10,
+      "row": 55
+    },
+    {
+      "uid": "HULY-pot-308",
       "type": "POT",
       "col": 4,
       "row": 56
     },
     {
-      "uid": "HULY-pot-175",
+      "uid": "HULY-pot-309",
       "type": "POT",
       "col": 7,
       "row": 56
     },
     {
-      "uid": "HULY-cof-176",
+      "uid": "HULY-pot-310",
+      "type": "POT",
+      "col": 1,
+      "row": 51
+    },
+    {
+      "uid": "HULY-cof1-311",
       "type": "COFFEE",
       "col": 3,
       "row": 52
     },
     {
-      "uid": "NUFC-wb-177",
+      "uid": "HULY-cof2-312",
+      "type": "COFFEE",
+      "col": 8,
+      "row": 52
+    },
+    {
+      "uid": "HULY-bs-314",
+      "type": "BOOKSHELF",
+      "col": 9,
+      "row": 50
+    },
+    {
+      "uid": "HULY-cb-315",
+      "type": "CUSHIONED_BENCH",
+      "col": 6,
+      "row": 56
+    },
+    {
+      "uid": "NUFC-wb-316",
       "type": "WHITEBOARD",
       "col": 18,
       "row": 50
     },
     {
-      "uid": "NUFC-pt1-178",
+      "uid": "NUFC-pt1-317",
       "type": "SMALL_PAINTING",
       "col": 15,
       "row": 50
     },
     {
-      "uid": "NUFC-pt2-179",
+      "uid": "NUFC-pt2-318",
       "type": "SMALL_PAINTING_2",
       "col": 24,
       "row": 50
     },
     {
-      "uid": "NUFC-clk-180",
+      "uid": "NUFC-clk-319",
       "type": "CLOCK",
       "col": 22,
       "row": 50
     },
     {
-      "uid": "NUFC-pl-182",
-      "type": "PLANT_2",
+      "uid": "NUFC-hp-320",
+      "type": "HANGING_PLANT",
+      "col": 21,
+      "row": 50
+    },
+    {
+      "uid": "NUFC-pl-322",
+      "type": "PLANT",
       "col": 15,
       "row": 55
     },
     {
-      "uid": "NUFC-pot-184",
+      "uid": "NUFC-pl-323",
+      "type": "PLANT_2",
+      "col": 24,
+      "row": 55
+    },
+    {
+      "uid": "NUFC-pot-326",
       "type": "POT",
       "col": 18,
       "row": 56
     },
     {
-      "uid": "NUFC-pot-185",
+      "uid": "NUFC-pot-327",
       "type": "POT",
       "col": 21,
       "row": 56
     },
     {
-      "uid": "NUFC-cof-186",
+      "uid": "NUFC-pot-328",
+      "type": "POT",
+      "col": 15,
+      "row": 51
+    },
+    {
+      "uid": "NUFC-cof1-329",
       "type": "COFFEE",
       "col": 17,
       "row": 52
     },
     {
-      "uid": "HULK-wb-187",
+      "uid": "NUFC-cof2-330",
+      "type": "COFFEE",
+      "col": 22,
+      "row": 52
+    },
+    {
+      "uid": "NUFC-bs-332",
+      "type": "BOOKSHELF",
+      "col": 23,
+      "row": 50
+    },
+    {
+      "uid": "NUFC-cb-333",
+      "type": "CUSHIONED_BENCH",
+      "col": 20,
+      "row": 56
+    },
+    {
+      "uid": "HULK-wb-334",
       "type": "WHITEBOARD",
       "col": 32,
       "row": 50
     },
     {
-      "uid": "HULK-pt1-188",
+      "uid": "HULK-pt1-335",
       "type": "SMALL_PAINTING",
       "col": 29,
       "row": 50
     },
     {
-      "uid": "HULK-pt2-189",
+      "uid": "HULK-pt2-336",
       "type": "SMALL_PAINTING_2",
       "col": 38,
       "row": 50
     },
     {
-      "uid": "HULK-clk-190",
+      "uid": "HULK-clk-337",
       "type": "CLOCK",
       "col": 36,
       "row": 50
     },
     {
-      "uid": "HULK-pl-192",
+      "uid": "HULK-hp-338",
+      "type": "HANGING_PLANT",
+      "col": 35,
+      "row": 50
+    },
+    {
+      "uid": "HULK-pl-340",
       "type": "PLANT_2",
       "col": 29,
       "row": 55
     },
     {
-      "uid": "HULK-pot-194",
+      "uid": "HULK-pl-341",
+      "type": "CACTUS",
+      "col": 38,
+      "row": 55
+    },
+    {
+      "uid": "HULK-pot-344",
       "type": "POT",
       "col": 32,
       "row": 56
     },
     {
-      "uid": "HULK-pot-195",
+      "uid": "HULK-pot-345",
       "type": "POT",
       "col": 35,
       "row": 56
     },
     {
-      "uid": "HULK-cof-196",
+      "uid": "HULK-pot-346",
+      "type": "POT",
+      "col": 29,
+      "row": 51
+    },
+    {
+      "uid": "HULK-cof1-347",
       "type": "COFFEE",
       "col": 31,
       "row": 52
     },
     {
-      "uid": "FC-wb-197",
+      "uid": "HULK-cof2-348",
+      "type": "COFFEE",
+      "col": 36,
+      "row": 52
+    },
+    {
+      "uid": "HULK-bs-350",
+      "type": "BOOKSHELF",
+      "col": 37,
+      "row": 50
+    },
+    {
+      "uid": "HULK-cb-351",
+      "type": "CUSHIONED_BENCH",
+      "col": 34,
+      "row": 56
+    },
+    {
+      "uid": "FC-wb-352",
       "type": "WHITEBOARD",
       "col": 46,
       "row": 50
     },
     {
-      "uid": "FC-pt1-198",
+      "uid": "FC-pt1-353",
       "type": "SMALL_PAINTING",
       "col": 43,
       "row": 50
     },
     {
-      "uid": "FC-pt2-199",
+      "uid": "FC-pt2-354",
       "type": "SMALL_PAINTING_2",
       "col": 52,
       "row": 50
     },
     {
-      "uid": "FC-clk-200",
+      "uid": "FC-clk-355",
       "type": "CLOCK",
       "col": 50,
       "row": 50
     },
     {
-      "uid": "FC-pl-202",
-      "type": "PLANT_2",
+      "uid": "FC-hp-356",
+      "type": "HANGING_PLANT",
+      "col": 49,
+      "row": 50
+    },
+    {
+      "uid": "FC-pl-358",
+      "type": "CACTUS",
       "col": 43,
       "row": 55
     },
     {
-      "uid": "FC-pot-204",
+      "uid": "FC-pl-359",
+      "type": "PLANT",
+      "col": 52,
+      "row": 55
+    },
+    {
+      "uid": "FC-pot-362",
       "type": "POT",
       "col": 46,
       "row": 56
     },
     {
-      "uid": "FC-pot-205",
+      "uid": "FC-pot-363",
       "type": "POT",
       "col": 49,
       "row": 56
     },
     {
-      "uid": "FC-cof-206",
+      "uid": "FC-pot-364",
+      "type": "POT",
+      "col": 43,
+      "row": 51
+    },
+    {
+      "uid": "FC-cof1-365",
       "type": "COFFEE",
       "col": 45,
       "row": 52
     },
     {
-      "uid": "PERSO-wb-207",
+      "uid": "FC-cof2-366",
+      "type": "COFFEE",
+      "col": 50,
+      "row": 52
+    },
+    {
+      "uid": "FC-bs-368",
+      "type": "BOOKSHELF",
+      "col": 51,
+      "row": 50
+    },
+    {
+      "uid": "FC-cb-369",
+      "type": "CUSHIONED_BENCH",
+      "col": 48,
+      "row": 56
+    },
+    {
+      "uid": "PERSO-wb-370",
       "type": "WHITEBOARD",
       "col": 4,
       "row": 60
     },
     {
-      "uid": "PERSO-pt1-208",
+      "uid": "PERSO-pt1-371",
       "type": "SMALL_PAINTING",
       "col": 1,
       "row": 60
     },
     {
-      "uid": "PERSO-pt2-209",
+      "uid": "PERSO-pt2-372",
       "type": "SMALL_PAINTING_2",
       "col": 10,
       "row": 60
     },
     {
-      "uid": "PERSO-clk-210",
+      "uid": "PERSO-clk-373",
       "type": "CLOCK",
       "col": 8,
       "row": 60
     },
     {
-      "uid": "PERSO-pl-212",
-      "type": "PLANT_2",
+      "uid": "PERSO-hp-374",
+      "type": "HANGING_PLANT",
+      "col": 7,
+      "row": 60
+    },
+    {
+      "uid": "PERSO-pl-376",
+      "type": "PLANT",
       "col": 1,
       "row": 65
     },
     {
-      "uid": "PERSO-pot-214",
+      "uid": "PERSO-pl-377",
+      "type": "PLANT_2",
+      "col": 10,
+      "row": 65
+    },
+    {
+      "uid": "PERSO-pot-380",
       "type": "POT",
       "col": 4,
       "row": 66
     },
     {
-      "uid": "PERSO-pot-215",
+      "uid": "PERSO-pot-381",
       "type": "POT",
       "col": 7,
       "row": 66
     },
     {
-      "uid": "PERSO-cof-216",
+      "uid": "PERSO-pot-382",
+      "type": "POT",
+      "col": 1,
+      "row": 61
+    },
+    {
+      "uid": "PERSO-cof1-383",
       "type": "COFFEE",
       "col": 3,
       "row": 62
     },
     {
-      "uid": "AITST-wb-217",
+      "uid": "PERSO-cof2-384",
+      "type": "COFFEE",
+      "col": 8,
+      "row": 62
+    },
+    {
+      "uid": "PERSO-bs-386",
+      "type": "BOOKSHELF",
+      "col": 9,
+      "row": 60
+    },
+    {
+      "uid": "PERSO-cb-387",
+      "type": "CUSHIONED_BENCH",
+      "col": 6,
+      "row": 66
+    },
+    {
+      "uid": "AITST-wb-388",
       "type": "WHITEBOARD",
       "col": 18,
       "row": 60
     },
     {
-      "uid": "AITST-pt1-218",
+      "uid": "AITST-pt1-389",
       "type": "SMALL_PAINTING",
       "col": 15,
       "row": 60
     },
     {
-      "uid": "AITST-pt2-219",
+      "uid": "AITST-pt2-390",
       "type": "SMALL_PAINTING_2",
       "col": 24,
       "row": 60
     },
     {
-      "uid": "AITST-clk-220",
+      "uid": "AITST-clk-391",
       "type": "CLOCK",
       "col": 22,
       "row": 60
     },
     {
-      "uid": "AITST-pl-222",
+      "uid": "AITST-hp-392",
+      "type": "HANGING_PLANT",
+      "col": 21,
+      "row": 60
+    },
+    {
+      "uid": "AITST-pl-394",
       "type": "PLANT_2",
       "col": 15,
       "row": 65
     },
     {
-      "uid": "AITST-pot-224",
+      "uid": "AITST-pl-395",
+      "type": "CACTUS",
+      "col": 24,
+      "row": 65
+    },
+    {
+      "uid": "AITST-pot-398",
       "type": "POT",
       "col": 18,
       "row": 66
     },
     {
-      "uid": "AITST-pot-225",
+      "uid": "AITST-pot-399",
       "type": "POT",
       "col": 21,
       "row": 66
     },
     {
-      "uid": "AITST-cof-226",
+      "uid": "AITST-pot-400",
+      "type": "POT",
+      "col": 15,
+      "row": 61
+    },
+    {
+      "uid": "AITST-cof1-401",
       "type": "COFFEE",
       "col": 17,
       "row": 62
     },
     {
-      "uid": "RWSEC-wb-227",
+      "uid": "AITST-cof2-402",
+      "type": "COFFEE",
+      "col": 22,
+      "row": 62
+    },
+    {
+      "uid": "AITST-bs-404",
+      "type": "BOOKSHELF",
+      "col": 23,
+      "row": 60
+    },
+    {
+      "uid": "AITST-cb-405",
+      "type": "CUSHIONED_BENCH",
+      "col": 20,
+      "row": 66
+    },
+    {
+      "uid": "RWSEC-wb-406",
       "type": "WHITEBOARD",
       "col": 32,
       "row": 60
     },
     {
-      "uid": "RWSEC-pt1-228",
+      "uid": "RWSEC-pt1-407",
       "type": "SMALL_PAINTING",
       "col": 29,
       "row": 60
     },
     {
-      "uid": "RWSEC-pt2-229",
+      "uid": "RWSEC-pt2-408",
       "type": "SMALL_PAINTING_2",
       "col": 38,
       "row": 60
     },
     {
-      "uid": "RWSEC-clk-230",
+      "uid": "RWSEC-clk-409",
       "type": "CLOCK",
       "col": 36,
       "row": 60
     },
     {
-      "uid": "RWSEC-pl-232",
-      "type": "PLANT_2",
+      "uid": "RWSEC-hp-410",
+      "type": "HANGING_PLANT",
+      "col": 35,
+      "row": 60
+    },
+    {
+      "uid": "RWSEC-pl-412",
+      "type": "CACTUS",
       "col": 29,
       "row": 65
     },
     {
-      "uid": "RWSEC-pot-234",
+      "uid": "RWSEC-pl-413",
+      "type": "PLANT",
+      "col": 38,
+      "row": 65
+    },
+    {
+      "uid": "RWSEC-pot-416",
       "type": "POT",
       "col": 32,
       "row": 66
     },
     {
-      "uid": "RWSEC-pot-235",
+      "uid": "RWSEC-pot-417",
       "type": "POT",
       "col": 35,
       "row": 66
     },
     {
-      "uid": "RWSEC-cof-236",
+      "uid": "RWSEC-pot-418",
+      "type": "POT",
+      "col": 29,
+      "row": 61
+    },
+    {
+      "uid": "RWSEC-cof1-419",
       "type": "COFFEE",
       "col": 31,
       "row": 62
+    },
+    {
+      "uid": "RWSEC-cof2-420",
+      "type": "COFFEE",
+      "col": 36,
+      "row": 62
+    },
+    {
+      "uid": "RWSEC-bs-422",
+      "type": "BOOKSHELF",
+      "col": 37,
+      "row": 60
+    },
+    {
+      "uid": "RWSEC-cb-423",
+      "type": "CUSHIONED_BENCH",
+      "col": 34,
+      "row": 66
+    },
+    {
+      "uid": "hall-plant-0",
+      "type": "PLANT",
+      "col": 12,
+      "row": 2
+    },
+    {
+      "uid": "hall-plant-1",
+      "type": "PLANT_2",
+      "col": 26,
+      "row": 2
+    },
+    {
+      "uid": "hall-plant-2",
+      "type": "CACTUS",
+      "col": 40,
+      "row": 2
+    },
+    {
+      "uid": "hall-plant-3",
+      "type": "PLANT",
+      "col": 12,
+      "row": 16
+    },
+    {
+      "uid": "hall-plant-4",
+      "type": "PLANT_2",
+      "col": 26,
+      "row": 16
+    },
+    {
+      "uid": "hall-plant-5",
+      "type": "CACTUS",
+      "col": 40,
+      "row": 16
+    },
+    {
+      "uid": "hall-plant-6",
+      "type": "PLANT",
+      "col": 12,
+      "row": 30
+    },
+    {
+      "uid": "hall-plant-7",
+      "type": "PLANT_2",
+      "col": 26,
+      "row": 30
+    },
+    {
+      "uid": "hall-plant-8",
+      "type": "CACTUS",
+      "col": 40,
+      "row": 30
+    },
+    {
+      "uid": "hall-plant-9",
+      "type": "PLANT",
+      "col": 12,
+      "row": 44
+    },
+    {
+      "uid": "hall-plant-10",
+      "type": "PLANT_2",
+      "col": 26,
+      "row": 44
+    },
+    {
+      "uid": "hall-plant-11",
+      "type": "CACTUS",
+      "col": 40,
+      "row": 44
+    },
+    {
+      "uid": "hall-plant-12",
+      "type": "PLANT",
+      "col": 12,
+      "row": 58
+    },
+    {
+      "uid": "hall-plant-13",
+      "type": "PLANT_2",
+      "col": 26,
+      "row": 58
+    },
+    {
+      "uid": "hall-plant-14",
+      "type": "CACTUS",
+      "col": 40,
+      "row": 58
     }
   ],
   "tileColors": [
