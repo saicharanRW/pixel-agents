@@ -1,8 +1,34 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import type { WorkspaceFolder } from '../hooks/useExtensionMessages.js';
+import type { OfficeState } from '../office/engine/officeState.js';
 import { vscode } from '../vscodeApi.js';
 import { SettingsModal } from './SettingsModal.js';
+
+interface PersonInfo {
+  id: number;
+  name: string;
+  isWorking: boolean;
+  project: string;
+}
+
+function getStaticPeople(os: OfficeState): PersonInfo[] {
+  const people: PersonInfo[] = [];
+  const seen = new Set<string>();
+  for (const [id, ch] of os.characters) {
+    if (!ch.isStatic) continue;
+    const key = `${id}-${ch.projectName ?? ''}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    people.push({
+      id,
+      name: ch.displayName ?? `Agent ${id}`,
+      isWorking: ch.isActive,
+      project: ch.projectName ?? '',
+    });
+  }
+  return people;
+}
 
 interface BottomToolbarProps {
   isEditMode: boolean;
@@ -19,6 +45,8 @@ interface BottomToolbarProps {
   roomNames: string[];
   hiddenRooms: Set<string>;
   onToggleRoom: (room: string) => void;
+  officeState: OfficeState;
+  agentsTick: number;
 }
 
 const panelStyle: React.CSSProperties = {
@@ -67,10 +95,14 @@ export function BottomToolbar({
   roomNames,
   hiddenRooms,
   onToggleRoom,
+  officeState,
+  agentsTick,
 }: BottomToolbarProps) {
   const [hovered, setHovered] = useState<string | null>(null);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isRoomsOpen, setIsRoomsOpen] = useState(false);
+  const [isTeamOpen, setIsTeamOpen] = useState(false);
+  const [teamPeople, setTeamPeople] = useState<PersonInfo[]>([]);
   const [isFolderPickerOpen, setIsFolderPickerOpen] = useState(false);
   const [isBypassMenuOpen, setIsBypassMenuOpen] = useState(false);
   const [hoveredFolder, setHoveredFolder] = useState<number | null>(null);
@@ -90,6 +122,18 @@ export function BottomToolbar({
     document.addEventListener('mousedown', handleClick);
     return () => document.removeEventListener('mousedown', handleClick);
   }, [isFolderPickerOpen, isBypassMenuOpen]);
+
+  // Re-read characters when agentsTick changes or team panel opens
+  useEffect(() => {
+    if (isTeamOpen) {
+      setTeamPeople(getStaticPeople(officeState));
+    }
+  }, [isTeamOpen, agentsTick, officeState]);
+
+  const toggleTeam = useCallback(() => setIsTeamOpen((prev) => !prev), []);
+
+  const teamWorking = teamPeople.filter((p) => p.isWorking);
+  const teamIdle = teamPeople.filter((p) => !p.isWorking);
 
   const hasMultipleFolders = workspaceFolders.length > 1;
 
@@ -339,6 +383,149 @@ export function BottomToolbar({
           )}
         </div>
       )}
+      <div style={{ position: 'relative' }}>
+        <button
+          onClick={toggleTeam}
+          onMouseEnter={() => setHovered('team')}
+          onMouseLeave={() => setHovered(null)}
+          style={
+            isTeamOpen
+              ? { ...btnActive }
+              : {
+                  ...btnBase,
+                  background:
+                    hovered === 'team' ? 'var(--pixel-btn-hover-bg)' : btnBase.background,
+                }
+          }
+          title="Show team status"
+        >
+          Team
+        </button>
+        {isTeamOpen && (
+          <div
+            style={{
+              position: 'absolute',
+              bottom: '100%',
+              left: 0,
+              marginBottom: 4,
+              background: 'var(--pixel-bg)',
+              border: '2px solid var(--pixel-border)',
+              borderRadius: 0,
+              boxShadow: 'var(--pixel-shadow)',
+              minWidth: 220,
+              maxHeight: 300,
+              overflowY: 'auto',
+              zIndex: 'var(--pixel-controls-z)',
+            }}
+          >
+            <div
+              style={{
+                padding: '4px 10px',
+                fontSize: '20px',
+                fontWeight: 'bold',
+                borderBottom: '1px solid var(--pixel-border)',
+                color: '#50fa7b',
+              }}
+            >
+              Working ({teamWorking.length})
+            </div>
+            {teamWorking.length === 0 && (
+              <div
+                style={{
+                  padding: '3px 10px',
+                  fontSize: '18px',
+                  color: 'var(--pixel-text-dim)',
+                }}
+              >
+                No one working
+              </div>
+            )}
+            {teamWorking.map((p, i) => (
+              <div
+                key={`w-${p.id}-${p.project}-${i}`}
+                style={{
+                  padding: '3px 10px',
+                  fontSize: '18px',
+                  color: 'var(--pixel-text)',
+                  borderBottom: '1px solid rgba(255,255,255,0.05)',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                }}
+              >
+                <span>{p.name}</span>
+                {p.project && (
+                  <span
+                    style={{
+                      fontSize: '16px',
+                      color: 'var(--pixel-text-dim)',
+                      background: 'rgba(255,255,255,0.06)',
+                      padding: '1px 5px',
+                      borderRadius: 0,
+                      border: '1px solid rgba(255,255,255,0.1)',
+                    }}
+                  >
+                    {p.project}
+                  </span>
+                )}
+              </div>
+            ))}
+            <div
+              style={{
+                padding: '4px 10px',
+                fontSize: '20px',
+                fontWeight: 'bold',
+                borderBottom: '1px solid var(--pixel-border)',
+                color: '#ffb86c',
+                marginTop: 2,
+              }}
+            >
+              Idle ({teamIdle.length})
+            </div>
+            {teamIdle.length === 0 && (
+              <div
+                style={{
+                  padding: '3px 10px',
+                  fontSize: '18px',
+                  color: 'var(--pixel-text-dim)',
+                }}
+              >
+                No one idle
+              </div>
+            )}
+            {teamIdle.map((p, i) => (
+              <div
+                key={`i-${p.id}-${p.project}-${i}`}
+                style={{
+                  padding: '3px 10px',
+                  fontSize: '18px',
+                  color: 'var(--pixel-text)',
+                  borderBottom: '1px solid rgba(255,255,255,0.05)',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                }}
+              >
+                <span>{p.name}</span>
+                {p.project && (
+                  <span
+                    style={{
+                      fontSize: '16px',
+                      color: 'var(--pixel-text-dim)',
+                      background: 'rgba(255,255,255,0.06)',
+                      padding: '1px 5px',
+                      borderRadius: 0,
+                      border: '1px solid rgba(255,255,255,0.1)',
+                    }}
+                  >
+                    {p.project}
+                  </span>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
       <div style={{ position: 'relative' }}>
         <button
           onClick={() => setIsSettingsOpen((v) => !v)}

@@ -5,7 +5,6 @@ import { BottomToolbar } from './components/BottomToolbar.js';
 import { ChangelogModal } from './components/ChangelogModal.js';
 import { DebugView } from './components/DebugView.js';
 import { DetailPanel } from './components/DetailPanel.js';
-import { TeamPanel } from './components/TeamPanel.js';
 import { VersionIndicator } from './components/VersionIndicator.js';
 import { ZoomControls } from './components/ZoomControls.js';
 import { PULSE_ANIMATION_DURATION_SEC } from './constants.js';
@@ -322,10 +321,6 @@ function App() {
       {!isDebugMode && <ZoomControls zoom={editor.zoom} onZoomChange={editor.handleZoomChange} />}
 
       {!isDebugMode && !editor.isEditMode && (
-        <TeamPanel officeState={officeState} agentsTick={agents.length} />
-      )}
-
-      {!isDebugMode && !editor.isEditMode && (
         <DetailPanel officeState={officeState} onClose={handleCloseDetail} />
       )}
 
@@ -359,6 +354,8 @@ function App() {
         roomNames={roomNames}
         hiddenRooms={hiddenRooms}
         onToggleRoom={handleToggleRoom}
+        officeState={officeState}
+        agentsTick={agents.length}
       />
 
       <VersionIndicator
