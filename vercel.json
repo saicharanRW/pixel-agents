@@ -1,7 +1,12 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "installCommand": "cd webview-ui && npm install",
+  "installCommand": "npm install && cd webview-ui && npm install",
   "buildCommand": "cd webview-ui && npm run build",
   "outputDirectory": "dist/webview",
-  "framework": null
+  "framework": null,
+  "functions": {
+    "api/agents.ts": {
+      "maxDuration": 15
+    }
+  }
 }

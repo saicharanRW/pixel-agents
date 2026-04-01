@@ -50,9 +50,15 @@ interface MockPayload {
   seatAssignments: SeatAssignments | null;
 }
 
+// ── Constants ─────────────────────────────────────────────────────────────────
+
+const POLL_INTERVAL_MS = 5 * 60 * 1000; // 5 minutes
+
 // ── Module-level state ─────────────────────────────────────────────────────────
 
 let mockPayload: MockPayload | null = null;
+// Seat mapping from seat-assignments.json: personId+project → seatUid
+let seatLookup: Map<string, string> | null = null;
 
 // ── PNG decode helpers (browser fallback) ───────────────────────────────────
 
@@ -290,8 +296,16 @@ export function dispatchMockMessages(): void {
     lastSeenVersion: '1.1',
   });
 
-  // Dispatch static agents from seat-assignments.json
+  // Build seat lookup from static seat-assignments.json
   if (seatAssignments) {
+    seatLookup = new Map();
+    for (const entry of [...seatAssignments.working, ...seatAssignments.idle]) {
+      // Key: personId::project for exact match, also name::project as fallback
+      seatLookup.set(`${entry.id}::${entry.project}`, entry.seat.furnitureUid);
+      seatLookup.set(`${entry.name}::${entry.project}`, entry.seat.furnitureUid);
+    }
+
+    // Dispatch initial agents from static file
     const allEntries = [...seatAssignments.working, ...seatAssignments.idle];
     const agents = allEntries.map((entry, index) => ({
       id: index + 1,
@@ -302,8 +316,87 @@ export function dispatchMockMessages(): void {
       project: entry.project,
     }));
     dispatch({ type: 'staticAgentsLoaded', agents });
-    console.log(`[BrowserMock] Dispatched ${agents.length} static agents`);
+    console.log(`[BrowserMock] Dispatched ${agents.length} static agents from seat-assignments.json`);
   }
 
+  // Start polling /api/agents every 5 minutes for live data
+  startAgentPolling();
+
   console.log('[BrowserMock] Messages dispatched');
+}
+
+// ── Live API polling ──────────────────────────────────────────────────────────
+
+interface ApiAgentEntry {
+  id: string;
+  name: string;
+  project: string;
+  isWorking: boolean;
+  tasks: Array<{ title: string; identifier: string; status: string; priority: number }>;
+}
+
+interface ApiResponse {
+  timestamp: string;
+  summary: { totalEntries: number; working: number; idle: number };
+  working: ApiAgentEntry[];
+  idle: ApiAgentEntry[];
+}
+
+async function fetchAndDispatchAgents(): Promise<void> {
+  console.log(`[BrowserMock] Polling /api/agents at ${new Date().toISOString()}...`);
+
+  try {
+    const res = await fetch('/api/agents');
+    if (!res.ok) {
+      console.error(`[BrowserMock] /api/agents returned ${res.status.toString()}`);
+      return;
+    }
+
+    const data = (await res.json()) as ApiResponse;
+    console.log(
+      `[BrowserMock] API response: ${data.summary.totalEntries} entries ` +
+        `(${data.summary.working} working, ${data.summary.idle} idle) ` +
+        `at ${data.timestamp}`,
+    );
+
+    const allEntries = [...data.working, ...data.idle];
+    const agents = allEntries.map((entry, index) => {
+      // Try to find a pre-assigned seat from the static seat-assignments
+      const seatUid =
+        seatLookup?.get(`${entry.id}::${entry.project}`) ??
+        seatLookup?.get(`${entry.name}::${entry.project}`) ??
+        '';
+      if (!seatUid) {
+        console.log(`[BrowserMock] No seat mapping for "${entry.name}" in project ${entry.project}`);
+      }
+      return {
+        id: index + 1,
+        name: entry.name,
+        seatUid,
+        isWorking: entry.isWorking,
+        tasks: entry.tasks,
+        project: entry.project,
+      };
+    });
+
+    window.dispatchEvent(
+      new MessageEvent('message', { data: { type: 'staticAgentsLoaded', agents } }),
+    );
+    console.log(`[BrowserMock] Refreshed ${agents.length} agents from API`);
+  } catch (err) {
+    console.error('[BrowserMock] Failed to fetch /api/agents:', err);
+  }
+}
+
+function startAgentPolling(): void {
+  // First live fetch after a short delay (let initial static agents render first)
+  setTimeout(() => {
+    void fetchAndDispatchAgents();
+  }, 3000);
+
+  // Poll every 5 minutes
+  setInterval(() => {
+    void fetchAndDispatchAgents();
+  }, POLL_INTERVAL_MS);
+  console.log(`[BrowserMock] Agent polling started (every ${(POLL_INTERVAL_MS / 60000).toString()} min)`);
 }
