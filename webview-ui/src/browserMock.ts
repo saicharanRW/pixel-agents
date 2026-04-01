@@ -8,6 +8,7 @@
  * Only imported in browser runtime; tree-shaken from VS Code webview runtime.
  */
 
+import { generateLayoutFromProjects } from './layoutGenerator.ts';
 import {
   CHAR_FRAME_H,
   CHAR_FRAME_W,
@@ -57,8 +58,6 @@ const POLL_INTERVAL_MS = 5 * 60 * 1000; // 5 minutes
 // ── Module-level state ─────────────────────────────────────────────────────────
 
 let mockPayload: MockPayload | null = null;
-// Seat mapping from seat-assignments.json: personId+project → seatUid
-let seatLookup: Map<string, string> | null = null;
 
 // ── PNG decode helpers (browser fallback) ───────────────────────────────────
 
@@ -288,7 +287,6 @@ export function dispatchMockMessages(): void {
   dispatch({ type: 'floorTilesLoaded', sprites: floorSprites });
   dispatch({ type: 'wallTilesLoaded', sets: wallSets });
   dispatch({ type: 'furnitureAssetsLoaded', catalog: furnitureCatalog, sprites: furnitureSprites });
-  dispatch({ type: 'layoutLoaded', layout });
   dispatch({
     type: 'settingsLoaded',
     soundEnabled: false,
@@ -296,27 +294,35 @@ export function dispatchMockMessages(): void {
     lastSeenVersion: '1.1',
   });
 
-  // Build seat lookup from static seat-assignments.json
+  // Generate initial layout + agents from static seat-assignments.json
   if (seatAssignments) {
-    seatLookup = new Map();
-    for (const entry of [...seatAssignments.working, ...seatAssignments.idle]) {
-      // Key: personId::project for exact match, also name::project as fallback
-      seatLookup.set(`${entry.id}::${entry.project}`, entry.seat.furnitureUid);
-      seatLookup.set(`${entry.name}::${entry.project}`, entry.seat.furnitureUid);
-    }
-
-    // Dispatch initial agents from static file
-    const allEntries = [...seatAssignments.working, ...seatAssignments.idle];
-    const agents = allEntries.map((entry, index) => ({
-      id: index + 1,
-      name: entry.name,
-      seatUid: entry.seat.furnitureUid,
-      isWorking: entry.status === 'working',
-      tasks: entry.tasks,
-      project: entry.project,
+    const workingEntries = seatAssignments.working.map((e) => ({
+      id: e.id,
+      name: e.name,
+      project: e.project,
+      isWorking: true as const,
+      tasks: e.tasks,
     }));
-    dispatch({ type: 'staticAgentsLoaded', agents });
-    console.log(`[BrowserMock] Dispatched ${agents.length} static agents from seat-assignments.json`);
+    const idleEntries = seatAssignments.idle.map((e) => ({
+      id: e.id,
+      name: e.name,
+      project: e.project,
+      isWorking: false as const,
+      tasks: e.tasks,
+    }));
+
+    const generated = generateLayoutFromProjects(workingEntries, idleEntries);
+
+    // Override the static layout with the generated one
+    dispatch({ type: 'layoutLoaded', layout: generated.layout });
+    dispatch({ type: 'staticAgentsLoaded', agents: generated.agents });
+    console.log(
+      `[BrowserMock] Generated initial layout (${generated.layout.cols}×${generated.layout.rows}) ` +
+        `with ${generated.agents.length} agents from seat-assignments.json`,
+    );
+  } else {
+    // No seat assignments — just send the static layout
+    dispatch({ type: 'layoutLoaded', layout });
   }
 
   // Start polling /api/agents every 5 minutes for live data
@@ -359,30 +365,21 @@ async function fetchAndDispatchAgents(): Promise<void> {
         `at ${data.timestamp}`,
     );
 
-    const allEntries = [...data.working, ...data.idle];
-    const agents = allEntries.map((entry, index) => {
-      // Try to find a pre-assigned seat from the static seat-assignments
-      const seatUid =
-        seatLookup?.get(`${entry.id}::${entry.project}`) ??
-        seatLookup?.get(`${entry.name}::${entry.project}`) ??
-        '';
-      if (!seatUid) {
-        console.log(`[BrowserMock] No seat mapping for "${entry.name}" in project ${entry.project}`);
-      }
-      return {
-        id: index + 1,
-        name: entry.name,
-        seatUid,
-        isWorking: entry.isWorking,
-        tasks: entry.tasks,
-        project: entry.project,
-      };
-    });
+    // Generate layout dynamically from project data
+    const { layout, agents } = generateLayoutFromProjects(data.working, data.idle);
 
-    window.dispatchEvent(
-      new MessageEvent('message', { data: { type: 'staticAgentsLoaded', agents } }),
+    function dispatch(d: unknown): void {
+      window.dispatchEvent(new MessageEvent('message', { data: d }));
+    }
+
+    // Send new layout first, then agents
+    dispatch({ type: 'layoutLoaded', layout });
+    dispatch({ type: 'staticAgentsLoaded', agents });
+
+    console.log(
+      `[BrowserMock] Refreshed layout (${layout.cols}×${layout.rows}) ` +
+        `with ${agents.length} agents from API`,
     );
-    console.log(`[BrowserMock] Refreshed ${agents.length} agents from API`);
   } catch (err) {
     console.error('[BrowserMock] Failed to fetch /api/agents:', err);
   }
