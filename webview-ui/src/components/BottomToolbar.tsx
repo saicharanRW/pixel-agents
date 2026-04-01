@@ -16,6 +16,9 @@ interface BottomToolbarProps {
   externalAssetDirectories: string[];
   watchAllSessions: boolean;
   onToggleWatchAllSessions: () => void;
+  roomNames: string[];
+  hiddenRooms: Set<string>;
+  onToggleRoom: (room: string) => void;
 }
 
 const panelStyle: React.CSSProperties = {
@@ -61,9 +64,13 @@ export function BottomToolbar({
   externalAssetDirectories,
   watchAllSessions,
   onToggleWatchAllSessions,
+  roomNames,
+  hiddenRooms,
+  onToggleRoom,
 }: BottomToolbarProps) {
   const [hovered, setHovered] = useState<string | null>(null);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [isRoomsOpen, setIsRoomsOpen] = useState(false);
   const [isFolderPickerOpen, setIsFolderPickerOpen] = useState(false);
   const [isBypassMenuOpen, setIsBypassMenuOpen] = useState(false);
   const [hoveredFolder, setHoveredFolder] = useState<number | null>(null);
@@ -255,6 +262,83 @@ export function BottomToolbar({
       >
         Layout
       </button>
+      {roomNames.length > 0 && (
+        <div style={{ position: 'relative' }}>
+          <button
+            onClick={() => setIsRoomsOpen((v) => !v)}
+            onMouseEnter={() => setHovered('rooms')}
+            onMouseLeave={() => setHovered(null)}
+            style={
+              isRoomsOpen
+                ? { ...btnActive }
+                : {
+                    ...btnBase,
+                    background:
+                      hovered === 'rooms' ? 'var(--pixel-btn-hover-bg)' : btnBase.background,
+                  }
+            }
+            title="Toggle room visibility"
+          >
+            Rooms
+          </button>
+          {isRoomsOpen && (
+            <div
+              style={{
+                position: 'absolute',
+                bottom: '100%',
+                left: 0,
+                marginBottom: 4,
+                background: 'var(--pixel-bg)',
+                border: '2px solid var(--pixel-border)',
+                borderRadius: 0,
+                boxShadow: 'var(--pixel-shadow)',
+                minWidth: 180,
+                maxHeight: 300,
+                overflowY: 'auto',
+                zIndex: 'var(--pixel-controls-z)',
+              }}
+            >
+              {roomNames.map((room) => {
+                const visible = !hiddenRooms.has(room);
+                return (
+                  <button
+                    key={room}
+                    onClick={() => onToggleRoom(room)}
+                    style={{
+                      display: 'flex',
+                      width: '100%',
+                      alignItems: 'center',
+                      gap: 8,
+                      textAlign: 'left',
+                      padding: '6px 10px',
+                      fontSize: '20px',
+                      color: visible ? 'var(--pixel-text)' : 'var(--pixel-text-dim)',
+                      background: 'transparent',
+                      border: 'none',
+                      borderRadius: 0,
+                      cursor: 'pointer',
+                      whiteSpace: 'nowrap',
+                      opacity: visible ? 1 : 0.5,
+                    }}
+                  >
+                    <span
+                      style={{
+                        display: 'inline-block',
+                        width: 14,
+                        height: 14,
+                        border: '2px solid var(--pixel-border)',
+                        background: visible ? 'var(--pixel-accent)' : 'transparent',
+                        flexShrink: 0,
+                      }}
+                    />
+                    {room}
+                  </button>
+                );
+              })}
+            </div>
+          )}
+        </div>
+      )}
       <div style={{ position: 'relative' }}>
         <button
           onClick={() => setIsSettingsOpen((v) => !v)}

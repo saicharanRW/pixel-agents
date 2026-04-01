@@ -53,6 +53,10 @@ export class OfficeState {
   /** Reverse lookup: sub-agent character ID → parent info */
   subagentMeta: Map<number, { parentAgentId: number; parentToolId: string }> = new Map();
   private nextSubagentId = -1;
+  /** Set of project names that are hidden (toggled off in Rooms panel) */
+  hiddenProjects: Set<string> = new Set();
+  /** Set of "col,row" tile keys per room/project — computed via flood fill from seats */
+  roomTiles: Map<string, Set<string>> = new Map();
 
   constructor(layout?: OfficeLayout) {
     this.layout = layout || createDefaultLayout();
@@ -794,16 +798,185 @@ export class OfficeState {
     }
   }
 
+  /** Get all unique project names from static characters */
+  getProjectNames(): string[] {
+    const projects = new Set<string>();
+    for (const ch of this.characters.values()) {
+      if (ch.isStatic && ch.projectName) {
+        projects.add(ch.projectName);
+      }
+    }
+    return Array.from(projects).sort();
+  }
+
+  /** Toggle visibility of a project/room */
+  toggleProject(project: string): void {
+    if (this.hiddenProjects.has(project)) {
+      this.hiddenProjects.delete(project);
+    } else {
+      this.hiddenProjects.add(project);
+    }
+  }
+
+  /** Check if a project is visible */
+  isProjectVisible(project: string): boolean {
+    return !this.hiddenProjects.has(project);
+  }
+
+  /** Detect rectangular room blocks from layout structure (VOID-separated grid).
+   *  Each project is assigned to the room block containing its seats.
+   *  Call after static characters are added. */
+  computeRoomBounds(): void {
+    const mapRows = this.tileMap.length;
+    const mapCols = mapRows > 0 ? this.tileMap[0].length : 0;
+    if (mapRows === 0 || mapCols === 0) return;
+
+    // 1) Find VOID rows (all tiles are 255) — these separate row bands
+    const voidRows: number[] = [];
+    for (let r = 0; r < mapRows; r++) {
+      if (this.tileMap[r].every((t) => t === 255)) voidRows.push(r);
+    }
+    // Build row bands between void rows
+    const rowBands: Array<[number, number]> = [];
+    let prev = -1;
+    for (const vr of [...voidRows, mapRows]) {
+      if (vr > prev + 1) rowBands.push([prev + 1, vr - 1]);
+      prev = vr;
+    }
+
+    // 2) For each row band, find columns that are all VOID within that band
+    const roomBlocks: Array<{ minCol: number; maxCol: number; minRow: number; maxRow: number }> = [];
+    for (const [rStart, rEnd] of rowBands) {
+      const voidCols: number[] = [];
+      for (let c = 0; c < mapCols; c++) {
+        let allVoid = true;
+        for (let r = rStart; r <= rEnd; r++) {
+          if (this.tileMap[r][c] !== 255) {
+            allVoid = false;
+            break;
+          }
+        }
+        if (allVoid) voidCols.push(c);
+      }
+      let prevC = -1;
+      for (const vc of [...voidCols, mapCols]) {
+        if (vc > prevC + 1) {
+          roomBlocks.push({ minCol: prevC + 1, maxCol: vc - 1, minRow: rStart, maxRow: rEnd });
+        }
+        prevC = vc;
+      }
+    }
+
+    // 3) Collect seat positions per project
+    const projectSeats = new Map<string, Array<{ col: number; row: number }>>();
+    for (const ch of this.characters.values()) {
+      if (!ch.isStatic || !ch.projectName) continue;
+      if (!projectSeats.has(ch.projectName)) {
+        projectSeats.set(ch.projectName, []);
+      }
+      projectSeats.get(ch.projectName)!.push({ col: ch.tileCol, row: ch.tileRow });
+    }
+
+    // 4) Assign each project to the room block(s) containing its seats
+    this.roomTiles.clear();
+    for (const [project, seats] of projectSeats) {
+      const tiles = new Set<string>();
+      // Find which room block(s) contain this project's seats
+      const matchedBlocks = new Set<number>();
+      for (const s of seats) {
+        for (let bi = 0; bi < roomBlocks.length; bi++) {
+          const b = roomBlocks[bi];
+          if (s.col >= b.minCol && s.col <= b.maxCol && s.row >= b.minRow && s.row <= b.maxRow) {
+            matchedBlocks.add(bi);
+          }
+        }
+      }
+      // Add all non-VOID tiles in matched room blocks
+      for (const bi of matchedBlocks) {
+        const b = roomBlocks[bi];
+        for (let r = b.minRow; r <= b.maxRow; r++) {
+          for (let c = b.minCol; c <= b.maxCol; c++) {
+            if (this.tileMap[r][c] !== 255) {
+              tiles.add(`${c},${r}`);
+            }
+          }
+        }
+      }
+      this.roomTiles.set(project, tiles);
+    }
+  }
+
+  /** Get tile map with hidden room areas set to VOID */
+  getVisibleTileMap(): TileTypeVal[][] {
+    if (this.hiddenProjects.size === 0) return this.tileMap;
+    const hiddenTiles = this.getHiddenTileSet();
+    if (hiddenTiles.size === 0) return this.tileMap;
+    return this.tileMap.map((row, r) =>
+      row.map((tile, c) => (hiddenTiles.has(`${c},${r}`) ? (255 as TileTypeVal) : tile)),
+    );
+  }
+
+  /** Get furniture filtered to exclude items in hidden rooms */
+  getVisibleFurniture(): FurnitureInstance[] {
+    if (this.hiddenProjects.size === 0) return this.furniture;
+    const hiddenTiles = this.getHiddenTileSet();
+    if (hiddenTiles.size === 0) return this.furniture;
+    return this.furniture.filter((fi) => {
+      // Check multiple tile positions the furniture might occupy:
+      // top-left corner tile
+      const col = Math.floor(fi.x / TILE_SIZE);
+      const row = Math.floor(fi.y / TILE_SIZE);
+      if (hiddenTiles.has(`${col},${row}`)) return false;
+      // bottom edge tile (zY-based, where the sprite sorts)
+      const bottomRow = Math.floor(fi.zY / TILE_SIZE);
+      if (hiddenTiles.has(`${col},${bottomRow}`)) return false;
+      // Also check tile at sprite center
+      const spriteH = fi.sprite.length;
+      const centerRow = Math.floor((fi.y + spriteH / 2) / TILE_SIZE);
+      if (hiddenTiles.has(`${col},${centerRow}`)) return false;
+      return true;
+    });
+  }
+
+  /** Get tile colors with hidden room areas nulled out */
+  getVisibleTileColors(): Array<import('../types.js').FloorColor | null> | undefined {
+    const colors = this.layout.tileColors;
+    if (!colors || this.hiddenProjects.size === 0) return colors;
+    const hiddenTiles = this.getHiddenTileSet();
+    if (hiddenTiles.size === 0) return colors;
+    return colors.map((color, idx) => {
+      const col = idx % this.layout.cols;
+      const row = Math.floor(idx / this.layout.cols);
+      return hiddenTiles.has(`${col},${row}`) ? null : color;
+    });
+  }
+
+  /** Build a set of "col,row" keys for all tiles in hidden rooms */
+  private getHiddenTileSet(): Set<string> {
+    const hidden = new Set<string>();
+    for (const project of this.hiddenProjects) {
+      const tiles = this.roomTiles.get(project);
+      if (!tiles) continue;
+      for (const key of tiles) {
+        hidden.add(key);
+      }
+    }
+    return hidden;
+  }
+
   getCharacters(): Character[] {
-    return Array.from(this.characters.values());
+    return Array.from(this.characters.values()).filter(
+      (ch) => !ch.isStatic || !ch.projectName || !this.hiddenProjects.has(ch.projectName),
+    );
   }
 
   /** Get character at pixel position (for hit testing). Returns id or null. */
   getCharacterAt(worldX: number, worldY: number): number | null {
     const chars = this.getCharacters().sort((a, b) => b.y - a.y);
     for (const ch of chars) {
-      // Skip characters that are despawning
+      // Skip characters that are despawning or in hidden projects
       if (ch.matrixEffect === 'despawn') continue;
+      if (ch.isStatic && ch.projectName && this.hiddenProjects.has(ch.projectName)) continue;
       // Character sprite is 16x24, anchored bottom-center
       // Apply sitting offset to match visual position
       const sittingOffset = ch.state === CharacterState.TYPE ? CHARACTER_SITTING_OFFSET_PX : 0;

@@ -79,10 +79,12 @@ export function ToolOverlay({
   const selectedId = officeState.selectedAgentId;
   const hoveredId = officeState.hoveredAgentId;
 
-  // All character IDs (including static characters from database)
+  // All character IDs (including static characters from database), excluding hidden projects
   const staticIds: number[] = [];
   for (const [id, ch] of officeState.characters) {
-    if (ch.isStatic) staticIds.push(id);
+    if (ch.isStatic && (!ch.projectName || !officeState.hiddenProjects.has(ch.projectName))) {
+      staticIds.push(id);
+    }
   }
   const allIds = [...agents, ...subagentCharacters.map((s) => s.id), ...staticIds];
 

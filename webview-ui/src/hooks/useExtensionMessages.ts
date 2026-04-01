@@ -63,6 +63,7 @@ export interface ExtensionMessageState {
   watchAllSessions: boolean;
   setWatchAllSessions: (v: boolean) => void;
   alwaysShowLabels: boolean;
+  staticAgentsTick: number;
 }
 
 function saveAgentSeats(os: OfficeState): void {
@@ -98,6 +99,7 @@ export function useExtensionMessages(
   const [extensionVersion, setExtensionVersion] = useState('');
   const [watchAllSessions, setWatchAllSessions] = useState(false);
   const [alwaysShowLabels, setAlwaysShowLabels] = useState(false);
+  const [staticAgentsTick, setStaticAgentsTick] = useState(0);
 
   // Track whether initial layout has been loaded (ref to avoid re-render)
   const layoutReadyRef = useRef(false);
@@ -151,6 +153,8 @@ export function useExtensionMessages(
             os.addStaticCharacter(agent.id, agent.seatUid, agent.name, agent.isWorking, true, agent.tasks, agent.project);
           }
           pendingStaticAgents = [];
+          os.computeRoomBounds();
+          setStaticAgentsTick((n) => n + 1);
         }
         layoutReadyRef.current = true;
         setLayoutReady(true);
@@ -178,6 +182,8 @@ export function useExtensionMessages(
           for (const agent of agents) {
             os.addStaticCharacter(agent.id, agent.seatUid, agent.name, agent.isWorking, true, agent.tasks, agent.project);
           }
+          os.computeRoomBounds();
+          setStaticAgentsTick((n) => n + 1);
         }
       } else if (msg.type === 'agentCreated') {
         const id = msg.id as number;
@@ -484,5 +490,6 @@ export function useExtensionMessages(
     watchAllSessions,
     setWatchAllSessions,
     alwaysShowLabels,
+    staticAgentsTick,
   };
 }

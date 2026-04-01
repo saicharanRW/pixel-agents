@@ -157,6 +157,7 @@ function App() {
     watchAllSessions,
     setWatchAllSessions,
     alwaysShowLabels,
+    staticAgentsTick,
   } = useExtensionMessages(getOfficeState, editor.setLastSavedLayout, isEditDirty);
 
   // Show migration notice once layout reset is detected
@@ -166,6 +167,14 @@ function App() {
   const [isChangelogOpen, setIsChangelogOpen] = useState(false);
   const [isDebugMode, setIsDebugMode] = useState(false);
   const [alwaysShowOverlay, setAlwaysShowOverlay] = useState(false);
+  const [roomNames, setRoomNames] = useState<string[]>([]);
+  const [hiddenRooms, setHiddenRooms] = useState<Set<string>>(new Set());
+
+  // Update room names when static agents are loaded
+  useEffect(() => {
+    const os = getOfficeState();
+    setRoomNames(os.getProjectNames());
+  }, [staticAgentsTick]);
 
   const currentMajorMinor = toMajorMinor(extensionVersion);
 
@@ -182,6 +191,12 @@ function App() {
   useEffect(() => {
     setAlwaysShowOverlay(alwaysShowLabels);
   }, [alwaysShowLabels]);
+
+  const handleToggleRoom = useCallback((room: string) => {
+    const os = getOfficeState();
+    os.toggleProject(room);
+    setHiddenRooms(new Set(os.hiddenProjects));
+  }, []);
 
   const handleToggleDebugMode = useCallback(() => setIsDebugMode((prev) => !prev), []);
   const handleToggleAlwaysShowOverlay = useCallback(() => {
@@ -331,6 +346,9 @@ function App() {
           setWatchAllSessions(newVal);
           vscode.postMessage({ type: 'setWatchAllSessions', enabled: newVal });
         }}
+        roomNames={roomNames}
+        hiddenRooms={hiddenRooms}
+        onToggleRoom={handleToggleRoom}
       />
 
       <VersionIndicator
