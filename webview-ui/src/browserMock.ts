@@ -8,7 +8,6 @@
  * Only imported in browser runtime; tree-shaken from VS Code webview runtime.
  */
 
-import { generateLayoutFromProjects } from './layoutGenerator.ts';
 import {
   CHAR_FRAME_H,
   CHAR_FRAME_W,
@@ -41,6 +40,13 @@ interface SeatAssignments {
   idle: SeatAssignmentEntry[];
 }
 
+interface SeatMapEntry {
+  seatUid: string;
+  project: string;
+  type: 'worker' | 'idle';
+  index: number;
+}
+
 interface MockPayload {
   characters: CharacterDirectionSprites[];
   floorSprites: string[][][];
@@ -49,6 +55,7 @@ interface MockPayload {
   furnitureSprites: Record<string, string[][]>;
   layout: unknown;
   seatAssignments: SeatAssignments | null;
+  seatMap: SeatMapEntry[] | null;
 }
 
 // ── Constants ─────────────────────────────────────────────────────────────────
@@ -238,11 +245,14 @@ export async function initBrowserMock(): Promise<void> {
         decodeFurnitureFromPng(base, catalog),
       ]);
 
-  const [layout, seatAssignments] = await Promise.all([
-    assetIndex.defaultLayout
-      ? fetch(`${base}assets/${assetIndex.defaultLayout}`).then((r) => r.json())
-      : Promise.resolve(null),
+  const [layout, seatAssignments, seatMap] = await Promise.all([
+    fetchJsonOptional<unknown>(`${base}assets/generated-layout.json`).then(
+      (r) => r ?? (assetIndex.defaultLayout
+        ? fetch(`${base}assets/${assetIndex.defaultLayout}`).then((res) => res.json())
+        : null),
+    ),
     fetchJsonOptional<SeatAssignments>(`${base}assets/seat-assignments.json`),
+    fetchJsonOptional<SeatMapEntry[]>(`${base}assets/seat-map.json`),
   ]);
 
   mockPayload = {
@@ -253,11 +263,64 @@ export async function initBrowserMock(): Promise<void> {
     furnitureSprites,
     layout,
     seatAssignments,
+    seatMap,
   };
 
   console.log(
     `[BrowserMock] Ready (${hasDecoded ? 'decoded-json' : 'browser-png-decode'}) — ${characters.length} chars, ${floorSprites.length} floors, ${wallSets.length} wall sets, ${catalog.length} furniture items`,
   );
+}
+
+// ── Seat assignment helper ────────────────────────────────────────────────────
+
+interface StaticAgent {
+  id: number;
+  name: string;
+  seatUid: string;
+  isWorking: boolean;
+  tasks: Array<{ title: string; identifier: string; status: string; priority: number }>;
+  project: string;
+}
+
+function assignAgentsToSeats(
+  entries: Array<{ id: string; name: string; status: string; project: string; tasks: Array<{ title: string; identifier: string; status: string; priority: number }> }>,
+  seatMap: SeatMapEntry[],
+): StaticAgent[] {
+  // Group entries by project + type
+  const projectWorkers = new Map<string, typeof entries>();
+  const projectIdle = new Map<string, typeof entries>();
+
+  for (const entry of entries) {
+    const isWorking = entry.status === 'working';
+    const map = isWorking ? projectWorkers : projectIdle;
+    let list = map.get(entry.project);
+    if (!list) {
+      list = [];
+      map.set(entry.project, list);
+    }
+    list.push(entry);
+  }
+
+  const agents: StaticAgent[] = [];
+  let nextId = 1;
+
+  for (const seat of seatMap) {
+    const map = seat.type === 'worker' ? projectWorkers : projectIdle;
+    const list = map.get(seat.project);
+    if (!list || seat.index >= list.length) continue;
+
+    const entry = list[seat.index];
+    agents.push({
+      id: nextId++,
+      name: entry.name,
+      seatUid: seat.seatUid,
+      isWorking: entry.status === 'working',
+      tasks: entry.tasks,
+      project: entry.project,
+    });
+  }
+
+  return agents;
 }
 
 /**
@@ -275,6 +338,7 @@ export function dispatchMockMessages(): void {
     furnitureSprites,
     layout,
     seatAssignments,
+    seatMap,
   } = mockPayload;
 
   function dispatch(data: unknown): void {
@@ -294,35 +358,17 @@ export function dispatchMockMessages(): void {
     lastSeenVersion: '1.1',
   });
 
-  // Generate initial layout + agents from static seat-assignments.json
-  if (seatAssignments) {
-    const workingEntries = seatAssignments.working.map((e) => ({
-      id: e.id,
-      name: e.name,
-      project: e.project,
-      isWorking: true as const,
-      tasks: e.tasks,
-    }));
-    const idleEntries = seatAssignments.idle.map((e) => ({
-      id: e.id,
-      name: e.name,
-      project: e.project,
-      isWorking: false as const,
-      tasks: e.tasks,
-    }));
+  // Send the decorated layout (generated-layout.json or fallback)
+  dispatch({ type: 'layoutLoaded', layout });
 
-    const generated = generateLayoutFromProjects(workingEntries, idleEntries);
-
-    // Override the static layout with the generated one
-    dispatch({ type: 'layoutLoaded', layout: generated.layout });
-    dispatch({ type: 'staticAgentsLoaded', agents: generated.agents });
-    console.log(
-      `[BrowserMock] Generated initial layout (${generated.layout.cols}×${generated.layout.rows}) ` +
-        `with ${generated.agents.length} agents from seat-assignments.json`,
+  // Assign people to seats using the seat map
+  if (seatAssignments && seatMap) {
+    const agents = assignAgentsToSeats(
+      [...seatAssignments.working, ...seatAssignments.idle],
+      seatMap,
     );
-  } else {
-    // No seat assignments — just send the static layout
-    dispatch({ type: 'layoutLoaded', layout });
+    dispatch({ type: 'staticAgentsLoaded', agents });
+    console.log(`[BrowserMock] Assigned ${agents.length} agents to seats from seat-map.json`);
   }
 
   // Start polling /api/agents every 5 minutes for live data
@@ -365,21 +411,25 @@ async function fetchAndDispatchAgents(): Promise<void> {
         `at ${data.timestamp}`,
     );
 
-    // Generate layout dynamically from project data
-    const { layout, agents } = generateLayoutFromProjects(data.working, data.idle);
-
-    function dispatch(d: unknown): void {
-      window.dispatchEvent(new MessageEvent('message', { data: d }));
+    // Assign people to seats using the seat map (layout stays the same)
+    const currentSeatMap = mockPayload?.seatMap;
+    if (!currentSeatMap) {
+      console.log('[BrowserMock] No seat map available, skipping agent assignment');
+      return;
     }
 
-    // Send new layout first, then agents
-    dispatch({ type: 'layoutLoaded', layout });
-    dispatch({ type: 'staticAgentsLoaded', agents });
+    // Convert API entries to the format assignAgentsToSeats expects
+    const allEntries = [
+      ...data.working.map((e) => ({ ...e, status: 'working' })),
+      ...data.idle.map((e) => ({ ...e, status: 'idle' })),
+    ];
+    const agents = assignAgentsToSeats(allEntries, currentSeatMap);
 
-    console.log(
-      `[BrowserMock] Refreshed layout (${layout.cols}×${layout.rows}) ` +
-        `with ${agents.length} agents from API`,
+    window.dispatchEvent(
+      new MessageEvent('message', { data: { type: 'staticAgentsLoaded', agents } }),
     );
+
+    console.log(`[BrowserMock] Refreshed ${agents.length} agents from API`);
   } catch (err) {
     console.error('[BrowserMock] Failed to fetch /api/agents:', err);
   }

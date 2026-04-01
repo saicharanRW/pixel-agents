@@ -1,0 +1,242 @@
+[
+  {
+    "seatUid": "CONDU-ch-0",
+    "project": "CONDU",
+    "type": "worker",
+    "index": 0
+  },
+  {
+    "seatUid": "DESIG-ch-0",
+    "project": "DESIG",
+    "type": "worker",
+    "index": 0
+  },
+  {
+    "seatUid": "DESIG-ch-1",
+    "project": "DESIG",
+    "type": "worker",
+    "index": 1
+  },
+  {
+    "seatUid": "HULY-ch-0",
+    "project": "HULY_",
+    "type": "worker",
+    "index": 0
+  },
+  {
+    "seatUid": "KNDG-ch-0",
+    "project": "K_NDG",
+    "type": "worker",
+    "index": 0
+  },
+  {
+    "seatUid": "KNDG-ch-1",
+    "project": "K_NDG",
+    "type": "worker",
+    "index": 1
+  },
+  {
+    "seatUid": "KNDG-ch-2",
+    "project": "K_NDG",
+    "type": "worker",
+    "index": 2
+  },
+  {
+    "seatUid": "KNDG-ch-3",
+    "project": "K_NDG",
+    "type": "worker",
+    "index": 3
+  },
+  {
+    "seatUid": "KNDG-ch-4",
+    "project": "K_NDG",
+    "type": "worker",
+    "index": 4
+  },
+  {
+    "seatUid": "KNDG-ch-5",
+    "project": "K_NDG",
+    "type": "worker",
+    "index": 5
+  },
+  {
+    "seatUid": "DASSA-ch-0",
+    "project": "DASSA",
+    "type": "worker",
+    "index": 0
+  },
+  {
+    "seatUid": "CHATE-ch-0",
+    "project": "CHATE",
+    "type": "worker",
+    "index": 0
+  },
+  {
+    "seatUid": "CHATE-ch-1",
+    "project": "CHATE",
+    "type": "worker",
+    "index": 1
+  },
+  {
+    "seatUid": "CHATE-bn-0",
+    "project": "CHATE",
+    "type": "idle",
+    "index": 0
+  },
+  {
+    "seatUid": "CHATE-bn-1",
+    "project": "CHATE",
+    "type": "idle",
+    "index": 1
+  },
+  {
+    "seatUid": "WHITE-ch-0",
+    "project": "WHITE",
+    "type": "worker",
+    "index": 0
+  },
+  {
+    "seatUid": "WHITE-ch-1",
+    "project": "WHITE",
+    "type": "worker",
+    "index": 1
+  },
+  {
+    "seatUid": "WHITE-ch-2",
+    "project": "WHITE",
+    "type": "worker",
+    "index": 2
+  },
+  {
+    "seatUid": "WHITE-bn-0",
+    "project": "WHITE",
+    "type": "idle",
+    "index": 0
+  },
+  {
+    "seatUid": "HARSH-ch-0",
+    "project": "HARSH",
+    "type": "worker",
+    "index": 0
+  },
+  {
+    "seatUid": "PROJE-ch-0",
+    "project": "PROJE",
+    "type": "worker",
+    "index": 0
+  },
+  {
+    "seatUid": "VISUA-ch-0",
+    "project": "VISUA",
+    "type": "worker",
+    "index": 0
+  },
+  {
+    "seatUid": "VISUA-ch-1",
+    "project": "VISUA",
+    "type": "worker",
+    "index": 1
+  },
+  {
+    "seatUid": "RWLAT-ch-0",
+    "project": "RWLAT",
+    "type": "worker",
+    "index": 0
+  },
+  {
+    "seatUid": "EMAIL-ch-0",
+    "project": "EMAIL",
+    "type": "worker",
+    "index": 0
+  },
+  {
+    "seatUid": "EMAIL-ch-1",
+    "project": "EMAIL",
+    "type": "worker",
+    "index": 1
+  },
+  {
+    "seatUid": "PIXEL-ch-0",
+    "project": "PIXEL",
+    "type": "worker",
+    "index": 0
+  },
+  {
+    "seatUid": "BROC-ch-0",
+    "project": "BROC",
+    "type": "worker",
+    "index": 0
+  },
+  {
+    "seatUid": "ZCBU-ch-0",
+    "project": "ZC_BU",
+    "type": "worker",
+    "index": 0
+  },
+  {
+    "seatUid": "ZCBU-bn-0",
+    "project": "ZC_BU",
+    "type": "idle",
+    "index": 0
+  },
+  {
+    "seatUid": "GAME-bn-0",
+    "project": "GAME",
+    "type": "idle",
+    "index": 0
+  },
+  {
+    "seatUid": "GAME-bn-1",
+    "project": "GAME",
+    "type": "idle",
+    "index": 1
+  },
+  {
+    "seatUid": "HULY-bn-0",
+    "project": "HULY",
+    "type": "idle",
+    "index": 0
+  },
+  {
+    "seatUid": "HULY-bn-1",
+    "project": "HULY",
+    "type": "idle",
+    "index": 1
+  },
+  {
+    "seatUid": "NUFC-bn-0",
+    "project": "NUFC",
+    "type": "idle",
+    "index": 0
+  },
+  {
+    "seatUid": "HULK-bn-0",
+    "project": "HULK_",
+    "type": "idle",
+    "index": 0
+  },
+  {
+    "seatUid": "FC-bn-0",
+    "project": "FC",
+    "type": "idle",
+    "index": 0
+  },
+  {
+    "seatUid": "PERSO-bn-0",
+    "project": "PERSO",
+    "type": "idle",
+    "index": 0
+  },
+  {
+    "seatUid": "AITST-bn-0",
+    "project": "AITST",
+    "type": "idle",
+    "index": 0
+  },
+  {
+    "seatUid": "RWSEC-bn-0",
+    "project": "RWSEC",
+    "type": "idle",
+    "index": 0
+  }
+]
