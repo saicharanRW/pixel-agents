@@ -26,6 +26,20 @@ import type {
   CharacterDirectionSprites,
 } from '../../shared/assets/types.ts';
 
+interface SeatAssignmentEntry {
+  id: string;
+  name: string;
+  status: string;
+  tasks: Array<{ title: string; identifier: string; status: string; priority: number }>;
+  seat: { furnitureUid: string; type: string; col: number; row: number };
+  project: string;
+}
+
+interface SeatAssignments {
+  working: SeatAssignmentEntry[];
+  idle: SeatAssignmentEntry[];
+}
+
 interface MockPayload {
   characters: CharacterDirectionSprites[];
   floorSprites: string[][][];
@@ -33,6 +47,7 @@ interface MockPayload {
   furnitureCatalog: CatalogEntry[];
   furnitureSprites: Record<string, string[][]>;
   layout: unknown;
+  seatAssignments: SeatAssignments | null;
 }
 
 // ── Module-level state ─────────────────────────────────────────────────────────
@@ -196,24 +211,17 @@ export async function initBrowserMock(): Promise<void> {
     fetch(`${base}assets/furniture-catalog.json`).then((r) => r.json()) as Promise<CatalogEntry[]>,
   ]);
 
-  const shouldTryDecoded = import.meta.env.DEV;
-  const [decodedCharacters, decodedFloors, decodedWalls, decodedFurniture] = shouldTryDecoded
-    ? await Promise.all([
-        fetchJsonOptional<CharacterDirectionSprites[]>(`${base}assets/decoded/characters.json`),
-        fetchJsonOptional<string[][][]>(`${base}assets/decoded/floors.json`),
-        fetchJsonOptional<string[][][][]>(`${base}assets/decoded/walls.json`),
-        fetchJsonOptional<Record<string, string[][]>>(`${base}assets/decoded/furniture.json`),
-      ])
-    : [null, null, null, null];
+  const [decodedCharacters, decodedFloors, decodedWalls, decodedFurniture] = await Promise.all([
+    fetchJsonOptional<CharacterDirectionSprites[]>(`${base}assets/decoded/characters.json`),
+    fetchJsonOptional<string[][][]>(`${base}assets/decoded/floors.json`),
+    fetchJsonOptional<string[][][][]>(`${base}assets/decoded/walls.json`),
+    fetchJsonOptional<Record<string, string[][]>>(`${base}assets/decoded/furniture.json`),
+  ]);
 
   const hasDecoded = !!(decodedCharacters && decodedFloors && decodedWalls && decodedFurniture);
 
   if (!hasDecoded) {
-    if (shouldTryDecoded) {
-      console.log('[BrowserMock] Decoded JSON not found, decoding PNG assets in browser...');
-    } else {
-      console.log('[BrowserMock] Decoding PNG assets in browser...');
-    }
+    console.log('[BrowserMock] Decoded JSON not found, decoding PNG assets in browser...');
   }
 
   const [characters, floorSprites, wallSets, furnitureSprites] = hasDecoded
@@ -225,9 +233,12 @@ export async function initBrowserMock(): Promise<void> {
         decodeFurnitureFromPng(base, catalog),
       ]);
 
-  const layout = assetIndex.defaultLayout
-    ? await fetch(`${base}assets/${assetIndex.defaultLayout}`).then((r) => r.json())
-    : null;
+  const [layout, seatAssignments] = await Promise.all([
+    assetIndex.defaultLayout
+      ? fetch(`${base}assets/${assetIndex.defaultLayout}`).then((r) => r.json())
+      : Promise.resolve(null),
+    fetchJsonOptional<SeatAssignments>(`${base}assets/seat-assignments.json`),
+  ]);
 
   mockPayload = {
     characters,
@@ -236,6 +247,7 @@ export async function initBrowserMock(): Promise<void> {
     furnitureCatalog: catalog,
     furnitureSprites,
     layout,
+    seatAssignments,
   };
 
   console.log(
@@ -250,8 +262,15 @@ export async function initBrowserMock(): Promise<void> {
 export function dispatchMockMessages(): void {
   if (!mockPayload) return;
 
-  const { characters, floorSprites, wallSets, furnitureCatalog, furnitureSprites, layout } =
-    mockPayload;
+  const {
+    characters,
+    floorSprites,
+    wallSets,
+    furnitureCatalog,
+    furnitureSprites,
+    layout,
+    seatAssignments,
+  } = mockPayload;
 
   function dispatch(data: unknown): void {
     window.dispatchEvent(new MessageEvent('message', { data }));
@@ -270,6 +289,21 @@ export function dispatchMockMessages(): void {
     extensionVersion: '1.2.0',
     lastSeenVersion: '1.1',
   });
+
+  // Dispatch static agents from seat-assignments.json
+  if (seatAssignments) {
+    const allEntries = [...seatAssignments.working, ...seatAssignments.idle];
+    const agents = allEntries.map((entry, index) => ({
+      id: index + 1,
+      name: entry.name,
+      seatUid: entry.seat.furnitureUid,
+      isWorking: entry.status === 'working',
+      tasks: entry.tasks,
+      project: entry.project,
+    }));
+    dispatch({ type: 'staticAgentsLoaded', agents });
+    console.log(`[BrowserMock] Dispatched ${agents.length} static agents`);
+  }
 
   console.log('[BrowserMock] Messages dispatched');
 }
