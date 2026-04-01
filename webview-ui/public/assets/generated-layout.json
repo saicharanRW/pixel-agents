@@ -4369,31 +4369,31 @@
     },
     {
       "uid": "CONDU-wb-0",
-      "type": "WHITEBOARD_FRONT",
-      "col": 5,
+      "type": "WHITEBOARD",
+      "col": 4,
       "row": 0
     },
     {
       "uid": "CONDU-pt1-1",
-      "type": "SMALL_PAINTING_FRONT",
+      "type": "SMALL_PAINTING",
       "col": 1,
       "row": 0
     },
     {
       "uid": "CONDU-pt2-2",
-      "type": "SMALL_PAINTING_2_FRONT",
+      "type": "SMALL_PAINTING_2",
       "col": 10,
       "row": 0
     },
     {
       "uid": "CONDU-clk-3",
-      "type": "CLOCK_FRONT",
+      "type": "CLOCK",
       "col": 8,
       "row": 0
     },
     {
       "uid": "CONDU-pl-5",
-      "type": "CACTUS_FRONT",
+      "type": "PLANT_2",
       "col": 1,
       "row": 5
     },
@@ -4412,36 +4412,36 @@
     {
       "uid": "CONDU-cof-9",
       "type": "COFFEE",
-      "col": 2,
+      "col": 3,
       "row": 2
     },
     {
       "uid": "DESIG-wb-10",
-      "type": "WHITEBOARD_FRONT",
-      "col": 19,
+      "type": "WHITEBOARD",
+      "col": 18,
       "row": 0
     },
     {
       "uid": "DESIG-pt1-11",
-      "type": "SMALL_PAINTING_FRONT",
+      "type": "SMALL_PAINTING",
       "col": 15,
       "row": 0
     },
     {
       "uid": "DESIG-pt2-12",
-      "type": "SMALL_PAINTING_2_FRONT",
+      "type": "SMALL_PAINTING_2",
       "col": 24,
       "row": 0
     },
     {
       "uid": "DESIG-clk-13",
-      "type": "CLOCK_FRONT",
+      "type": "CLOCK",
       "col": 22,
       "row": 0
     },
     {
       "uid": "DESIG-pl-15",
-      "type": "PLANT_FRONT",
+      "type": "PLANT_2",
       "col": 15,
       "row": 5
     },
@@ -4460,36 +4460,36 @@
     {
       "uid": "DESIG-cof-19",
       "type": "COFFEE",
-      "col": 16,
+      "col": 17,
       "row": 2
     },
     {
       "uid": "HULY-wb-20",
-      "type": "WHITEBOARD_FRONT",
-      "col": 33,
+      "type": "WHITEBOARD",
+      "col": 32,
       "row": 0
     },
     {
       "uid": "HULY-pt1-21",
-      "type": "SMALL_PAINTING_FRONT",
+      "type": "SMALL_PAINTING",
       "col": 29,
       "row": 0
     },
     {
       "uid": "HULY-pt2-22",
-      "type": "SMALL_PAINTING_2_FRONT",
+      "type": "SMALL_PAINTING_2",
       "col": 38,
       "row": 0
     },
     {
       "uid": "HULY-clk-23",
-      "type": "CLOCK_FRONT",
+      "type": "CLOCK",
       "col": 36,
       "row": 0
     },
     {
       "uid": "HULY-pl-25",
-      "type": "PLANT_2_FRONT",
+      "type": "PLANT_2",
       "col": 29,
       "row": 5
     },
@@ -4508,1082 +4508,998 @@
     {
       "uid": "HULY-cof-29",
       "type": "COFFEE",
-      "col": 30,
+      "col": 31,
       "row": 2
     },
     {
       "uid": "KNDG-wb-30",
-      "type": "WHITEBOARD_FRONT",
-      "col": 47,
+      "type": "WHITEBOARD",
+      "col": 46,
       "row": 0
     },
     {
       "uid": "KNDG-pt1-31",
-      "type": "SMALL_PAINTING_FRONT",
+      "type": "SMALL_PAINTING",
       "col": 43,
       "row": 0
     },
     {
       "uid": "KNDG-pt2-32",
-      "type": "SMALL_PAINTING_2_FRONT",
+      "type": "SMALL_PAINTING_2",
       "col": 52,
       "row": 0
     },
     {
       "uid": "KNDG-clk-33",
-      "type": "CLOCK_FRONT",
+      "type": "CLOCK",
       "col": 50,
       "row": 0
     },
     {
       "uid": "KNDG-pl-35",
-      "type": "CACTUS_FRONT",
+      "type": "PLANT_2",
       "col": 43,
       "row": 10
     },
     {
       "uid": "KNDG-pl-36",
-      "type": "PLANT_FRONT",
+      "type": "CACTUS",
       "col": 52,
       "row": 10
     },
     {
-      "uid": "KNDG-pot-39",
+      "uid": "KNDG-pot-38",
       "type": "POT",
       "col": 46,
       "row": 11
     },
     {
-      "uid": "KNDG-pot-40",
+      "uid": "KNDG-pot-39",
       "type": "POT",
       "col": 49,
       "row": 11
     },
     {
-      "uid": "KNDG-cof-41",
+      "uid": "KNDG-cof-40",
       "type": "COFFEE",
-      "col": 44,
+      "col": 45,
       "row": 2
     },
     {
-      "uid": "DASSA-wb-43",
-      "type": "WHITEBOARD_FRONT",
-      "col": 5,
+      "uid": "DASSA-wb-42",
+      "type": "WHITEBOARD",
+      "col": 4,
       "row": 15
     },
     {
-      "uid": "DASSA-pt1-44",
-      "type": "SMALL_PAINTING_FRONT",
+      "uid": "DASSA-pt1-43",
+      "type": "SMALL_PAINTING",
       "col": 1,
       "row": 15
     },
     {
-      "uid": "DASSA-pt2-45",
-      "type": "SMALL_PAINTING_2_FRONT",
+      "uid": "DASSA-pt2-44",
+      "type": "SMALL_PAINTING_2",
       "col": 10,
       "row": 15
     },
     {
-      "uid": "DASSA-clk-46",
-      "type": "CLOCK_FRONT",
+      "uid": "DASSA-clk-45",
+      "type": "CLOCK",
       "col": 8,
       "row": 15
     },
     {
-      "uid": "DASSA-pl-48",
-      "type": "PLANT_FRONT",
+      "uid": "DASSA-pl-47",
+      "type": "PLANT_2",
       "col": 1,
       "row": 20
     },
     {
-      "uid": "DASSA-pot-50",
+      "uid": "DASSA-pot-49",
       "type": "POT",
       "col": 4,
       "row": 21
     },
     {
-      "uid": "DASSA-pot-51",
+      "uid": "DASSA-pot-50",
       "type": "POT",
       "col": 7,
       "row": 21
     },
     {
-      "uid": "DASSA-cof-52",
+      "uid": "DASSA-cof-51",
       "type": "COFFEE",
-      "col": 2,
+      "col": 3,
       "row": 17
     },
     {
-      "uid": "CHATE-wb-53",
-      "type": "WHITEBOARD_FRONT",
-      "col": 19,
+      "uid": "CHATE-wb-52",
+      "type": "WHITEBOARD",
+      "col": 18,
       "row": 15
     },
     {
-      "uid": "CHATE-pt1-54",
-      "type": "SMALL_PAINTING_FRONT",
+      "uid": "CHATE-pt1-53",
+      "type": "SMALL_PAINTING",
       "col": 15,
       "row": 15
     },
     {
-      "uid": "CHATE-pt2-55",
-      "type": "SMALL_PAINTING_2_FRONT",
+      "uid": "CHATE-pt2-54",
+      "type": "SMALL_PAINTING_2",
       "col": 24,
       "row": 15
     },
     {
-      "uid": "CHATE-clk-56",
-      "type": "CLOCK_FRONT",
+      "uid": "CHATE-clk-55",
+      "type": "CLOCK",
       "col": 22,
       "row": 15
     },
     {
-      "uid": "CHATE-pl-59",
-      "type": "CACTUS_FRONT",
+      "uid": "CHATE-pl-58",
+      "type": "CACTUS",
       "col": 24,
       "row": 21
     },
     {
-      "uid": "CHATE-bin-60",
+      "uid": "CHATE-bin-59",
       "type": "BIN",
       "col": 15,
+      "row": 22
+    },
+    {
+      "uid": "CHATE-pot-60",
+      "type": "POT",
+      "col": 18,
       "row": 22
     },
     {
       "uid": "CHATE-pot-61",
       "type": "POT",
-      "col": 18,
-      "row": 22
-    },
-    {
-      "uid": "CHATE-pot-62",
-      "type": "POT",
       "col": 21,
       "row": 22
     },
     {
-      "uid": "CHATE-cof-63",
+      "uid": "CHATE-cof-62",
       "type": "COFFEE",
-      "col": 16,
+      "col": 17,
       "row": 17
     },
     {
-      "uid": "WHITE-wb-64",
-      "type": "WHITEBOARD_FRONT",
-      "col": 33,
+      "uid": "WHITE-wb-63",
+      "type": "WHITEBOARD",
+      "col": 32,
       "row": 15
     },
     {
-      "uid": "WHITE-pt1-65",
-      "type": "SMALL_PAINTING_FRONT",
+      "uid": "WHITE-pt1-64",
+      "type": "SMALL_PAINTING",
       "col": 29,
       "row": 15
     },
     {
-      "uid": "WHITE-pt2-66",
-      "type": "SMALL_PAINTING_2_FRONT",
+      "uid": "WHITE-pt2-65",
+      "type": "SMALL_PAINTING_2",
       "col": 38,
       "row": 15
     },
     {
-      "uid": "WHITE-clk-67",
-      "type": "CLOCK_FRONT",
+      "uid": "WHITE-clk-66",
+      "type": "CLOCK",
       "col": 36,
       "row": 15
     },
     {
-      "uid": "WHITE-pl-70",
-      "type": "PLANT_2_FRONT",
+      "uid": "WHITE-pl-69",
+      "type": "CACTUS",
       "col": 38,
       "row": 24
     },
     {
-      "uid": "WHITE-bin-72",
+      "uid": "WHITE-bin-70",
       "type": "BIN",
       "col": 29,
       "row": 25
     },
     {
-      "uid": "WHITE-pot-73",
+      "uid": "WHITE-pot-71",
       "type": "POT",
       "col": 32,
       "row": 25
     },
     {
-      "uid": "WHITE-pot-74",
+      "uid": "WHITE-pot-72",
       "type": "POT",
       "col": 35,
       "row": 25
     },
     {
-      "uid": "WHITE-cof-75",
+      "uid": "WHITE-cof-73",
       "type": "COFFEE",
-      "col": 30,
+      "col": 31,
       "row": 17
     },
     {
-      "uid": "WHITE-ct-76",
-      "type": "COFFEE_TABLE_FRONT",
-      "col": 33,
+      "uid": "WHITE-ct-74",
+      "type": "COFFEE_TABLE",
+      "col": 32,
       "row": 23
     },
     {
-      "uid": "WHITE-sf-77",
-      "type": "SOFA_FRONT",
-      "col": 33,
-      "row": 25
-    },
-    {
-      "uid": "HARSH-wb-78",
-      "type": "WHITEBOARD_FRONT",
-      "col": 47,
+      "uid": "HARSH-wb-76",
+      "type": "WHITEBOARD",
+      "col": 46,
       "row": 15
     },
     {
-      "uid": "HARSH-pt1-79",
-      "type": "SMALL_PAINTING_FRONT",
+      "uid": "HARSH-pt1-77",
+      "type": "SMALL_PAINTING",
       "col": 43,
       "row": 15
     },
     {
-      "uid": "HARSH-pt2-80",
-      "type": "SMALL_PAINTING_2_FRONT",
+      "uid": "HARSH-pt2-78",
+      "type": "SMALL_PAINTING_2",
       "col": 52,
       "row": 15
     },
     {
-      "uid": "HARSH-clk-81",
-      "type": "CLOCK_FRONT",
+      "uid": "HARSH-clk-79",
+      "type": "CLOCK",
       "col": 50,
       "row": 15
     },
     {
-      "uid": "HARSH-pl-83",
-      "type": "CACTUS_FRONT",
+      "uid": "HARSH-pl-81",
+      "type": "PLANT_2",
       "col": 43,
       "row": 20
     },
     {
-      "uid": "HARSH-pot-85",
+      "uid": "HARSH-pot-83",
       "type": "POT",
       "col": 46,
       "row": 21
     },
     {
-      "uid": "HARSH-pot-86",
+      "uid": "HARSH-pot-84",
       "type": "POT",
       "col": 49,
       "row": 21
     },
     {
-      "uid": "HARSH-cof-87",
+      "uid": "HARSH-cof-85",
       "type": "COFFEE",
-      "col": 44,
+      "col": 45,
       "row": 17
     },
     {
-      "uid": "PROJE-wb-88",
-      "type": "WHITEBOARD_FRONT",
-      "col": 5,
+      "uid": "PROJE-wb-86",
+      "type": "WHITEBOARD",
+      "col": 4,
       "row": 29
     },
     {
-      "uid": "PROJE-pt1-89",
-      "type": "SMALL_PAINTING_FRONT",
+      "uid": "PROJE-pt1-87",
+      "type": "SMALL_PAINTING",
       "col": 1,
       "row": 29
     },
     {
-      "uid": "PROJE-pt2-90",
-      "type": "SMALL_PAINTING_2_FRONT",
+      "uid": "PROJE-pt2-88",
+      "type": "SMALL_PAINTING_2",
       "col": 10,
       "row": 29
     },
     {
-      "uid": "PROJE-clk-91",
-      "type": "CLOCK_FRONT",
+      "uid": "PROJE-clk-89",
+      "type": "CLOCK",
       "col": 8,
       "row": 29
     },
     {
-      "uid": "PROJE-pl-93",
-      "type": "PLANT_FRONT",
+      "uid": "PROJE-pl-91",
+      "type": "PLANT_2",
       "col": 1,
       "row": 34
     },
     {
-      "uid": "PROJE-pot-95",
+      "uid": "PROJE-pot-93",
       "type": "POT",
       "col": 4,
       "row": 35
     },
     {
-      "uid": "PROJE-pot-96",
+      "uid": "PROJE-pot-94",
       "type": "POT",
       "col": 7,
       "row": 35
     },
     {
-      "uid": "PROJE-cof-97",
+      "uid": "PROJE-cof-95",
       "type": "COFFEE",
-      "col": 2,
+      "col": 3,
       "row": 31
     },
     {
-      "uid": "VISUA-wb-98",
-      "type": "WHITEBOARD_FRONT",
-      "col": 19,
+      "uid": "VISUA-wb-96",
+      "type": "WHITEBOARD",
+      "col": 18,
       "row": 29
     },
     {
-      "uid": "VISUA-pt1-99",
-      "type": "SMALL_PAINTING_FRONT",
+      "uid": "VISUA-pt1-97",
+      "type": "SMALL_PAINTING",
       "col": 15,
       "row": 29
     },
     {
-      "uid": "VISUA-pt2-100",
-      "type": "SMALL_PAINTING_2_FRONT",
+      "uid": "VISUA-pt2-98",
+      "type": "SMALL_PAINTING_2",
       "col": 24,
       "row": 29
     },
     {
-      "uid": "VISUA-clk-101",
-      "type": "CLOCK_FRONT",
+      "uid": "VISUA-clk-99",
+      "type": "CLOCK",
       "col": 22,
       "row": 29
     },
     {
-      "uid": "VISUA-pl-103",
-      "type": "PLANT_2_FRONT",
+      "uid": "VISUA-pl-101",
+      "type": "PLANT_2",
       "col": 15,
       "row": 34
     },
     {
-      "uid": "VISUA-pot-105",
+      "uid": "VISUA-pot-103",
       "type": "POT",
       "col": 18,
       "row": 35
     },
     {
-      "uid": "VISUA-pot-106",
+      "uid": "VISUA-pot-104",
       "type": "POT",
       "col": 21,
       "row": 35
     },
     {
-      "uid": "VISUA-cof-107",
+      "uid": "VISUA-cof-105",
       "type": "COFFEE",
-      "col": 16,
+      "col": 17,
       "row": 31
     },
     {
-      "uid": "RWLAT-wb-108",
-      "type": "WHITEBOARD_FRONT",
-      "col": 33,
+      "uid": "RWLAT-wb-106",
+      "type": "WHITEBOARD",
+      "col": 32,
       "row": 29
     },
     {
-      "uid": "RWLAT-pt1-109",
-      "type": "SMALL_PAINTING_FRONT",
+      "uid": "RWLAT-pt1-107",
+      "type": "SMALL_PAINTING",
       "col": 29,
       "row": 29
     },
     {
-      "uid": "RWLAT-pt2-110",
-      "type": "SMALL_PAINTING_2_FRONT",
+      "uid": "RWLAT-pt2-108",
+      "type": "SMALL_PAINTING_2",
       "col": 38,
       "row": 29
     },
     {
-      "uid": "RWLAT-clk-111",
-      "type": "CLOCK_FRONT",
+      "uid": "RWLAT-clk-109",
+      "type": "CLOCK",
       "col": 36,
       "row": 29
     },
     {
-      "uid": "RWLAT-pl-113",
-      "type": "CACTUS_FRONT",
+      "uid": "RWLAT-pl-111",
+      "type": "PLANT_2",
       "col": 29,
       "row": 34
     },
     {
-      "uid": "RWLAT-pot-115",
+      "uid": "RWLAT-pot-113",
       "type": "POT",
       "col": 32,
       "row": 35
     },
     {
-      "uid": "RWLAT-pot-116",
+      "uid": "RWLAT-pot-114",
       "type": "POT",
       "col": 35,
       "row": 35
     },
     {
-      "uid": "RWLAT-cof-117",
+      "uid": "RWLAT-cof-115",
       "type": "COFFEE",
-      "col": 30,
+      "col": 31,
       "row": 31
     },
     {
-      "uid": "EMAIL-wb-118",
-      "type": "WHITEBOARD_FRONT",
-      "col": 47,
+      "uid": "EMAIL-wb-116",
+      "type": "WHITEBOARD",
+      "col": 46,
       "row": 29
     },
     {
-      "uid": "EMAIL-pt1-119",
-      "type": "SMALL_PAINTING_FRONT",
+      "uid": "EMAIL-pt1-117",
+      "type": "SMALL_PAINTING",
       "col": 43,
       "row": 29
     },
     {
-      "uid": "EMAIL-pt2-120",
-      "type": "SMALL_PAINTING_2_FRONT",
+      "uid": "EMAIL-pt2-118",
+      "type": "SMALL_PAINTING_2",
       "col": 52,
       "row": 29
     },
     {
-      "uid": "EMAIL-clk-121",
-      "type": "CLOCK_FRONT",
+      "uid": "EMAIL-clk-119",
+      "type": "CLOCK",
       "col": 50,
       "row": 29
     },
     {
-      "uid": "EMAIL-pl-123",
-      "type": "PLANT_FRONT",
+      "uid": "EMAIL-pl-121",
+      "type": "PLANT_2",
       "col": 43,
       "row": 34
     },
     {
-      "uid": "EMAIL-pot-125",
+      "uid": "EMAIL-pot-123",
       "type": "POT",
       "col": 46,
       "row": 35
     },
     {
-      "uid": "EMAIL-pot-126",
+      "uid": "EMAIL-pot-124",
       "type": "POT",
       "col": 49,
       "row": 35
     },
     {
-      "uid": "EMAIL-cof-127",
+      "uid": "EMAIL-cof-125",
       "type": "COFFEE",
-      "col": 44,
+      "col": 45,
       "row": 31
     },
     {
-      "uid": "PIXEL-wb-128",
-      "type": "WHITEBOARD_FRONT",
-      "col": 5,
+      "uid": "PIXEL-wb-126",
+      "type": "WHITEBOARD",
+      "col": 4,
       "row": 39
     },
     {
-      "uid": "PIXEL-pt1-129",
-      "type": "SMALL_PAINTING_FRONT",
+      "uid": "PIXEL-pt1-127",
+      "type": "SMALL_PAINTING",
       "col": 1,
       "row": 39
     },
     {
-      "uid": "PIXEL-pt2-130",
-      "type": "SMALL_PAINTING_2_FRONT",
+      "uid": "PIXEL-pt2-128",
+      "type": "SMALL_PAINTING_2",
       "col": 10,
       "row": 39
     },
     {
-      "uid": "PIXEL-clk-131",
-      "type": "CLOCK_FRONT",
+      "uid": "PIXEL-clk-129",
+      "type": "CLOCK",
       "col": 8,
       "row": 39
     },
     {
-      "uid": "PIXEL-pl-133",
-      "type": "PLANT_2_FRONT",
+      "uid": "PIXEL-pl-131",
+      "type": "PLANT_2",
       "col": 1,
       "row": 44
     },
     {
-      "uid": "PIXEL-pot-135",
+      "uid": "PIXEL-pot-133",
       "type": "POT",
       "col": 4,
       "row": 45
     },
     {
-      "uid": "PIXEL-pot-136",
+      "uid": "PIXEL-pot-134",
       "type": "POT",
       "col": 7,
       "row": 45
     },
     {
-      "uid": "PIXEL-cof-137",
+      "uid": "PIXEL-cof-135",
       "type": "COFFEE",
-      "col": 2,
+      "col": 3,
       "row": 41
     },
     {
-      "uid": "BROC-wb-138",
-      "type": "WHITEBOARD_FRONT",
-      "col": 19,
+      "uid": "BROC-wb-136",
+      "type": "WHITEBOARD",
+      "col": 18,
       "row": 39
     },
     {
-      "uid": "BROC-pt1-139",
-      "type": "SMALL_PAINTING_FRONT",
+      "uid": "BROC-pt1-137",
+      "type": "SMALL_PAINTING",
       "col": 15,
       "row": 39
     },
     {
-      "uid": "BROC-pt2-140",
-      "type": "SMALL_PAINTING_2_FRONT",
+      "uid": "BROC-pt2-138",
+      "type": "SMALL_PAINTING_2",
       "col": 24,
       "row": 39
     },
     {
-      "uid": "BROC-clk-141",
-      "type": "CLOCK_FRONT",
+      "uid": "BROC-clk-139",
+      "type": "CLOCK",
       "col": 22,
       "row": 39
     },
     {
-      "uid": "BROC-pl-143",
-      "type": "CACTUS_FRONT",
+      "uid": "BROC-pl-141",
+      "type": "PLANT_2",
       "col": 15,
       "row": 44
     },
     {
-      "uid": "BROC-pot-145",
+      "uid": "BROC-pot-143",
       "type": "POT",
       "col": 18,
       "row": 45
     },
     {
-      "uid": "BROC-pot-146",
+      "uid": "BROC-pot-144",
       "type": "POT",
       "col": 21,
       "row": 45
     },
     {
-      "uid": "BROC-cof-147",
+      "uid": "BROC-cof-145",
       "type": "COFFEE",
-      "col": 16,
+      "col": 17,
       "row": 41
     },
     {
-      "uid": "ZCBU-wb-148",
-      "type": "WHITEBOARD_FRONT",
-      "col": 33,
+      "uid": "ZCBU-wb-146",
+      "type": "WHITEBOARD",
+      "col": 32,
       "row": 39
     },
     {
-      "uid": "ZCBU-pt1-149",
-      "type": "SMALL_PAINTING_FRONT",
+      "uid": "ZCBU-pt1-147",
+      "type": "SMALL_PAINTING",
       "col": 29,
       "row": 39
     },
     {
-      "uid": "ZCBU-pt2-150",
-      "type": "SMALL_PAINTING_2_FRONT",
+      "uid": "ZCBU-pt2-148",
+      "type": "SMALL_PAINTING_2",
       "col": 38,
       "row": 39
     },
     {
-      "uid": "ZCBU-clk-151",
-      "type": "CLOCK_FRONT",
+      "uid": "ZCBU-clk-149",
+      "type": "CLOCK",
       "col": 36,
       "row": 39
     },
     {
-      "uid": "ZCBU-pl-154",
-      "type": "PLANT_2_FRONT",
+      "uid": "ZCBU-pl-152",
+      "type": "CACTUS",
       "col": 38,
       "row": 45
     },
     {
-      "uid": "ZCBU-bin-155",
+      "uid": "ZCBU-bin-153",
       "type": "BIN",
       "col": 29,
       "row": 46
     },
     {
-      "uid": "ZCBU-pot-156",
+      "uid": "ZCBU-pot-154",
       "type": "POT",
       "col": 32,
       "row": 46
     },
     {
-      "uid": "ZCBU-pot-157",
+      "uid": "ZCBU-pot-155",
       "type": "POT",
       "col": 35,
       "row": 46
     },
     {
-      "uid": "ZCBU-cof-158",
+      "uid": "ZCBU-cof-156",
       "type": "COFFEE",
-      "col": 30,
+      "col": 31,
       "row": 41
     },
     {
-      "uid": "GAME-wb-159",
-      "type": "WHITEBOARD_FRONT",
-      "col": 47,
+      "uid": "GAME-wb-157",
+      "type": "WHITEBOARD",
+      "col": 46,
       "row": 39
     },
     {
-      "uid": "GAME-pt1-160",
-      "type": "SMALL_PAINTING_FRONT",
+      "uid": "GAME-pt1-158",
+      "type": "SMALL_PAINTING",
       "col": 43,
       "row": 39
     },
     {
-      "uid": "GAME-pt2-161",
-      "type": "SMALL_PAINTING_2_FRONT",
+      "uid": "GAME-pt2-159",
+      "type": "SMALL_PAINTING_2",
       "col": 52,
       "row": 39
     },
     {
-      "uid": "GAME-clk-162",
-      "type": "CLOCK_FRONT",
+      "uid": "GAME-clk-160",
+      "type": "CLOCK",
       "col": 50,
       "row": 39
     },
     {
-      "uid": "GAME-pl-164",
-      "type": "CACTUS_FRONT",
+      "uid": "GAME-pl-162",
+      "type": "PLANT_2",
       "col": 43,
       "row": 44
     },
     {
-      "uid": "GAME-pot-166",
+      "uid": "GAME-pot-164",
       "type": "POT",
       "col": 46,
       "row": 45
     },
     {
-      "uid": "GAME-pot-167",
+      "uid": "GAME-pot-165",
       "type": "POT",
       "col": 49,
       "row": 45
     },
     {
-      "uid": "GAME-cof-168",
+      "uid": "GAME-cof-166",
       "type": "COFFEE",
-      "col": 44,
+      "col": 45,
       "row": 41
     },
     {
-      "uid": "HULY-wb-169",
-      "type": "WHITEBOARD_FRONT",
-      "col": 5,
+      "uid": "HULY-wb-167",
+      "type": "WHITEBOARD",
+      "col": 4,
       "row": 50
     },
     {
-      "uid": "HULY-pt1-170",
-      "type": "SMALL_PAINTING_FRONT",
+      "uid": "HULY-pt1-168",
+      "type": "SMALL_PAINTING",
       "col": 1,
       "row": 50
     },
     {
-      "uid": "HULY-pt2-171",
-      "type": "SMALL_PAINTING_2_FRONT",
+      "uid": "HULY-pt2-169",
+      "type": "SMALL_PAINTING_2",
       "col": 10,
       "row": 50
     },
     {
-      "uid": "HULY-clk-172",
-      "type": "CLOCK_FRONT",
+      "uid": "HULY-clk-170",
+      "type": "CLOCK",
       "col": 8,
       "row": 50
     },
     {
-      "uid": "HULY-pl-174",
-      "type": "PLANT_FRONT",
+      "uid": "HULY-pl-172",
+      "type": "PLANT_2",
       "col": 1,
       "row": 55
     },
     {
-      "uid": "HULY-pot-176",
+      "uid": "HULY-pot-174",
       "type": "POT",
       "col": 4,
       "row": 56
     },
     {
-      "uid": "HULY-pot-177",
+      "uid": "HULY-pot-175",
       "type": "POT",
       "col": 7,
       "row": 56
     },
     {
-      "uid": "HULY-cof-178",
+      "uid": "HULY-cof-176",
       "type": "COFFEE",
-      "col": 2,
+      "col": 3,
       "row": 52
     },
     {
-      "uid": "NUFC-wb-179",
-      "type": "WHITEBOARD_FRONT",
-      "col": 19,
+      "uid": "NUFC-wb-177",
+      "type": "WHITEBOARD",
+      "col": 18,
       "row": 50
     },
     {
-      "uid": "NUFC-pt1-180",
-      "type": "SMALL_PAINTING_FRONT",
+      "uid": "NUFC-pt1-178",
+      "type": "SMALL_PAINTING",
       "col": 15,
       "row": 50
     },
     {
-      "uid": "NUFC-pt2-181",
-      "type": "SMALL_PAINTING_2_FRONT",
+      "uid": "NUFC-pt2-179",
+      "type": "SMALL_PAINTING_2",
       "col": 24,
       "row": 50
     },
     {
-      "uid": "NUFC-clk-182",
-      "type": "CLOCK_FRONT",
+      "uid": "NUFC-clk-180",
+      "type": "CLOCK",
       "col": 22,
       "row": 50
     },
     {
-      "uid": "NUFC-pl-184",
-      "type": "PLANT_2_FRONT",
+      "uid": "NUFC-pl-182",
+      "type": "PLANT_2",
       "col": 15,
       "row": 55
     },
     {
-      "uid": "NUFC-pot-186",
+      "uid": "NUFC-pot-184",
       "type": "POT",
       "col": 18,
       "row": 56
     },
     {
-      "uid": "NUFC-pot-187",
+      "uid": "NUFC-pot-185",
       "type": "POT",
       "col": 21,
       "row": 56
     },
     {
-      "uid": "NUFC-cof-188",
+      "uid": "NUFC-cof-186",
       "type": "COFFEE",
-      "col": 16,
+      "col": 17,
       "row": 52
     },
     {
-      "uid": "HULK-wb-189",
-      "type": "WHITEBOARD_FRONT",
-      "col": 33,
+      "uid": "HULK-wb-187",
+      "type": "WHITEBOARD",
+      "col": 32,
       "row": 50
     },
     {
-      "uid": "HULK-pt1-190",
-      "type": "SMALL_PAINTING_FRONT",
+      "uid": "HULK-pt1-188",
+      "type": "SMALL_PAINTING",
       "col": 29,
       "row": 50
     },
     {
-      "uid": "HULK-pt2-191",
-      "type": "SMALL_PAINTING_2_FRONT",
+      "uid": "HULK-pt2-189",
+      "type": "SMALL_PAINTING_2",
       "col": 38,
       "row": 50
     },
     {
-      "uid": "HULK-clk-192",
-      "type": "CLOCK_FRONT",
+      "uid": "HULK-clk-190",
+      "type": "CLOCK",
       "col": 36,
       "row": 50
     },
     {
-      "uid": "HULK-pl-194",
-      "type": "CACTUS_FRONT",
+      "uid": "HULK-pl-192",
+      "type": "PLANT_2",
       "col": 29,
       "row": 55
     },
     {
-      "uid": "HULK-pot-196",
+      "uid": "HULK-pot-194",
       "type": "POT",
       "col": 32,
       "row": 56
     },
     {
-      "uid": "HULK-pot-197",
+      "uid": "HULK-pot-195",
       "type": "POT",
       "col": 35,
       "row": 56
     },
     {
-      "uid": "HULK-cof-198",
+      "uid": "HULK-cof-196",
       "type": "COFFEE",
-      "col": 30,
+      "col": 31,
       "row": 52
     },
     {
-      "uid": "FC-wb-199",
-      "type": "WHITEBOARD_FRONT",
-      "col": 47,
+      "uid": "FC-wb-197",
+      "type": "WHITEBOARD",
+      "col": 46,
       "row": 50
     },
     {
-      "uid": "FC-pt1-200",
-      "type": "SMALL_PAINTING_FRONT",
+      "uid": "FC-pt1-198",
+      "type": "SMALL_PAINTING",
       "col": 43,
       "row": 50
     },
     {
-      "uid": "FC-pt2-201",
-      "type": "SMALL_PAINTING_2_FRONT",
+      "uid": "FC-pt2-199",
+      "type": "SMALL_PAINTING_2",
       "col": 52,
       "row": 50
     },
     {
-      "uid": "FC-clk-202",
-      "type": "CLOCK_FRONT",
+      "uid": "FC-clk-200",
+      "type": "CLOCK",
       "col": 50,
       "row": 50
     },
     {
-      "uid": "FC-pl-204",
-      "type": "PLANT_FRONT",
+      "uid": "FC-pl-202",
+      "type": "PLANT_2",
       "col": 43,
       "row": 55
     },
     {
-      "uid": "FC-pot-206",
+      "uid": "FC-pot-204",
       "type": "POT",
       "col": 46,
       "row": 56
     },
     {
-      "uid": "FC-pot-207",
+      "uid": "FC-pot-205",
       "type": "POT",
       "col": 49,
       "row": 56
     },
     {
-      "uid": "FC-cof-208",
+      "uid": "FC-cof-206",
       "type": "COFFEE",
-      "col": 44,
+      "col": 45,
       "row": 52
     },
     {
-      "uid": "PERSO-wb-209",
-      "type": "WHITEBOARD_FRONT",
-      "col": 5,
+      "uid": "PERSO-wb-207",
+      "type": "WHITEBOARD",
+      "col": 4,
       "row": 60
     },
     {
-      "uid": "PERSO-pt1-210",
-      "type": "SMALL_PAINTING_FRONT",
+      "uid": "PERSO-pt1-208",
+      "type": "SMALL_PAINTING",
       "col": 1,
       "row": 60
     },
     {
-      "uid": "PERSO-pt2-211",
-      "type": "SMALL_PAINTING_2_FRONT",
+      "uid": "PERSO-pt2-209",
+      "type": "SMALL_PAINTING_2",
       "col": 10,
       "row": 60
     },
     {
-      "uid": "PERSO-clk-212",
-      "type": "CLOCK_FRONT",
+      "uid": "PERSO-clk-210",
+      "type": "CLOCK",
       "col": 8,
       "row": 60
     },
     {
-      "uid": "PERSO-pl-214",
-      "type": "PLANT_2_FRONT",
+      "uid": "PERSO-pl-212",
+      "type": "PLANT_2",
       "col": 1,
       "row": 65
     },
     {
-      "uid": "PERSO-pot-216",
+      "uid": "PERSO-pot-214",
       "type": "POT",
       "col": 4,
       "row": 66
     },
     {
-      "uid": "PERSO-pot-217",
+      "uid": "PERSO-pot-215",
       "type": "POT",
       "col": 7,
       "row": 66
     },
     {
-      "uid": "PERSO-cof-218",
+      "uid": "PERSO-cof-216",
       "type": "COFFEE",
-      "col": 2,
+      "col": 3,
       "row": 62
     },
     {
-      "uid": "AITST-wb-219",
-      "type": "WHITEBOARD_FRONT",
-      "col": 19,
+      "uid": "AITST-wb-217",
+      "type": "WHITEBOARD",
+      "col": 18,
       "row": 60
     },
     {
-      "uid": "AITST-pt1-220",
-      "type": "SMALL_PAINTING_FRONT",
+      "uid": "AITST-pt1-218",
+      "type": "SMALL_PAINTING",
       "col": 15,
       "row": 60
     },
     {
-      "uid": "AITST-pt2-221",
-      "type": "SMALL_PAINTING_2_FRONT",
+      "uid": "AITST-pt2-219",
+      "type": "SMALL_PAINTING_2",
       "col": 24,
       "row": 60
     },
     {
-      "uid": "AITST-clk-222",
-      "type": "CLOCK_FRONT",
+      "uid": "AITST-clk-220",
+      "type": "CLOCK",
       "col": 22,
       "row": 60
     },
     {
-      "uid": "AITST-pl-224",
-      "type": "CACTUS_FRONT",
+      "uid": "AITST-pl-222",
+      "type": "PLANT_2",
       "col": 15,
       "row": 65
     },
     {
-      "uid": "AITST-pot-226",
+      "uid": "AITST-pot-224",
       "type": "POT",
       "col": 18,
       "row": 66
     },
     {
-      "uid": "AITST-pot-227",
+      "uid": "AITST-pot-225",
       "type": "POT",
       "col": 21,
       "row": 66
     },
     {
-      "uid": "AITST-cof-228",
+      "uid": "AITST-cof-226",
       "type": "COFFEE",
-      "col": 16,
+      "col": 17,
       "row": 62
     },
     {
-      "uid": "RWSEC-wb-229",
-      "type": "WHITEBOARD_FRONT",
-      "col": 33,
+      "uid": "RWSEC-wb-227",
+      "type": "WHITEBOARD",
+      "col": 32,
       "row": 60
     },
     {
-      "uid": "RWSEC-pt1-230",
-      "type": "SMALL_PAINTING_FRONT",
+      "uid": "RWSEC-pt1-228",
+      "type": "SMALL_PAINTING",
       "col": 29,
       "row": 60
     },
     {
-      "uid": "RWSEC-pt2-231",
-      "type": "SMALL_PAINTING_2_FRONT",
+      "uid": "RWSEC-pt2-229",
+      "type": "SMALL_PAINTING_2",
       "col": 38,
       "row": 60
     },
     {
-      "uid": "RWSEC-clk-232",
-      "type": "CLOCK_FRONT",
+      "uid": "RWSEC-clk-230",
+      "type": "CLOCK",
       "col": 36,
       "row": 60
     },
     {
-      "uid": "RWSEC-pl-234",
-      "type": "PLANT_FRONT",
+      "uid": "RWSEC-pl-232",
+      "type": "PLANT_2",
       "col": 29,
       "row": 65
     },
     {
-      "uid": "RWSEC-pot-236",
+      "uid": "RWSEC-pot-234",
       "type": "POT",
       "col": 32,
       "row": 66
     },
     {
-      "uid": "RWSEC-pot-237",
+      "uid": "RWSEC-pot-235",
       "type": "POT",
       "col": 35,
       "row": 66
     },
     {
-      "uid": "RWSEC-cof-238",
+      "uid": "RWSEC-cof-236",
       "type": "COFFEE",
-      "col": 30,
+      "col": 31,
       "row": 62
-    },
-    {
-      "uid": "hall-pot-0",
-      "type": "POT",
-      "col": 40,
-      "row": 0
-    },
-    {
-      "uid": "hall-pot-1",
-      "type": "POT",
-      "col": 40,
-      "row": 8
-    },
-    {
-      "uid": "hall-pot-2",
-      "type": "POT",
-      "col": 40,
-      "row": 16
-    },
-    {
-      "uid": "hall-pot-3",
-      "type": "POT",
-      "col": 40,
-      "row": 24
-    },
-    {
-      "uid": "hall-pot-4",
-      "type": "POT",
-      "col": 40,
-      "row": 32
-    },
-    {
-      "uid": "hall-pot-5",
-      "type": "POT",
-      "col": 40,
-      "row": 40
-    },
-    {
-      "uid": "hall-pot-6",
-      "type": "POT",
-      "col": 0,
-      "row": 48
-    },
-    {
-      "uid": "hall-pot-7",
-      "type": "POT",
-      "col": 10,
-      "row": 48
-    },
-    {
-      "uid": "hall-pot-8",
-      "type": "POT",
-      "col": 20,
-      "row": 48
-    },
-    {
-      "uid": "hall-pot-9",
-      "type": "POT",
-      "col": 30,
-      "row": 48
-    },
-    {
-      "uid": "hall-pot-10",
-      "type": "POT",
-      "col": 40,
-      "row": 48
-    },
-    {
-      "uid": "hall-pot-11",
-      "type": "POT",
-      "col": 50,
-      "row": 48
-    },
-    {
-      "uid": "hall-pot-12",
-      "type": "POT",
-      "col": 40,
-      "row": 56
     }
   ],
   "tileColors": [
