@@ -12,9 +12,6 @@ import {
   sendExistingAgents,
   sendLayout,
 } from './agentManager.js';
-import type { HulyPerson } from './hulyClient.js';
-import { getHulyConfig, startHulyPolling, stopHulyPolling } from './hulyClient.js';
-import { buildSeatMap, generateLayout } from './layoutGenerator.js';
 import type { LoadedAssets } from './assetLoader.js';
 import {
   loadCharacterSprites,
@@ -34,7 +31,6 @@ import {
   GLOBAL_KEY_LAST_SEEN_VERSION,
   GLOBAL_KEY_SOUND_ENABLED,
   GLOBAL_KEY_WATCH_ALL_SESSIONS,
-  HULY_AGENT_ID_OFFSET,
   LAYOUT_REVISION_KEY,
   WORKSPACE_KEY_AGENT_SEATS,
 } from './constants.js';
@@ -74,11 +70,6 @@ export class PixelAgentsViewProvider implements vscode.WebviewViewProvider {
   // Global session scanning (opt-in "Watch All Sessions" toggle)
   watchAllSessions = { current: false };
   globalDismissedFiles = new Set<string>();
-
-  // Huly integration
-  /** Maps Huly person string ID to numeric agent ID */
-  hulyPersonIdMap = new Map<string, number>();
-  hulyNextId = HULY_AGENT_ID_OFFSET;
 
   // Bundled default layout (loaded from assets/default-layout.json)
   defaultLayout: Record<string, unknown> | null = null;
@@ -413,8 +404,8 @@ export class PixelAgentsViewProvider implements vscode.WebviewViewProvider {
             console.log('[Extension] Sending saved layout');
             sendLayout(this.context, this.webview, this.defaultLayout);
             this.startLayoutWatcher();
-            // Start Huly integration (live DB polling)
-            this.startHulyIntegration();
+            // Load pre-generated layout + persons from assets
+            this.loadGeneratedData();
           }
         })();
         sendExistingAgents(this.agents, this.context, this.webview);
@@ -621,112 +612,54 @@ export class PixelAgentsViewProvider implements vscode.WebviewViewProvider {
     });
   }
 
-  private startHulyIntegration(): void {
-    const config = getHulyConfig();
-
-    console.log(`[Pixel Agents] Huly integration: connecting to ${config.host}:${config.port}`);
-
-    startHulyPolling(config, (persons) => {
-      console.log(`[Pixel Agents] Huly: loaded ${persons.length} persons`);
-      this.sendHulyPersonsToWebview(persons);
-    });
-  }
-
-  private sendHulyPersonsToWebview(persons: HulyPerson[]): void {
+  /** Load pre-generated layout + persons from assets (created by scripts/generate-layout.ts) */
+  private loadGeneratedData(): void {
     if (!this.webview) return;
 
-    // 1. Generate dynamic layout from project data and save to assets
-    const layout = generateLayout(persons);
-    console.log(`[Pixel Agents] Generated layout: ${layout.cols}x${layout.rows}, ${layout.furniture.length} furniture items`);
-
-    // Save generated layout to webview-ui/public/assets/ and dist/assets/
     const extensionPath = this.extensionUri.fsPath;
-    const candidates = [
-      path.join(extensionPath, 'webview-ui', 'public', 'assets', 'generated-layout.json'),
-      path.join(extensionPath, 'dist', 'assets', 'generated-layout.json'),
+    // Check dist/assets first (production), then webview-ui/public/assets (dev)
+    const assetDirs = [
+      path.join(extensionPath, 'dist', 'assets'),
+      path.join(extensionPath, 'webview-ui', 'public', 'assets'),
     ];
-    for (const filePath of candidates) {
-      try {
-        const dir = path.dirname(filePath);
-        if (fs.existsSync(dir)) {
-          fs.writeFileSync(filePath, JSON.stringify(layout, null, 2), 'utf-8');
-          console.log(`[Pixel Agents] Saved generated layout to ${filePath}`);
-        }
-      } catch (err) {
-        console.error(`[Pixel Agents] Failed to save layout to ${filePath}:`, err);
+
+    let layoutData: string | null = null;
+    let personsData: string | null = null;
+
+    for (const dir of assetDirs) {
+      if (!layoutData) {
+        try {
+          layoutData = fs.readFileSync(path.join(dir, 'generated-layout.json'), 'utf-8');
+          console.log(`[Pixel Agents] Loaded generated-layout.json from ${dir}`);
+        } catch { /* try next */ }
+      }
+      if (!personsData) {
+        try {
+          personsData = fs.readFileSync(path.join(dir, 'generated-persons.json'), 'utf-8');
+          console.log(`[Pixel Agents] Loaded generated-persons.json from ${dir}`);
+        } catch { /* try next */ }
       }
     }
 
-    this.webview.postMessage({ type: 'layoutLoaded', layout });
-
-    // 2. Build seat map so each person gets the correct seat UID
-    const seatMap = buildSeatMap(persons);
-
-    // 3. Map Huly person+project to stable numeric IDs and include seat info
-    const webviewPersons = persons.map((person) => {
-      const mapKey = `${person.id}:${person.project || 'Unassigned'}`;
-      let numericId = this.hulyPersonIdMap.get(mapKey);
-      if (numericId === undefined) {
-        numericId = this.hulyNextId++;
-        this.hulyPersonIdMap.set(mapKey, numericId);
-      }
-      const seatInfo = seatMap.get(mapKey);
-      return {
-        id: numericId,
-        name: person.name,
-        status: person.status,
-        currentTask: person.currentTask,
-        currentTaskStatus: person.currentTaskStatus,
-        activeTaskCount: person.activeTaskCount,
-        project: person.project,
-        seatUid: seatInfo?.seatUid ?? '',
-      };
-    });
-
-    // Save persons data to assets for browser mock (npm run dev)
-    const personsCandidates = [
-      path.join(extensionPath, 'webview-ui', 'public', 'assets', 'generated-persons.json'),
-      path.join(extensionPath, 'dist', 'assets', 'generated-persons.json'),
-    ];
-    for (const filePath of personsCandidates) {
-      try {
-        const dir = path.dirname(filePath);
-        if (fs.existsSync(dir)) {
-          fs.writeFileSync(filePath, JSON.stringify(webviewPersons, null, 2), 'utf-8');
-          console.log(`[Pixel Agents] Saved generated persons to ${filePath}`);
-        }
-      } catch (err) {
-        console.error(`[Pixel Agents] Failed to save persons to ${filePath}:`, err);
-      }
+    if (!layoutData || !personsData) {
+      console.log('[Pixel Agents] No generated layout/persons files found. Run: npx tsx scripts/generate-layout.ts');
+      return;
     }
 
-    this.webview.postMessage({
-      type: 'hulyPersons',
-      persons: webviewPersons,
-    });
-
-    // Clean up persisted Huly seat data when persons list changes
-    const agentMeta = this.context.workspaceState.get<
-      Record<string, { palette?: number; seatId?: string }>
-    >(WORKSPACE_KEY_AGENT_SEATS, {});
-    const activeHulyIds = new Set(webviewPersons.map((p) => String(p.id)));
-    let changed = false;
-    for (const key of Object.keys(agentMeta)) {
-      const numKey = Number(key);
-      if (numKey >= HULY_AGENT_ID_OFFSET && !activeHulyIds.has(key)) {
-        delete agentMeta[key];
-        changed = true;
-      }
-    }
-    if (changed) {
-      this.context.workspaceState.update(WORKSPACE_KEY_AGENT_SEATS, agentMeta);
+    try {
+      const layout = JSON.parse(layoutData);
+      const persons = JSON.parse(personsData);
+      console.log(`[Pixel Agents] Sending generated layout (${layout.cols}x${layout.rows}) + ${persons.length} persons`);
+      this.webview.postMessage({ type: 'layoutLoaded', layout });
+      this.webview.postMessage({ type: 'hulyPersons', persons });
+    } catch (err) {
+      console.error('[Pixel Agents] Failed to parse generated data:', err);
     }
   }
 
   dispose() {
     this.layoutWatcher?.dispose();
     this.layoutWatcher = null;
-    stopHulyPolling();
     for (const id of [...this.agents.keys()]) {
       removeAgent(
         id,

@@ -63,6 +63,8 @@
     "lint:fix": "eslint src --fix",
     "lint:webview": "cd webview-ui && npm run lint",
     "lint:webview:fix": "cd webview-ui && eslint . --fix",
+    "generate-layout": "tsx scripts/generate-layout.ts",
+    "generate-layout:watch": "tsx scripts/generate-layout.ts --watch",
     "import-tileset": "tsx scripts/import-tileset-cli.ts",
     "format": "prettier --write \"src/**/*.ts\" \"webview-ui/src/**/*.{ts,tsx,css}\" \"*.{js,mjs}\" \"webview-ui/*.{js,ts}\"",
     "format:check": "prettier --check \"src/**/*.ts\" \"webview-ui/src/**/*.{ts,tsx,css}\" \"*.{js,mjs}\" \"webview-ui/*.{js,ts}\"",
