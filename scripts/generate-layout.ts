@@ -150,14 +150,6 @@ function groupByProject(persons: HulyPerson[]): ProjectGroup[] {
   return Array.from(map.values()).sort((a, b) => a.project.localeCompare(b.project));
 }
 
-function computeRoomHeight(group: ProjectGroup): number {
-  const workingRows = Math.ceil(group.working.length / WORKSTATIONS_PER_ROW);
-  const idleRows = Math.ceil(group.idle.length / BENCHES_PER_ROW);
-  const workingHeight = workingRows * WORKSTATION_ROW_HEIGHT;
-  const idleHeight = idleRows > 0 ? 1 + idleRows * BENCH_ROW_HEIGHT : 0;
-  return WALL_ROWS + Math.max(workingHeight + idleHeight, 2) + PADDING;
-}
-
 /** Seeded random for deterministic decoration placement */
 function seededRandom(seed: number): () => number {
   let s = seed;
@@ -165,6 +157,62 @@ function seededRandom(seed: number): () => number {
     s = (s * 16807 + 0) % 2147483647;
     return (s - 1) / 2147483646;
   };
+}
+
+/** A room can contain one or more project groups merged together */
+interface Room {
+  groups: ProjectGroup[];
+  totalWorking: number;
+  totalIdle: number;
+}
+
+const ROOM_CAPACITY = 4; // max working people per normal room
+
+/** Merge small projects into shared rooms so space isn't wasted */
+function packIntoRooms(groups: ProjectGroup[]): Room[] {
+  const rooms: Room[] = [];
+  // Separate large projects (>= ROOM_CAPACITY/2 people) from small ones
+  const large: ProjectGroup[] = [];
+  const small: ProjectGroup[] = [];
+  for (const g of groups) {
+    const total = g.working.length + g.idle.length;
+    if (total >= Math.ceil(ROOM_CAPACITY / 2)) {
+      large.push(g);
+    } else {
+      small.push(g);
+    }
+  }
+
+  // Each large project gets its own room
+  for (const g of large) {
+    rooms.push({ groups: [g], totalWorking: g.working.length, totalIdle: g.idle.length });
+  }
+
+  // Pack small projects into shared rooms (bin packing)
+  let currentRoom: Room | null = null;
+  for (const g of small) {
+    const personCount = g.working.length + g.idle.length;
+    if (currentRoom && currentRoom.totalWorking + currentRoom.totalIdle + personCount <= ROOM_CAPACITY) {
+      // Fits in current room
+      currentRoom.groups.push(g);
+      currentRoom.totalWorking += g.working.length;
+      currentRoom.totalIdle += g.idle.length;
+    } else {
+      // Start a new room
+      currentRoom = { groups: [g], totalWorking: g.working.length, totalIdle: g.idle.length };
+      rooms.push(currentRoom);
+    }
+  }
+
+  return rooms;
+}
+
+function computeRoomHeightFromRoom(room: Room): number {
+  const workingRows = Math.ceil(room.totalWorking / WORKSTATIONS_PER_ROW);
+  const idleRows = Math.ceil(room.totalIdle / BENCHES_PER_ROW);
+  const workingHeight = workingRows * WORKSTATION_ROW_HEIGHT;
+  const idleHeight = idleRows > 0 ? 1 + idleRows * BENCH_ROW_HEIGHT : 0;
+  return WALL_ROWS + Math.max(workingHeight + idleHeight, 2) + PADDING;
 }
 
 function generate(persons: HulyPerson[]) {
@@ -177,10 +225,13 @@ function generate(persons: HulyPerson[]) {
     };
   }
 
+  // Pack small projects into shared rooms
+  const rooms = packIntoRooms(groups);
+
   // Grid arrangement
-  const gridCols = Math.ceil(Math.sqrt(groups.length));
-  const gridRows = Math.ceil(groups.length / gridCols);
-  const roomHeight = Math.max(ROOM_MIN_HEIGHT, ...groups.map((g) => computeRoomHeight(g)));
+  const gridCols = Math.ceil(Math.sqrt(rooms.length));
+  const gridRows = Math.ceil(rooms.length / gridCols);
+  const roomHeight = Math.max(ROOM_MIN_HEIGHT, ...rooms.map((r) => computeRoomHeightFromRoom(r)));
   const totalCols = gridCols * ROOM_WIDTH + (gridCols - 1) * VOID_GAP;
   const totalRows = gridRows * roomHeight + (gridRows - 1) * VOID_GAP;
 
@@ -209,15 +260,15 @@ function generate(persons: HulyPerson[]) {
   let nextId = HULY_AGENT_ID_OFFSET;
   const webviewPersons: any[] = [];
 
-  for (let gi = 0; gi < groups.length; gi++) {
-    const group = groups[gi];
-    const gc = gi % gridCols;
-    const gr = Math.floor(gi / gridCols);
+  for (let ri = 0; ri < rooms.length; ri++) {
+    const room = rooms[ri];
+    const gc = ri % gridCols;
+    const gr = Math.floor(ri / gridCols);
     const startCol = gc * (ROOM_WIDTH + VOID_GAP);
     const startRow = gr * (roomHeight + VOID_GAP);
-    const hue = ROOM_HUES[gi % ROOM_HUES.length];
+    const hue = ROOM_HUES[ri % ROOM_HUES.length];
     const floorColor = { h: hue, s: 25, b: 10, c: 0, colorize: true };
-    const rand = seededRandom(gi * 1000 + 42);
+    const rand = seededRandom(ri * 1000 + 42);
 
     // Track which tiles are occupied by furniture
     const occupied = new Set<string>();
@@ -249,28 +300,35 @@ function generate(persons: HulyPerson[]) {
       }
     }
 
-    // ── Place workstations ──
+    // ── Place workstations and benches for all groups in this room ──
+    // Collect all working and idle persons across merged groups
+    const allWorking: { person: HulyPerson; project: string }[] = [];
+    const allIdle: { person: HulyPerson; project: string }[] = [];
+    for (const group of room.groups) {
+      for (const p of group.working) allWorking.push({ person: p, project: group.project });
+      for (const p of group.idle) allIdle.push({ person: p, project: group.project });
+    }
+
+    // Place workstations
     let personIdx = 0;
-    const workingRowCount = Math.ceil(group.working.length / WORKSTATIONS_PER_ROW);
+    const workingRowCount = Math.ceil(allWorking.length / WORKSTATIONS_PER_ROW);
     for (let wr = 0; wr < workingRowCount; wr++) {
       const tileRow = startRow + WALL_ROWS + wr * WORKSTATION_ROW_HEIGHT;
-      for (let ws = 0; ws < WORKSTATIONS_PER_ROW && personIdx < group.working.length; ws++) {
+      for (let ws = 0; ws < WORKSTATIONS_PER_ROW && personIdx < allWorking.length; ws++) {
         const baseCol = startCol + PADDING + ws * WORKSTATION_WIDTH;
         const chairUid = nextUid('ch');
         furniture.push({ uid: chairUid, type: 'WOODEN_CHAIR_SIDE', col: baseCol, row: tileRow });
         furniture.push({ uid: nextUid('dk'), type: 'DESK_FRONT', col: baseCol + 1, row: tileRow });
         furniture.push({ uid: nextUid('pc'), type: 'PC_FRONT_OFF', col: baseCol + 1, row: tileRow });
-        markOccupied(baseCol, tileRow, 1, 2);    // chair
-        markOccupied(baseCol + 1, tileRow, 3, 2); // desk
+        markOccupied(baseCol, tileRow, 1, 2);
+        markOccupied(baseCol + 1, tileRow, 3, 2);
 
-        // Randomly add a coffee on the desk
         if (rand() < 0.4) {
-          const coffeeCol = baseCol + 3; // right side of desk
-          furniture.push({ uid: nextUid('dc'), type: 'COFFEE', col: coffeeCol, row: tileRow });
+          furniture.push({ uid: nextUid('dc'), type: 'COFFEE', col: baseCol + 3, row: tileRow });
         }
 
-        const person = group.working[personIdx];
-        const mapKey = `${person.id}:${group.project}`;
+        const { person, project } = allWorking[personIdx];
+        const mapKey = `${person.id}:${project}`;
         let numericId = personIdMap.get(mapKey);
         if (numericId === undefined) {
           numericId = nextId++;
@@ -285,21 +343,21 @@ function generate(persons: HulyPerson[]) {
       }
     }
 
-    // ── Place benches for idle ──
-    if (group.idle.length > 0) {
+    // Place benches for idle
+    if (allIdle.length > 0) {
       const benchStartRow = startRow + WALL_ROWS + workingRowCount * WORKSTATION_ROW_HEIGHT + (workingRowCount > 0 ? 1 : 0);
       let idleIdx = 0;
-      const idleRowCount = Math.ceil(group.idle.length / BENCHES_PER_ROW);
+      const idleRowCount = Math.ceil(allIdle.length / BENCHES_PER_ROW);
       for (let br = 0; br < idleRowCount; br++) {
         const tileRow = benchStartRow + br * BENCH_ROW_HEIGHT;
-        for (let bi = 0; bi < BENCHES_PER_ROW && idleIdx < group.idle.length; bi++) {
+        for (let bi = 0; bi < BENCHES_PER_ROW && idleIdx < allIdle.length; bi++) {
           const col = startCol + PADDING + bi * BENCH_SPACING;
           const benchUid = nextUid('bn');
           furniture.push({ uid: benchUid, type: 'CUSHIONED_BENCH', col, row: tileRow });
           markOccupied(col, tileRow, 1, 1);
 
-          const person = group.idle[idleIdx];
-          const mapKey = `${person.id}:${group.project}`;
+          const { person, project } = allIdle[idleIdx];
+          const mapKey = `${person.id}:${project}`;
           let numericId = personIdMap.get(mapKey);
           if (numericId === undefined) {
             numericId = nextId++;
@@ -316,29 +374,24 @@ function generate(persons: HulyPerson[]) {
     }
 
     // ── Wall decorations ──
-    // Place 1-2 wall items on the wall row (row 0 of room)
-    const wallRow = startRow; // wall row = row 0
+    const wallRow = startRow;
     let wallCol = startCol + PADDING;
-    const numWallDecor = 1 + Math.floor(rand() * 2); // 1 or 2
+    const numWallDecor = 1 + Math.floor(rand() * 2);
     for (let wd = 0; wd < numWallDecor && wallCol < startCol + ROOM_WIDTH - PADDING - 1; wd++) {
       const item = WALL_DECOR[Math.floor(rand() * WALL_DECOR.length)];
-      // Wall items go on the wall row; they can have negative row for items taller than 1
       furniture.push({ uid: nextUid('wd'), type: item, col: wallCol, row: wallRow });
-      // Advance past this item (assume width 2 for most wall items)
       wallCol += 3;
     }
 
     // ── Floor corner plants ──
-    // Try to place a plant in bottom-right corner of the room
-    const bottomRow = startRow + roomHeight - 2; // 1 row up from bottom padding
+    const bottomRow = startRow + roomHeight - 2;
     const rightCol = startCol + ROOM_WIDTH - PADDING - 1;
     if (!isOccupied(rightCol, bottomRow, 1, 1)) {
-      const plantType = FLOOR_DECOR[Math.floor(rand() * 3)]; // PLANT, PLANT_2, or CACTUS
+      const plantType = FLOOR_DECOR[Math.floor(rand() * 3)];
       furniture.push({ uid: nextUid('fd'), type: plantType, col: rightCol, row: bottomRow });
       markOccupied(rightCol, bottomRow, 1, 2);
     }
 
-    // Try a bin or pot near the door area (bottom-left)
     const blCol = startCol + PADDING;
     const blRow = startRow + roomHeight - PADDING - 1;
     if (!isOccupied(blCol, blRow, 1, 1)) {
