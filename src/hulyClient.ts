@@ -11,6 +11,7 @@ export interface HulyPerson {
   currentTask: string | null;
   currentTaskStatus: string | null;
   status: 'busy' | 'idle';
+  project: string | null;
 }
 
 export interface HulyDbConfig {
@@ -64,7 +65,8 @@ const HULY_PERSONS_QUERY = `
         END,
         (t.data->>'priority')::int DESC
     ))[1] as current_task_status,
-    BOOL_OR(t.data->>'status' = 'tracker:status:InProgress') as is_working
+    BOOL_OR(t.data->>'status' = 'tracker:status:InProgress') as is_working,
+    s.data->>'identifier' as project_identifier
   FROM space s
   JOIN task t ON t.space = s._id
   JOIN contact c ON t.data->>'assignee' = c._id
@@ -77,7 +79,7 @@ const HULY_PERSONS_QUERY = `
       'tracker:status:Backlog',
       'tracker:status:UnderReview'
     )
-  GROUP BY t.data->>'assignee', c.data->>'name'
+  GROUP BY t.data->>'assignee', c.data->>'name', s.data->>'identifier'
   ORDER BY c.data->>'name'
 `;
 
@@ -115,6 +117,7 @@ export async function fetchHulyPersons(config: HulyDbConfig): Promise<HulyPerson
       currentTask: row.current_task ?? null,
       currentTaskStatus: row.current_task_status ?? null,
       status: row.is_working ? 'busy' : 'idle',
+      project: row.project_identifier ?? null,
     }));
   } catch (err) {
     console.error('[Huly] DB query failed:', err);

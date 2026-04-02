@@ -186,7 +186,7 @@ export function useExtensionMessages(
           setStaticAgentsTick((n) => n + 1);
         }
       } else if (msg.type === 'hulyPersons') {
-        // Live DB-sourced characters: map to static character format
+        // Live DB-sourced characters with seat assignments from dynamic layout
         const persons = msg.persons as Array<{
           id: number;
           name: string;
@@ -194,17 +194,19 @@ export function useExtensionMessages(
           currentTask: string | null;
           currentTaskStatus: string | null;
           activeTaskCount: number;
+          project: string | null;
+          seatUid: string;
         }>;
         // Build tasks array from currentTask info for display
         const mapped = persons.map((p) => ({
           id: p.id,
           name: p.name,
-          seatUid: '', // let addStaticCharacter pick a free seat
+          seatUid: p.seatUid || '',
           isWorking: p.status === 'busy',
           tasks: p.currentTask
             ? [{ title: p.currentTask, identifier: '', status: p.currentTaskStatus || '', priority: 0 }]
             : [],
-          project: '',
+          project: p.project || '',
         }));
         if (!layoutReadyRef.current) {
           pendingStaticAgents = mapped;

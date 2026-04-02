@@ -14,6 +14,7 @@ import {
 } from './agentManager.js';
 import type { HulyPerson } from './hulyClient.js';
 import { getHulyConfig, startHulyPolling, stopHulyPolling } from './hulyClient.js';
+import { buildSeatMap, generateLayout } from './layoutGenerator.js';
 import type { LoadedAssets } from './assetLoader.js';
 import {
   loadCharacterSprites,
@@ -634,13 +635,42 @@ export class PixelAgentsViewProvider implements vscode.WebviewViewProvider {
   private sendHulyPersonsToWebview(persons: HulyPerson[]): void {
     if (!this.webview) return;
 
-    // Map Huly person string IDs to stable numeric IDs
+    // 1. Generate dynamic layout from project data and save to assets
+    const layout = generateLayout(persons);
+    console.log(`[Pixel Agents] Generated layout: ${layout.cols}x${layout.rows}, ${layout.furniture.length} furniture items`);
+
+    // Save generated layout to webview-ui/public/assets/ and dist/assets/
+    const extensionPath = this.extensionUri.fsPath;
+    const candidates = [
+      path.join(extensionPath, 'webview-ui', 'public', 'assets', 'generated-layout.json'),
+      path.join(extensionPath, 'dist', 'assets', 'generated-layout.json'),
+    ];
+    for (const filePath of candidates) {
+      try {
+        const dir = path.dirname(filePath);
+        if (fs.existsSync(dir)) {
+          fs.writeFileSync(filePath, JSON.stringify(layout, null, 2), 'utf-8');
+          console.log(`[Pixel Agents] Saved generated layout to ${filePath}`);
+        }
+      } catch (err) {
+        console.error(`[Pixel Agents] Failed to save layout to ${filePath}:`, err);
+      }
+    }
+
+    this.webview.postMessage({ type: 'layoutLoaded', layout });
+
+    // 2. Build seat map so each person gets the correct seat UID
+    const seatMap = buildSeatMap(persons);
+
+    // 3. Map Huly person+project to stable numeric IDs and include seat info
     const webviewPersons = persons.map((person) => {
-      let numericId = this.hulyPersonIdMap.get(person.id);
+      const mapKey = `${person.id}:${person.project || 'Unassigned'}`;
+      let numericId = this.hulyPersonIdMap.get(mapKey);
       if (numericId === undefined) {
         numericId = this.hulyNextId++;
-        this.hulyPersonIdMap.set(person.id, numericId);
+        this.hulyPersonIdMap.set(mapKey, numericId);
       }
+      const seatInfo = seatMap.get(mapKey);
       return {
         id: numericId,
         name: person.name,
@@ -648,6 +678,8 @@ export class PixelAgentsViewProvider implements vscode.WebviewViewProvider {
         currentTask: person.currentTask,
         currentTaskStatus: person.currentTaskStatus,
         activeTaskCount: person.activeTaskCount,
+        project: person.project,
+        seatUid: seatInfo?.seatUid ?? '',
       };
     });
 
