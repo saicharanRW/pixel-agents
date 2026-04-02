@@ -12,6 +12,8 @@ import {
   sendExistingAgents,
   sendLayout,
 } from './agentManager.js';
+import type { HulyPerson } from './hulyClient.js';
+import { getHulyConfig, startHulyPolling, stopHulyPolling } from './hulyClient.js';
 import type { LoadedAssets } from './assetLoader.js';
 import {
   loadCharacterSprites,
@@ -31,6 +33,7 @@ import {
   GLOBAL_KEY_LAST_SEEN_VERSION,
   GLOBAL_KEY_SOUND_ENABLED,
   GLOBAL_KEY_WATCH_ALL_SESSIONS,
+  HULY_AGENT_ID_OFFSET,
   LAYOUT_REVISION_KEY,
   WORKSPACE_KEY_AGENT_SEATS,
 } from './constants.js';
@@ -70,6 +73,11 @@ export class PixelAgentsViewProvider implements vscode.WebviewViewProvider {
   // Global session scanning (opt-in "Watch All Sessions" toggle)
   watchAllSessions = { current: false };
   globalDismissedFiles = new Set<string>();
+
+  // Huly integration
+  /** Maps Huly person string ID to numeric agent ID */
+  hulyPersonIdMap = new Map<string, number>();
+  hulyNextId = HULY_AGENT_ID_OFFSET;
 
   // Bundled default layout (loaded from assets/default-layout.json)
   defaultLayout: Record<string, unknown> | null = null;
@@ -404,8 +412,8 @@ export class PixelAgentsViewProvider implements vscode.WebviewViewProvider {
             console.log('[Extension] Sending saved layout');
             sendLayout(this.context, this.webview, this.defaultLayout);
             this.startLayoutWatcher();
-            // Send static agents from seat-assignments.json (database-sourced people)
-            this.sendStaticAgents();
+            // Start Huly integration (live DB polling)
+            this.startHulyIntegration();
           }
         })();
         sendExistingAgents(this.agents, this.context, this.webview);
@@ -612,87 +620,64 @@ export class PixelAgentsViewProvider implements vscode.WebviewViewProvider {
     });
   }
 
-  /** Read seat-assignments.json and send static characters to the webview */
-  private sendStaticAgents(): void {
+  private startHulyIntegration(): void {
+    const config = getHulyConfig();
+
+    console.log(`[Pixel Agents] Huly integration: connecting to ${config.host}:${config.port}`);
+
+    startHulyPolling(config, (persons) => {
+      console.log(`[Pixel Agents] Huly: loaded ${persons.length} persons`);
+      this.sendHulyPersonsToWebview(persons);
+    });
+  }
+
+  private sendHulyPersonsToWebview(persons: HulyPerson[]): void {
     if (!this.webview) return;
-    // Look for seat-assignments.json in assets
-    const candidates: string[] = [];
-    if (this.assetsRoot) {
-      candidates.push(path.join(this.assetsRoot, 'assets', 'seat-assignments.json'));
-    }
-    const workspaceRoot = vscode.workspace.workspaceFolders?.[0]?.uri.fsPath;
-    if (workspaceRoot) {
-      candidates.push(
-        path.join(workspaceRoot, 'pixel-agents', 'webview-ui', 'public', 'assets', 'seat-assignments.json'),
-      );
-    }
 
-    let data: string | null = null;
-    for (const p of candidates) {
-      try {
-        data = fs.readFileSync(p, 'utf-8');
-        console.log(`[Extension] Loaded seat-assignments from ${p}`);
-        break;
-      } catch {
-        /* try next */
+    // Map Huly person string IDs to stable numeric IDs
+    const webviewPersons = persons.map((person) => {
+      let numericId = this.hulyPersonIdMap.get(person.id);
+      if (numericId === undefined) {
+        numericId = this.hulyNextId++;
+        this.hulyPersonIdMap.set(person.id, numericId);
       }
-    }
-    if (!data) {
-      console.log('[Extension] No seat-assignments.json found');
-      return;
-    }
-
-    try {
-      interface TaskInfo {
-        title: string;
-        identifier: string;
-        status: string;
-        priority: number;
-      }
-      const assignments = JSON.parse(data) as {
-        working: Array<{ id: string; name: string; seat: { furnitureUid: string }; tasks?: TaskInfo[]; project?: string }>;
-        idle: Array<{ id: string; name: string; seat: { furnitureUid: string }; tasks?: TaskInfo[]; project?: string }>;
+      return {
+        id: numericId,
+        name: person.name,
+        status: person.status,
+        currentTask: person.currentTask,
+        currentTaskStatus: person.currentTaskStatus,
+        activeTaskCount: person.activeTaskCount,
       };
-      const agents: Array<{
-        id: number;
-        name: string;
-        seatUid: string;
-        isWorking: boolean;
-        tasks: TaskInfo[];
-        project: string;
-      }> = [];
-      // Use large IDs (1000+) to avoid collision with real agent IDs
-      let nextId = 1000;
-      for (const person of assignments.working) {
-        agents.push({
-          id: nextId++,
-          name: person.name,
-          seatUid: person.seat.furnitureUid,
-          isWorking: true,
-          tasks: person.tasks || [],
-          project: person.project || '',
-        });
+    });
+
+    this.webview.postMessage({
+      type: 'hulyPersons',
+      persons: webviewPersons,
+    });
+
+    // Clean up persisted Huly seat data when persons list changes
+    const agentMeta = this.context.workspaceState.get<
+      Record<string, { palette?: number; seatId?: string }>
+    >(WORKSPACE_KEY_AGENT_SEATS, {});
+    const activeHulyIds = new Set(webviewPersons.map((p) => String(p.id)));
+    let changed = false;
+    for (const key of Object.keys(agentMeta)) {
+      const numKey = Number(key);
+      if (numKey >= HULY_AGENT_ID_OFFSET && !activeHulyIds.has(key)) {
+        delete agentMeta[key];
+        changed = true;
       }
-      for (const person of assignments.idle) {
-        agents.push({
-          id: nextId++,
-          name: person.name,
-          seatUid: person.seat.furnitureUid,
-          isWorking: false,
-          tasks: person.tasks || [],
-          project: person.project || '',
-        });
-      }
-      console.log(`[Extension] Sending ${agents.length} static agents to webview`);
-      this.webview.postMessage({ type: 'staticAgentsLoaded', agents });
-    } catch (err) {
-      console.error('[Extension] Error parsing seat-assignments.json:', err);
+    }
+    if (changed) {
+      this.context.workspaceState.update(WORKSPACE_KEY_AGENT_SEATS, agentMeta);
     }
   }
 
   dispose() {
     this.layoutWatcher?.dispose();
     this.layoutWatcher = null;
+    stopHulyPolling();
     for (const id of [...this.agents.keys()]) {
       removeAgent(
         id,

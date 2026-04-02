@@ -49,5 +49,9 @@ export const COMMAND_SHOW_PANEL = 'pixel-agents.showPanel';
 export const COMMAND_EXPORT_DEFAULT_LAYOUT = 'pixel-agents.exportDefaultLayout';
 export const WORKSPACE_KEY_AGENTS = 'pixel-agents.agents';
 export const WORKSPACE_KEY_AGENT_SEATS = 'pixel-agents.agentSeats';
+
+// ── Huly Integration ────────────────────────────────────────
+export const HULY_POLL_INTERVAL_MS = 600_000; // 10 minutes
+export const HULY_AGENT_ID_OFFSET = 10_000;
 export const WORKSPACE_KEY_LAYOUT = 'pixel-agents.layout';
 export const TERMINAL_NAME_PREFIX = 'Claude Code';

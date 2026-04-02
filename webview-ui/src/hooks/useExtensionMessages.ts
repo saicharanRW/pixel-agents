@@ -185,6 +185,37 @@ export function useExtensionMessages(
           os.computeRoomBounds();
           setStaticAgentsTick((n) => n + 1);
         }
+      } else if (msg.type === 'hulyPersons') {
+        // Live DB-sourced characters: map to static character format
+        const persons = msg.persons as Array<{
+          id: number;
+          name: string;
+          status: 'busy' | 'idle';
+          currentTask: string | null;
+          currentTaskStatus: string | null;
+          activeTaskCount: number;
+        }>;
+        // Build tasks array from currentTask info for display
+        const mapped = persons.map((p) => ({
+          id: p.id,
+          name: p.name,
+          seatUid: '', // let addStaticCharacter pick a free seat
+          isWorking: p.status === 'busy',
+          tasks: p.currentTask
+            ? [{ title: p.currentTask, identifier: '', status: p.currentTaskStatus || '', priority: 0 }]
+            : [],
+          project: '',
+        }));
+        if (!layoutReadyRef.current) {
+          pendingStaticAgents = mapped;
+        } else {
+          os.clearStaticCharacters();
+          for (const agent of mapped) {
+            os.addStaticCharacter(agent.id, agent.seatUid, agent.name, agent.isWorking, true, agent.tasks, agent.project);
+          }
+          os.computeRoomBounds();
+          setStaticAgentsTick((n) => n + 1);
+        }
       } else if (msg.type === 'agentCreated') {
         const id = msg.id as number;
         const folderName = msg.folderName as string | undefined;

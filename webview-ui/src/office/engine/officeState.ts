@@ -340,13 +340,19 @@ export class OfficeState {
 
     const { palette, hueShift } = this.pickDiversePalette();
 
-    const seat = this.seats.get(seatUid);
+    // Try the requested seat first, then find any free seat
+    let resolvedSeatUid = seatUid;
+    let seat = this.seats.get(resolvedSeatUid);
+    if (!seat || seat.assigned) {
+      resolvedSeatUid = this.findFreeSeat() || '';
+      seat = resolvedSeatUid ? this.seats.get(resolvedSeatUid) : undefined;
+    }
     let ch: Character;
     if (seat && !seat.assigned) {
       seat.assigned = true;
-      ch = createCharacter(id, palette, seatUid, seat, hueShift);
+      ch = createCharacter(id, palette, resolvedSeatUid, seat, hueShift);
     } else {
-      // Seat not found or taken — spawn at random walkable tile
+      // No seats available — spawn at random walkable tile
       const spawn =
         this.walkableTiles.length > 0
           ? this.walkableTiles[Math.floor(Math.random() * this.walkableTiles.length)]

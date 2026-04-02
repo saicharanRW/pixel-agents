@@ -166,3 +166,4 @@ export function DetailPanel({ officeState, onClose }: DetailPanelProps) {
     </div>
   );
 }
+
