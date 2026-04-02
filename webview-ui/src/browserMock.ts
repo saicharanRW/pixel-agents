@@ -26,6 +26,15 @@ import type {
   CharacterDirectionSprites,
 } from '../../shared/assets/types.ts';
 
+interface StaticAgent {
+  id: number;
+  name: string;
+  seatUid: string;
+  isWorking: boolean;
+  tasks: Array<{ title: string; identifier: string; status: string; priority: number }>;
+  project: string;
+}
+
 interface MockPayload {
   characters: CharacterDirectionSprites[];
   floorSprites: string[][][];
@@ -33,6 +42,7 @@ interface MockPayload {
   furnitureCatalog: CatalogEntry[];
   furnitureSprites: Record<string, string[][]>;
   layout: unknown;
+  staticAgents: StaticAgent[];
 }
 
 // ── Module-level state ─────────────────────────────────────────────────────────
@@ -229,6 +239,22 @@ export async function initBrowserMock(): Promise<void> {
     ? await fetch(`${base}assets/${assetIndex.defaultLayout}`).then((r) => r.json())
     : null;
 
+  // Load seat-assignments.json and transform to static agents (same logic as extension)
+  const staticAgents: StaticAgent[] = [];
+  const seatAssignments = await fetchJsonOptional<{
+    working: Array<{ name: string; seat: { furnitureUid: string }; tasks?: Array<{ title: string; identifier: string; status: string; priority: number }>; project?: string }>;
+    idle: Array<{ name: string; seat: { furnitureUid: string }; tasks?: Array<{ title: string; identifier: string; status: string; priority: number }>; project?: string }>;
+  }>(`${base}assets/seat-assignments.json`);
+  if (seatAssignments) {
+    let nextId = 1000;
+    for (const person of seatAssignments.working) {
+      staticAgents.push({ id: nextId++, name: person.name, seatUid: person.seat.furnitureUid, isWorking: true, tasks: person.tasks || [], project: person.project || '' });
+    }
+    for (const person of seatAssignments.idle) {
+      staticAgents.push({ id: nextId++, name: person.name, seatUid: person.seat.furnitureUid, isWorking: false, tasks: person.tasks || [], project: person.project || '' });
+    }
+  }
+
   mockPayload = {
     characters,
     floorSprites,
@@ -236,6 +262,7 @@ export async function initBrowserMock(): Promise<void> {
     furnitureCatalog: catalog,
     furnitureSprites,
     layout,
+    staticAgents,
   };
 
   console.log(
@@ -250,7 +277,7 @@ export async function initBrowserMock(): Promise<void> {
 export function dispatchMockMessages(): void {
   if (!mockPayload) return;
 
-  const { characters, floorSprites, wallSets, furnitureCatalog, furnitureSprites, layout } =
+  const { characters, floorSprites, wallSets, furnitureCatalog, furnitureSprites, layout, staticAgents } =
     mockPayload;
 
   function dispatch(data: unknown): void {
@@ -264,6 +291,9 @@ export function dispatchMockMessages(): void {
   dispatch({ type: 'wallTilesLoaded', sets: wallSets });
   dispatch({ type: 'furnitureAssetsLoaded', catalog: furnitureCatalog, sprites: furnitureSprites });
   dispatch({ type: 'layoutLoaded', layout });
+  if (staticAgents.length > 0) {
+    dispatch({ type: 'staticAgentsLoaded', agents: staticAgents });
+  }
   dispatch({
     type: 'settingsLoaded',
     soundEnabled: false,
