@@ -1,0 +1,6 @@
+{
+  "buildCommand": "npm install && cd webview-ui && npm install && cd .. && npx tsx scripts/generate-layout.ts && npm run build:webview",
+  "outputDirectory": "dist/webview",
+  "installCommand": "echo 'skip'",
+  "framework": null
+}

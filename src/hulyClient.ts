@@ -24,12 +24,12 @@ export interface HulyDbConfig {
 }
 
 const DEFAULT_DB_CONFIG: HulyDbConfig = {
-  host: 'huly-db-do-user-16457911-0.e.db.ondigitalocean.com',
-  port: 25060,
-  user: 'huly_readonly',
-  password: '+LU1oj1GnO3oSleg2MvTaNTmf5JN5J9T',
-  database: 'defaultdb',
-  ssl: true,
+  host: process.env.HULY_DB_HOST || '',
+  port: parseInt(process.env.HULY_DB_PORT || '25060', 10),
+  user: process.env.HULY_DB_USER || '',
+  password: process.env.HULY_DB_PASSWORD || '',
+  database: process.env.HULY_DB_NAME || 'defaultdb',
+  ssl: process.env.HULY_DB_SSL !== 'false',
 };
 
 let pollTimer: ReturnType<typeof setInterval> | null = null;

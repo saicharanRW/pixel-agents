@@ -99,6 +99,7 @@
     "webview-ui/**/*.{ts,tsx,js,css,json}": "prettier --write"
   },
   "dependencies": {
+    "dotenv": "^17.4.0",
     "pg": "^8.20.0"
   }
 }

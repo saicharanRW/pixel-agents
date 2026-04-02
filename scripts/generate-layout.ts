@@ -9,15 +9,16 @@
 import { Client } from 'pg';
 import * as fs from 'fs';
 import * as path from 'path';
+import 'dotenv/config';
 
-// ── DB Config ──
+// ── DB Config (from environment variables) ──
 const DB_CONFIG = {
-  host: 'huly-db-do-user-16457911-0.e.db.ondigitalocean.com',
-  port: 25060,
-  user: 'huly_readonly',
-  password: '+LU1oj1GnO3oSleg2MvTaNTmf5JN5J9T',
-  database: 'defaultdb',
-  ssl: { rejectUnauthorized: false },
+  host: process.env.HULY_DB_HOST || '',
+  port: parseInt(process.env.HULY_DB_PORT || '25060', 10),
+  user: process.env.HULY_DB_USER || '',
+  password: process.env.HULY_DB_PASSWORD || '',
+  database: process.env.HULY_DB_NAME || 'defaultdb',
+  ssl: process.env.HULY_DB_SSL !== 'false' ? { rejectUnauthorized: false } : false,
 };
 
 const POLL_INTERVAL_MS = 600_000; // 10 minutes
@@ -127,10 +128,6 @@ const FLOOR_DECOR = [
   'POT',       // 1x1
 ];
 
-// ── Desk surface items ──
-const SURFACE_DECOR = [
-  'COFFEE',    // 1x1
-];
 
 interface ProjectGroup {
   project: string;
