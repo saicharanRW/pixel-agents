@@ -1,422 +1,422 @@
 [
   {
     "id": 10000,
-    "name": "Kannan,Vengatesh",
-    "status": "busy",
-    "currentTask": "Integrate generative-ui lib with react sdk",
-    "currentTaskStatus": "In Progress",
-    "activeTaskCount": 3,
-    "project": "CHATE",
-    "seatUid": "ch-1"
-  },
-  {
-    "id": 10001,
-    "name": "Maini [Active],Raviesh",
-    "status": "busy",
-    "currentTask": "Mascot Integrated State as ACTIVE and other states",
-    "currentTaskStatus": "In Progress",
-    "activeTaskCount": 1,
-    "project": "CHATE",
-    "seatUid": "ch-5"
-  },
-  {
-    "id": 10002,
-    "name": "S,Nowfal",
-    "status": "idle",
-    "currentTask": "huly videos",
-    "currentTaskStatus": "Backlog",
-    "activeTaskCount": 0,
-    "project": "CHATE",
-    "seatUid": "bn-8"
-  },
-  {
-    "id": 10003,
-    "name": "Sundar,Kaushik",
-    "status": "idle",
-    "currentTask": "New Product Metrics",
-    "currentTaskStatus": "Backlog",
-    "activeTaskCount": 0,
-    "project": "CHATE",
-    "seatUid": "bn-9"
-  },
-  {
-    "id": 10004,
-    "name": "Ashwin,Joseph",
-    "status": "busy",
-    "currentTask": "Email News Letter",
-    "currentTaskStatus": "In Progress",
-    "activeTaskCount": 1,
-    "project": "DESIG",
-    "seatUid": "ch-13"
-  },
-  {
-    "id": 10005,
-    "name": "S,Nowfal",
-    "status": "busy",
-    "currentTask": "Chateleon UI",
-    "currentTaskStatus": "In Progress",
-    "activeTaskCount": 1,
-    "project": "DESIG",
-    "seatUid": "ch-17"
-  },
-  {
-    "id": 10006,
-    "name": "SAI CHARAN,GAJJELA",
-    "status": "busy",
-    "currentTask": "new component (file upload) in ui",
-    "currentTaskStatus": "In Progress",
-    "activeTaskCount": 1,
-    "project": "EMAIL",
-    "seatUid": "ch-24"
-  },
-  {
-    "id": 10007,
-    "name": "Singha,Sudip",
-    "status": "busy",
-    "currentTask": "New api for file uploding.",
-    "currentTaskStatus": "In Progress",
-    "activeTaskCount": 1,
-    "project": "EMAIL",
-    "seatUid": "ch-28"
-  },
-  {
-    "id": 10008,
-    "name": "Aathan RW",
-    "status": "idle",
-    "currentTask": "Design signature weapon for main character",
-    "currentTaskStatus": "Backlog",
-    "activeTaskCount": 0,
-    "project": "GAME",
-    "seatUid": "bn-35"
-  },
-  {
-    "id": 10009,
-    "name": "Priyatham Katta",
-    "status": "idle",
-    "currentTask": "Design signature weapon for main character",
-    "currentTaskStatus": "Backlog",
-    "activeTaskCount": 0,
-    "project": "GAME",
-    "seatUid": "bn-36"
-  },
-  {
-    "id": 10010,
-    "name": "Aathan RW",
-    "status": "idle",
-    "currentTask": "Welcome to Huly! 🌟",
-    "currentTaskStatus": "Todo",
-    "activeTaskCount": 0,
-    "project": "HULY",
-    "seatUid": "bn-40"
-  },
-  {
-    "id": 10011,
-    "name": "Priyatham Katta",
-    "status": "idle",
-    "currentTask": "Welcome to Huly! 🌟",
-    "currentTaskStatus": "Todo",
-    "activeTaskCount": 0,
-    "project": "HULY",
-    "seatUid": "bn-41"
-  },
-  {
-    "id": 10012,
-    "name": "G.K.V,Yazhini Devi",
-    "status": "busy",
-    "currentTask": "Mixpanel - Instance Analysis Report",
-    "currentTaskStatus": "In Progress",
-    "activeTaskCount": 3,
-    "project": "K_NDG",
-    "seatUid": "ch-44"
-  },
-  {
-    "id": 10013,
-    "name": "K,Amrin",
-    "status": "busy",
-    "currentTask": "Integrating Sentry with K-Nudge",
-    "currentTaskStatus": "In Progress",
-    "activeTaskCount": 3,
-    "project": "K_NDG",
-    "seatUid": "ch-48"
-  },
-  {
-    "id": 10014,
-    "name": "kumar,Praveen",
-    "status": "busy",
-    "currentTask": "UI inconsistency fixes",
-    "currentTaskStatus": "In Progress",
-    "activeTaskCount": 1,
-    "project": "K_NDG",
-    "seatUid": "ch-52"
-  },
-  {
-    "id": 10015,
-    "name": "M,Vaishnavi",
-    "status": "busy",
-    "currentTask": "Testing automation update",
-    "currentTaskStatus": "In Progress",
-    "activeTaskCount": 1,
-    "project": "K_NDG",
-    "seatUid": "ch-55"
-  },
-  {
-    "id": 10016,
-    "name": "sama,sai tejeshwar",
-    "status": "busy",
-    "currentTask": "Plan how to schedule nudges based on questions count",
-    "currentTaskStatus": "In Progress",
-    "activeTaskCount": 1,
-    "project": "K_NDG",
-    "seatUid": "ch-58"
-  },
-  {
-    "id": 10017,
-    "name": "S,Nowfal",
-    "status": "busy",
-    "currentTask": "Design Audit",
-    "currentTaskStatus": "In Progress",
-    "activeTaskCount": 1,
-    "project": "K_NDG",
-    "seatUid": "ch-62"
-  },
-  {
-    "id": 10018,
-    "name": "A,Abisek",
-    "status": "busy",
-    "currentTask": "Admin dashboards for global, women and seperate scout dashboard",
-    "currentTaskStatus": "In Progress",
-    "activeTaskCount": 1,
-    "project": "NUFC",
-    "seatUid": "ch-67"
-  },
-  {
-    "id": 10019,
-    "name": "A S,Hariharan",
-    "status": "busy",
-    "currentTask": "Cron Job Scripts for Report Extraction & Generation",
-    "currentTaskStatus": "In Progress",
-    "activeTaskCount": 1,
-    "project": "NUFC",
-    "seatUid": "ch-71"
-  },
-  {
-    "id": 10020,
-    "name": "Muthusamy,Ratish",
-    "status": "busy",
-    "currentTask": "Training model for Auto detection",
-    "currentTaskStatus": "In Progress",
-    "activeTaskCount": 1,
-    "project": "VISUA",
-    "seatUid": "ch-76"
-  },
-  {
-    "id": 10021,
-    "name": "peddisetty,jashwanth",
-    "status": "busy",
-    "currentTask": "Congestion point alerts",
-    "currentTaskStatus": "In Progress",
-    "activeTaskCount": 1,
-    "project": "VISUA",
-    "seatUid": "ch-80"
-  },
-  {
-    "id": 10022,
-    "name": "Katta,Priyatham",
-    "status": "busy",
-    "currentTask": "Twitter Follower Count Inconsistency",
-    "currentTaskStatus": "In Progress",
-    "activeTaskCount": 1,
-    "project": "WHITE",
-    "seatUid": "ch-88"
-  },
-  {
-    "id": 10023,
-    "name": "T,Ranjith",
-    "status": "busy",
-    "currentTask": "Integrate News API in the FE",
-    "currentTaskStatus": "In Progress",
-    "activeTaskCount": 2,
-    "project": "WHITE",
-    "seatUid": "ch-92"
-  },
-  {
-    "id": 10024,
-    "name": "V,Shankar",
-    "status": "busy",
-    "currentTask": "Modify DAGs to support multi-profile news scraping for competitors and add dynamic keywords to the search query",
-    "currentTaskStatus": "In Progress",
-    "activeTaskCount": 1,
-    "project": "WHITE",
-    "seatUid": "ch-95"
-  },
-  {
-    "id": 10025,
-    "name": "Kumbhar,Ganesh",
-    "status": "idle",
-    "currentTask": "Tiktok scraping for Namal",
-    "currentTaskStatus": "Backlog",
-    "activeTaskCount": 0,
-    "project": "WHITE",
-    "seatUid": "bn-98"
-  },
-  {
-    "id": 10026,
-    "name": "V,Shankar",
-    "status": "busy",
-    "currentTask": "Backend Issues",
-    "currentTaskStatus": "In Progress",
-    "activeTaskCount": 4,
-    "project": "ZC_BU",
-    "seatUid": "ch-102"
-  },
-  {
-    "id": 10027,
-    "name": "Katta,Priyatham",
-    "status": "idle",
-    "currentTask": "Test Huly Issue",
-    "currentTaskStatus": "Backlog",
-    "activeTaskCount": 0,
-    "project": "ZC_BU",
-    "seatUid": "bn-106"
-  },
-  {
-    "id": 10028,
-    "name": "S,Nowfal",
-    "status": "busy",
-    "currentTask": "Design for brochure",
-    "currentTaskStatus": "In Progress",
-    "activeTaskCount": 1,
-    "project": "BROC",
-    "seatUid": "ch-110"
-  },
-  {
-    "id": 10029,
-    "name": "Antony,Jarosh",
-    "status": "busy",
-    "currentTask": "clarifi: Update endpoints to use zzz",
-    "currentTaskStatus": "In Progress",
-    "activeTaskCount": 4,
-    "project": "CONDU",
-    "seatUid": "ch-114"
-  },
-  {
-    "id": 10030,
-    "name": "John,Deepu",
-    "status": "busy",
-    "currentTask": "Adding dassault logo and stylization",
-    "currentTaskStatus": "In Progress",
-    "activeTaskCount": 1,
-    "project": "DASSA",
-    "seatUid": "ch-117"
-  },
-  {
-    "id": 10031,
     "name": "Raj,Lakshya",
     "status": "idle",
     "currentTask": "Create Implementation plan for Unit Testing automation for Knowledge nudge",
     "currentTaskStatus": "Backlog",
     "activeTaskCount": 0,
     "project": "AITST",
-    "seatUid": "bn-120"
+    "seatUid": "bn-1"
   },
   {
-    "id": 10032,
-    "name": "Krishna Harshith",
+    "id": 10001,
+    "name": "S,Nowfal",
     "status": "busy",
-    "currentTask": "Collect shareable credentials for all cloud resources and subscription",
+    "currentTask": "Design for brochure",
     "currentTaskStatus": "In Progress",
     "activeTaskCount": 1,
-    "project": "HARSH",
-    "seatUid": "ch-125"
+    "project": "BROC",
+    "seatUid": "ch-5"
   },
   {
-    "id": 10033,
-    "name": ".,Chhavi",
+    "id": 10002,
+    "name": "Kannan,Vengatesh",
     "status": "busy",
-    "currentTask": "Enforce Huly Usage for Task Updates and Repository Linking",
+    "currentTask": "Integrate generative-ui lib with react sdk",
+    "currentTaskStatus": "In Progress",
+    "activeTaskCount": 3,
+    "project": "CHATE",
+    "seatUid": "ch-12"
+  },
+  {
+    "id": 10003,
+    "name": "Maini [Active],Raviesh",
+    "status": "busy",
+    "currentTask": "Mascot Integrated State as ACTIVE and other states",
     "currentTaskStatus": "In Progress",
     "activeTaskCount": 1,
-    "project": "HULY_",
-    "seatUid": "ch-129"
+    "project": "CHATE",
+    "seatUid": "ch-16"
   },
   {
-    "id": 10034,
+    "id": 10004,
+    "name": "S,Nowfal",
+    "status": "idle",
+    "currentTask": "huly videos",
+    "currentTaskStatus": "Backlog",
+    "activeTaskCount": 0,
+    "project": "CHATE",
+    "seatUid": "bn-19"
+  },
+  {
+    "id": 10005,
+    "name": "Sundar,Kaushik",
+    "status": "idle",
+    "currentTask": "New Product Metrics",
+    "currentTaskStatus": "Backlog",
+    "activeTaskCount": 0,
+    "project": "CHATE",
+    "seatUid": "bn-20"
+  },
+  {
+    "id": 10006,
+    "name": "Antony,Jarosh",
+    "status": "busy",
+    "currentTask": "clarifi: Update endpoints to use zzz",
+    "currentTaskStatus": "In Progress",
+    "activeTaskCount": 4,
+    "project": "CONDU",
+    "seatUid": "ch-25"
+  },
+  {
+    "id": 10007,
+    "name": "John,Deepu",
+    "status": "busy",
+    "currentTask": "Adding dassault logo and stylization",
+    "currentTaskStatus": "In Progress",
+    "activeTaskCount": 1,
+    "project": "DASSA",
+    "seatUid": "ch-31"
+  },
+  {
+    "id": 10008,
+    "name": "Ashwin,Joseph",
+    "status": "busy",
+    "currentTask": "Email News Letter",
+    "currentTaskStatus": "In Progress",
+    "activeTaskCount": 1,
+    "project": "DESIG",
+    "seatUid": "ch-39"
+  },
+  {
+    "id": 10009,
+    "name": "S,Nowfal",
+    "status": "busy",
+    "currentTask": "Chateleon UI",
+    "currentTaskStatus": "In Progress",
+    "activeTaskCount": 1,
+    "project": "DESIG",
+    "seatUid": "ch-43"
+  },
+  {
+    "id": 10010,
+    "name": "SAI CHARAN,GAJJELA",
+    "status": "busy",
+    "currentTask": "new component (file upload) in ui",
+    "currentTaskStatus": "In Progress",
+    "activeTaskCount": 1,
+    "project": "EMAIL",
+    "seatUid": "ch-51"
+  },
+  {
+    "id": 10011,
+    "name": "Singha,Sudip",
+    "status": "busy",
+    "currentTask": "New api for file uploding.",
+    "currentTaskStatus": "In Progress",
+    "activeTaskCount": 1,
+    "project": "EMAIL",
+    "seatUid": "ch-55"
+  },
+  {
+    "id": 10012,
     "name": "kumar,Praveen",
     "status": "idle",
     "currentTask": "Turn the Fortune Cookie input system into a demo walk through  like format for users to explore features",
     "currentTaskStatus": "Backlog",
     "activeTaskCount": 0,
     "project": "FC",
-    "seatUid": "bn-132"
+    "seatUid": "bn-60"
   },
   {
-    "id": 10035,
+    "id": 10013,
+    "name": "Aathan RW",
+    "status": "idle",
+    "currentTask": "Design signature weapon for main character",
+    "currentTaskStatus": "Backlog",
+    "activeTaskCount": 0,
+    "project": "GAME",
+    "seatUid": "bn-63"
+  },
+  {
+    "id": 10014,
+    "name": "Priyatham Katta",
+    "status": "idle",
+    "currentTask": "Design signature weapon for main character",
+    "currentTaskStatus": "Backlog",
+    "activeTaskCount": 0,
+    "project": "GAME",
+    "seatUid": "bn-64"
+  },
+  {
+    "id": 10015,
+    "name": "Krishna Harshith",
+    "status": "busy",
+    "currentTask": "Collect shareable credentials for all cloud resources and subscription",
+    "currentTaskStatus": "In Progress",
+    "activeTaskCount": 1,
+    "project": "HARSH",
+    "seatUid": "ch-68"
+  },
+  {
+    "id": 10016,
     "name": "Khan,Ashish",
     "status": "idle",
     "currentTask": "Sync microsoft teams calendar to huly's task planner",
     "currentTaskStatus": "Backlog",
     "activeTaskCount": 0,
     "project": "HULK_",
-    "seatUid": "bn-133"
+    "seatUid": "bn-75"
   },
   {
-    "id": 10036,
+    "id": 10017,
+    "name": "Aathan RW",
+    "status": "idle",
+    "currentTask": "Welcome to Huly! 🌟",
+    "currentTaskStatus": "Todo",
+    "activeTaskCount": 0,
+    "project": "HULY",
+    "seatUid": "bn-78"
+  },
+  {
+    "id": 10018,
+    "name": "Priyatham Katta",
+    "status": "idle",
+    "currentTask": "Welcome to Huly! 🌟",
+    "currentTaskStatus": "Todo",
+    "activeTaskCount": 0,
+    "project": "HULY",
+    "seatUid": "bn-79"
+  },
+  {
+    "id": 10019,
+    "name": ".,Chhavi",
+    "status": "busy",
+    "currentTask": "Enforce Huly Usage for Task Updates and Repository Linking",
+    "currentTaskStatus": "In Progress",
+    "activeTaskCount": 1,
+    "project": "HULY_",
+    "seatUid": "ch-83"
+  },
+  {
+    "id": 10020,
+    "name": "G.K.V,Yazhini Devi",
+    "status": "busy",
+    "currentTask": "Mixpanel - Instance Analysis Report",
+    "currentTaskStatus": "In Progress",
+    "activeTaskCount": 3,
+    "project": "K_NDG",
+    "seatUid": "ch-90"
+  },
+  {
+    "id": 10021,
+    "name": "K,Amrin",
+    "status": "busy",
+    "currentTask": "Integrating Sentry with K-Nudge",
+    "currentTaskStatus": "In Progress",
+    "activeTaskCount": 3,
+    "project": "K_NDG",
+    "seatUid": "ch-94"
+  },
+  {
+    "id": 10022,
+    "name": "kumar,Praveen",
+    "status": "busy",
+    "currentTask": "UI inconsistency fixes",
+    "currentTaskStatus": "In Progress",
+    "activeTaskCount": 1,
+    "project": "K_NDG",
+    "seatUid": "ch-97"
+  },
+  {
+    "id": 10023,
+    "name": "M,Vaishnavi",
+    "status": "busy",
+    "currentTask": "Testing automation update",
+    "currentTaskStatus": "In Progress",
+    "activeTaskCount": 1,
+    "project": "K_NDG",
+    "seatUid": "ch-100"
+  },
+  {
+    "id": 10024,
+    "name": "sama,sai tejeshwar",
+    "status": "busy",
+    "currentTask": "Plan how to schedule nudges based on questions count",
+    "currentTaskStatus": "In Progress",
+    "activeTaskCount": 1,
+    "project": "K_NDG",
+    "seatUid": "ch-103"
+  },
+  {
+    "id": 10025,
+    "name": "S,Nowfal",
+    "status": "busy",
+    "currentTask": "Design Audit",
+    "currentTaskStatus": "In Progress",
+    "activeTaskCount": 1,
+    "project": "K_NDG",
+    "seatUid": "ch-107"
+  },
+  {
+    "id": 10026,
+    "name": "A,Abisek",
+    "status": "busy",
+    "currentTask": "Admin dashboards for global, women and seperate scout dashboard",
+    "currentTaskStatus": "In Progress",
+    "activeTaskCount": 1,
+    "project": "NUFC",
+    "seatUid": "ch-113"
+  },
+  {
+    "id": 10027,
+    "name": "A S,Hariharan",
+    "status": "busy",
+    "currentTask": "Cron Job Scripts for Report Extraction & Generation",
+    "currentTaskStatus": "In Progress",
+    "activeTaskCount": 1,
+    "project": "NUFC",
+    "seatUid": "ch-117"
+  },
+  {
+    "id": 10028,
     "name": "Prasad,Nirmal",
     "status": "busy",
     "currentTask": "KN Document - Repository",
     "currentTaskStatus": "In Progress",
     "activeTaskCount": 1,
     "project": "PERSO",
-    "seatUid": "ch-136"
+    "seatUid": "ch-123"
   },
   {
-    "id": 10037,
+    "id": 10029,
     "name": "SAI CHARAN,GAJJELA",
     "status": "busy",
     "currentTask": "designing the rooms",
     "currentTaskStatus": "In Progress",
     "activeTaskCount": 3,
     "project": "PIXEL",
-    "seatUid": "ch-140"
+    "seatUid": "ch-130"
   },
   {
-    "id": 10038,
+    "id": 10030,
     "name": "Krishna Harshith",
     "status": "busy",
     "currentTask": "Issue with signup/login-mail service is being triggered",
     "currentTaskStatus": "In Progress",
     "activeTaskCount": 2,
     "project": "PROJE",
-    "seatUid": "ch-143"
+    "seatUid": "ch-136"
   },
   {
-    "id": 10039,
+    "id": 10031,
     "name": "RW,Aathan",
     "status": "busy",
     "currentTask": "Alignment Testing (enhancing step)",
     "currentTaskStatus": "In Progress",
     "activeTaskCount": 3,
     "project": "RWLAT",
-    "seatUid": "ch-146"
+    "seatUid": "ch-143"
   },
   {
-    "id": 10040,
-    "name": "Supriya,Dereddy",
-    "status": "busy",
-    "currentTask": "Admin Dashboard frontend and Integration",
-    "currentTaskStatus": "In Progress",
-    "activeTaskCount": 1,
-    "project": "SLPP_",
-    "seatUid": "ch-154"
-  },
-  {
-    "id": 10041,
+    "id": 10032,
     "name": "Raj,Lakshya",
     "status": "idle",
     "currentTask": "Migrate All Randomwalk domains to Cloudflare",
     "currentTaskStatus": "Backlog",
     "activeTaskCount": 0,
     "project": "RWSEC",
-    "seatUid": "bn-158"
+    "seatUid": "bn-150"
+  },
+  {
+    "id": 10033,
+    "name": "Supriya,Dereddy",
+    "status": "busy",
+    "currentTask": "Admin Dashboard frontend and Integration",
+    "currentTaskStatus": "In Progress",
+    "activeTaskCount": 1,
+    "project": "SLPP_",
+    "seatUid": "ch-153"
+  },
+  {
+    "id": 10034,
+    "name": "Muthusamy,Ratish",
+    "status": "busy",
+    "currentTask": "Training model for Auto detection",
+    "currentTaskStatus": "In Progress",
+    "activeTaskCount": 1,
+    "project": "VISUA",
+    "seatUid": "ch-159"
+  },
+  {
+    "id": 10035,
+    "name": "peddisetty,jashwanth",
+    "status": "busy",
+    "currentTask": "Congestion point alerts",
+    "currentTaskStatus": "In Progress",
+    "activeTaskCount": 1,
+    "project": "VISUA",
+    "seatUid": "ch-163"
+  },
+  {
+    "id": 10036,
+    "name": "Katta,Priyatham",
+    "status": "busy",
+    "currentTask": "Twitter Follower Count Inconsistency",
+    "currentTaskStatus": "In Progress",
+    "activeTaskCount": 1,
+    "project": "WHITE",
+    "seatUid": "ch-169"
+  },
+  {
+    "id": 10037,
+    "name": "T,Ranjith",
+    "status": "busy",
+    "currentTask": "Integrate News API in the FE",
+    "currentTaskStatus": "In Progress",
+    "activeTaskCount": 2,
+    "project": "WHITE",
+    "seatUid": "ch-173"
+  },
+  {
+    "id": 10038,
+    "name": "V,Shankar",
+    "status": "busy",
+    "currentTask": "Modify DAGs to support multi-profile news scraping for competitors and add dynamic keywords to the search query",
+    "currentTaskStatus": "In Progress",
+    "activeTaskCount": 1,
+    "project": "WHITE",
+    "seatUid": "ch-177"
+  },
+  {
+    "id": 10039,
+    "name": "Kumbhar,Ganesh",
+    "status": "idle",
+    "currentTask": "Tiktok scraping for Namal",
+    "currentTaskStatus": "Backlog",
+    "activeTaskCount": 0,
+    "project": "WHITE",
+    "seatUid": "bn-181"
+  },
+  {
+    "id": 10040,
+    "name": "V,Shankar",
+    "status": "busy",
+    "currentTask": "Backend Issues",
+    "currentTaskStatus": "In Progress",
+    "activeTaskCount": 4,
+    "project": "ZC_BU",
+    "seatUid": "ch-185"
+  },
+  {
+    "id": 10041,
+    "name": "Katta,Priyatham",
+    "status": "idle",
+    "currentTask": "Test Huly Issue",
+    "currentTaskStatus": "Backlog",
+    "activeTaskCount": 0,
+    "project": "ZC_BU",
+    "seatUid": "bn-189"
   }
 ]
