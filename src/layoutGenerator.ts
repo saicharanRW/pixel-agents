@@ -22,7 +22,7 @@ const WORKSTATION_ROW_HEIGHT = 2;
 const BENCH_SPACING = 2;
 const BENCH_ROW_HEIGHT = 2;
 const BENCHES_PER_ROW = 4;
-const VOID_GAP = 1;
+const VOID_GAP = 3; // visible gap between rooms
 const PADDING = 1;
 
 // Uniform room size — fits up to 6 working + 4 idle comfortably

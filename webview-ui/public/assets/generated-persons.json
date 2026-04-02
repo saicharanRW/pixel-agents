@@ -17,17 +17,17 @@
     "currentTaskStatus": "In Progress",
     "activeTaskCount": 1,
     "project": "BROC",
-    "seatUid": "ch-2"
+    "seatUid": "ch-5"
   },
   {
     "id": 10002,
     "name": "Kannan,Vengatesh",
     "status": "busy",
-    "currentTask": "Recommendation Agent for AcademyXi",
+    "currentTask": "Integrate generative-ui lib with react sdk",
     "currentTaskStatus": "In Progress",
     "activeTaskCount": 3,
     "project": "CHATE",
-    "seatUid": "ch-5"
+    "seatUid": "ch-12"
   },
   {
     "id": 10003,
@@ -37,27 +37,27 @@
     "currentTaskStatus": "In Progress",
     "activeTaskCount": 1,
     "project": "CHATE",
-    "seatUid": "ch-8"
+    "seatUid": "ch-16"
   },
   {
     "id": 10004,
     "name": "S,Nowfal",
     "status": "idle",
-    "currentTask": "UI design",
+    "currentTask": "huly videos",
     "currentTaskStatus": "Backlog",
     "activeTaskCount": 0,
     "project": "CHATE",
-    "seatUid": "bn-11"
+    "seatUid": "bn-19"
   },
   {
     "id": 10005,
     "name": "Sundar,Kaushik",
     "status": "idle",
-    "currentTask": "[BUG] Unable to add external links to the knowledge base",
+    "currentTask": "New Product Metrics",
     "currentTaskStatus": "Backlog",
     "activeTaskCount": 0,
     "project": "CHATE",
-    "seatUid": "bn-12"
+    "seatUid": "bn-20"
   },
   {
     "id": 10006,
@@ -67,7 +67,7 @@
     "currentTaskStatus": "In Progress",
     "activeTaskCount": 4,
     "project": "CONDU",
-    "seatUid": "ch-13"
+    "seatUid": "ch-25"
   },
   {
     "id": 10007,
@@ -77,7 +77,7 @@
     "currentTaskStatus": "In Progress",
     "activeTaskCount": 1,
     "project": "DASSA",
-    "seatUid": "ch-16"
+    "seatUid": "ch-31"
   },
   {
     "id": 10008,
@@ -87,7 +87,7 @@
     "currentTaskStatus": "In Progress",
     "activeTaskCount": 1,
     "project": "DESIG",
-    "seatUid": "ch-19"
+    "seatUid": "ch-39"
   },
   {
     "id": 10009,
@@ -97,7 +97,7 @@
     "currentTaskStatus": "In Progress",
     "activeTaskCount": 1,
     "project": "DESIG",
-    "seatUid": "ch-22"
+    "seatUid": "ch-43"
   },
   {
     "id": 10010,
@@ -107,7 +107,7 @@
     "currentTaskStatus": "In Progress",
     "activeTaskCount": 1,
     "project": "EMAIL",
-    "seatUid": "ch-25"
+    "seatUid": "ch-51"
   },
   {
     "id": 10011,
@@ -117,7 +117,7 @@
     "currentTaskStatus": "In Progress",
     "activeTaskCount": 1,
     "project": "EMAIL",
-    "seatUid": "ch-28"
+    "seatUid": "ch-55"
   },
   {
     "id": 10012,
@@ -127,7 +127,7 @@
     "currentTaskStatus": "Backlog",
     "activeTaskCount": 0,
     "project": "FC",
-    "seatUid": "bn-31"
+    "seatUid": "bn-60"
   },
   {
     "id": 10013,
@@ -137,17 +137,17 @@
     "currentTaskStatus": "Backlog",
     "activeTaskCount": 0,
     "project": "GAME",
-    "seatUid": "bn-32"
+    "seatUid": "bn-63"
   },
   {
     "id": 10014,
     "name": "Priyatham Katta",
     "status": "idle",
-    "currentTask": "Write backstory for main character",
+    "currentTask": "Design signature weapon for main character",
     "currentTaskStatus": "Backlog",
     "activeTaskCount": 0,
     "project": "GAME",
-    "seatUid": "bn-33"
+    "seatUid": "bn-64"
   },
   {
     "id": 10015,
@@ -157,7 +157,7 @@
     "currentTaskStatus": "In Progress",
     "activeTaskCount": 1,
     "project": "HARSH",
-    "seatUid": "ch-34"
+    "seatUid": "ch-68"
   },
   {
     "id": 10016,
@@ -167,7 +167,7 @@
     "currentTaskStatus": "Backlog",
     "activeTaskCount": 0,
     "project": "HULK_",
-    "seatUid": "bn-37"
+    "seatUid": "bn-75"
   },
   {
     "id": 10017,
@@ -177,7 +177,7 @@
     "currentTaskStatus": "Todo",
     "activeTaskCount": 0,
     "project": "HULY",
-    "seatUid": "bn-38"
+    "seatUid": "bn-78"
   },
   {
     "id": 10018,
@@ -187,7 +187,7 @@
     "currentTaskStatus": "Todo",
     "activeTaskCount": 0,
     "project": "HULY",
-    "seatUid": "bn-39"
+    "seatUid": "bn-79"
   },
   {
     "id": 10019,
@@ -197,7 +197,7 @@
     "currentTaskStatus": "In Progress",
     "activeTaskCount": 1,
     "project": "HULY_",
-    "seatUid": "ch-40"
+    "seatUid": "ch-83"
   },
   {
     "id": 10020,
@@ -207,17 +207,17 @@
     "currentTaskStatus": "In Progress",
     "activeTaskCount": 3,
     "project": "K_NDG",
-    "seatUid": "ch-43"
+    "seatUid": "ch-90"
   },
   {
     "id": 10021,
     "name": "K,Amrin",
     "status": "busy",
-    "currentTask": "Adding InstanceId to get user info",
+    "currentTask": "Integrating Sentry with K-Nudge",
     "currentTaskStatus": "In Progress",
     "activeTaskCount": 3,
     "project": "K_NDG",
-    "seatUid": "ch-46"
+    "seatUid": "ch-94"
   },
   {
     "id": 10022,
@@ -227,7 +227,7 @@
     "currentTaskStatus": "In Progress",
     "activeTaskCount": 1,
     "project": "K_NDG",
-    "seatUid": "ch-49"
+    "seatUid": "ch-97"
   },
   {
     "id": 10023,
@@ -237,7 +237,7 @@
     "currentTaskStatus": "In Progress",
     "activeTaskCount": 1,
     "project": "K_NDG",
-    "seatUid": "ch-52"
+    "seatUid": "ch-100"
   },
   {
     "id": 10024,
@@ -247,7 +247,7 @@
     "currentTaskStatus": "In Progress",
     "activeTaskCount": 1,
     "project": "K_NDG",
-    "seatUid": "ch-55"
+    "seatUid": "ch-103"
   },
   {
     "id": 10025,
@@ -257,7 +257,7 @@
     "currentTaskStatus": "In Progress",
     "activeTaskCount": 1,
     "project": "K_NDG",
-    "seatUid": "ch-58"
+    "seatUid": "ch-107"
   },
   {
     "id": 10026,
@@ -267,7 +267,7 @@
     "currentTaskStatus": "In Progress",
     "activeTaskCount": 1,
     "project": "NUFC",
-    "seatUid": "ch-61"
+    "seatUid": "ch-113"
   },
   {
     "id": 10027,
@@ -277,7 +277,7 @@
     "currentTaskStatus": "In Progress",
     "activeTaskCount": 1,
     "project": "NUFC",
-    "seatUid": "ch-64"
+    "seatUid": "ch-117"
   },
   {
     "id": 10028,
@@ -287,17 +287,17 @@
     "currentTaskStatus": "In Progress",
     "activeTaskCount": 1,
     "project": "PERSO",
-    "seatUid": "ch-67"
+    "seatUid": "ch-123"
   },
   {
     "id": 10029,
     "name": "SAI CHARAN,GAJJELA",
     "status": "busy",
-    "currentTask": "Working on the pixel-agents for huly",
+    "currentTask": "designing the rooms",
     "currentTaskStatus": "In Progress",
     "activeTaskCount": 3,
     "project": "PIXEL",
-    "seatUid": "ch-70"
+    "seatUid": "ch-130"
   },
   {
     "id": 10030,
@@ -307,17 +307,17 @@
     "currentTaskStatus": "In Progress",
     "activeTaskCount": 2,
     "project": "PROJE",
-    "seatUid": "ch-73"
+    "seatUid": "ch-136"
   },
   {
     "id": 10031,
     "name": "RW,Aathan",
     "status": "busy",
-    "currentTask": "Footer Signature",
+    "currentTask": "Alignment Testing (enhancing step)",
     "currentTaskStatus": "In Progress",
     "activeTaskCount": 3,
     "project": "RWLAT",
-    "seatUid": "ch-76"
+    "seatUid": "ch-143"
   },
   {
     "id": 10032,
@@ -327,7 +327,7 @@
     "currentTaskStatus": "Backlog",
     "activeTaskCount": 0,
     "project": "RWSEC",
-    "seatUid": "bn-79"
+    "seatUid": "bn-150"
   },
   {
     "id": 10033,
@@ -337,7 +337,7 @@
     "currentTaskStatus": "In Progress",
     "activeTaskCount": 1,
     "project": "SLPP_",
-    "seatUid": "ch-80"
+    "seatUid": "ch-153"
   },
   {
     "id": 10034,
@@ -347,7 +347,7 @@
     "currentTaskStatus": "In Progress",
     "activeTaskCount": 1,
     "project": "VISUA",
-    "seatUid": "ch-83"
+    "seatUid": "ch-159"
   },
   {
     "id": 10035,
@@ -357,7 +357,7 @@
     "currentTaskStatus": "In Progress",
     "activeTaskCount": 1,
     "project": "VISUA",
-    "seatUid": "ch-86"
+    "seatUid": "ch-163"
   },
   {
     "id": 10036,
@@ -367,7 +367,7 @@
     "currentTaskStatus": "In Progress",
     "activeTaskCount": 1,
     "project": "WHITE",
-    "seatUid": "ch-89"
+    "seatUid": "ch-169"
   },
   {
     "id": 10037,
@@ -377,7 +377,7 @@
     "currentTaskStatus": "In Progress",
     "activeTaskCount": 2,
     "project": "WHITE",
-    "seatUid": "ch-92"
+    "seatUid": "ch-173"
   },
   {
     "id": 10038,
@@ -387,7 +387,7 @@
     "currentTaskStatus": "In Progress",
     "activeTaskCount": 1,
     "project": "WHITE",
-    "seatUid": "ch-95"
+    "seatUid": "ch-177"
   },
   {
     "id": 10039,
@@ -397,7 +397,7 @@
     "currentTaskStatus": "Backlog",
     "activeTaskCount": 0,
     "project": "WHITE",
-    "seatUid": "bn-98"
+    "seatUid": "bn-181"
   },
   {
     "id": 10040,
@@ -407,7 +407,7 @@
     "currentTaskStatus": "In Progress",
     "activeTaskCount": 4,
     "project": "ZC_BU",
-    "seatUid": "ch-99"
+    "seatUid": "ch-185"
   },
   {
     "id": 10041,
@@ -417,6 +417,6 @@
     "currentTaskStatus": "Backlog",
     "activeTaskCount": 0,
     "project": "ZC_BU",
-    "seatUid": "bn-102"
+    "seatUid": "bn-189"
   }
 ]

@@ -84,24 +84,53 @@ interface HulyPerson {
   project: string | null;
 }
 
-// ── Layout Generator (inline to keep script standalone) ──
+// ── Tile types ──
 const WALL = 0;
 const FLOOR = 1;
 const VOID = 255;
 
+// ── Room layout ──
 const WALL_ROWS = 1;
-const WORKSTATION_WIDTH = 5;
+const WORKSTATION_WIDTH = 5; // chair(1) + desk(3) + gap(1)
 const WORKSTATIONS_PER_ROW = 2;
 const WORKSTATION_ROW_HEIGHT = 2;
 const BENCH_SPACING = 2;
 const BENCH_ROW_HEIGHT = 2;
 const BENCHES_PER_ROW = 4;
-const VOID_GAP = 1;
+const VOID_GAP = 3; // visible gap between rooms
 const PADDING = 1;
-const ROOM_WIDTH = PADDING + WORKSTATIONS_PER_ROW * WORKSTATION_WIDTH + PADDING;
+const ROOM_WIDTH = PADDING + WORKSTATIONS_PER_ROW * WORKSTATION_WIDTH + PADDING; // 12
 const ROOM_MIN_HEIGHT = 8;
-const ROOM_HUES = [220, 150, 30, 280, 0, 180, 60, 310, 120, 45];
 const HULY_AGENT_ID_OFFSET = 10_000;
+
+// ── Room color palette ──
+const ROOM_HUES = [220, 150, 30, 280, 0, 180, 60, 310, 120, 45];
+
+// ── Wall decorations — placed on the wall row ──
+const WALL_DECOR = [
+  'BOOKSHELF',           // 2x1
+  'DOUBLE_BOOKSHELF',    // 2x2
+  'WHITEBOARD',          // 2x2
+  'LARGE_PAINTING',      // 2x2
+  'SMALL_PAINTING',      // 1x2
+  'SMALL_PAINTING_2',    // 1x2
+  'CLOCK',               // 1x2
+  'HANGING_PLANT',       // 1x2
+];
+
+// ── Floor decor — 1x1 or 1x2 items placed in empty floor space ──
+const FLOOR_DECOR = [
+  'PLANT',     // 1x2 (backgroundTiles:1)
+  'PLANT_2',   // 1x2 (backgroundTiles:1)
+  'CACTUS',    // 1x2 (backgroundTiles:1)
+  'BIN',       // 1x1
+  'POT',       // 1x1
+];
+
+// ── Desk surface items ──
+const SURFACE_DECOR = [
+  'COFFEE',    // 1x1
+];
 
 interface ProjectGroup {
   project: string;
@@ -132,6 +161,15 @@ function computeRoomHeight(group: ProjectGroup): number {
   return WALL_ROWS + Math.max(workingHeight + idleHeight, 2) + PADDING;
 }
 
+/** Seeded random for deterministic decoration placement */
+function seededRandom(seed: number): () => number {
+  let s = seed;
+  return () => {
+    s = (s * 16807 + 0) % 2147483647;
+    return (s - 1) / 2147483646;
+  };
+}
+
 function generate(persons: HulyPerson[]) {
   const groups = groupByProject(persons).filter((g) => g.working.length + g.idle.length > 0);
 
@@ -142,6 +180,7 @@ function generate(persons: HulyPerson[]) {
     };
   }
 
+  // Grid arrangement
   const gridCols = Math.ceil(Math.sqrt(groups.length));
   const gridRows = Math.ceil(groups.length / gridCols);
   const roomHeight = Math.max(ROOM_MIN_HEIGHT, ...groups.map((g) => computeRoomHeight(g)));
@@ -169,7 +208,6 @@ function generate(persons: HulyPerson[]) {
     }
   }
 
-  // Build seat map alongside layout
   const personIdMap = new Map<string, number>();
   let nextId = HULY_AGENT_ID_OFFSET;
   const webviewPersons: any[] = [];
@@ -182,18 +220,39 @@ function generate(persons: HulyPerson[]) {
     const startRow = gr * (roomHeight + VOID_GAP);
     const hue = ROOM_HUES[gi % ROOM_HUES.length];
     const floorColor = { h: hue, s: 25, b: 10, c: 0, colorize: true };
+    const rand = seededRandom(gi * 1000 + 42);
 
+    // Track which tiles are occupied by furniture
+    const occupied = new Set<string>();
+    function markOccupied(col: number, row: number, w: number, h: number): void {
+      for (let r = 0; r < h; r++) {
+        for (let c = 0; c < w; c++) {
+          occupied.add(`${col + c},${row + r}`);
+        }
+      }
+    }
+    function isOccupied(col: number, row: number, w: number, h: number): boolean {
+      for (let r = 0; r < h; r++) {
+        for (let c = 0; c < w; c++) {
+          if (occupied.has(`${col + c},${row + r}`)) return true;
+        }
+      }
+      return false;
+    }
+
+    // Fill room tiles
     for (let r = 0; r < roomHeight; r++) {
       for (let c = 0; c < ROOM_WIDTH; c++) {
-        if (r === 0) setTile(startCol + c, startRow + r, WALL);
-        else {
+        if (r === 0) {
+          setTile(startCol + c, startRow + r, WALL);
+        } else {
           setTile(startCol + c, startRow + r, FLOOR);
           setTileColor(startCol + c, startRow + r, floorColor);
         }
       }
     }
 
-    // Workstations
+    // ── Place workstations ──
     let personIdx = 0;
     const workingRowCount = Math.ceil(group.working.length / WORKSTATIONS_PER_ROW);
     for (let wr = 0; wr < workingRowCount; wr++) {
@@ -204,6 +263,14 @@ function generate(persons: HulyPerson[]) {
         furniture.push({ uid: chairUid, type: 'WOODEN_CHAIR_SIDE', col: baseCol, row: tileRow });
         furniture.push({ uid: nextUid('dk'), type: 'DESK_FRONT', col: baseCol + 1, row: tileRow });
         furniture.push({ uid: nextUid('pc'), type: 'PC_FRONT_OFF', col: baseCol + 1, row: tileRow });
+        markOccupied(baseCol, tileRow, 1, 2);    // chair
+        markOccupied(baseCol + 1, tileRow, 3, 2); // desk
+
+        // Randomly add a coffee on the desk
+        if (rand() < 0.4) {
+          const coffeeCol = baseCol + 3; // right side of desk
+          furniture.push({ uid: nextUid('dc'), type: 'COFFEE', col: coffeeCol, row: tileRow });
+        }
 
         const person = group.working[personIdx];
         const mapKey = `${person.id}:${group.project}`;
@@ -213,20 +280,15 @@ function generate(persons: HulyPerson[]) {
           personIdMap.set(mapKey, numericId);
         }
         webviewPersons.push({
-          id: numericId,
-          name: person.name,
-          status: person.status,
-          currentTask: person.currentTask,
-          currentTaskStatus: person.currentTaskStatus,
-          activeTaskCount: person.activeTaskCount,
-          project: person.project,
-          seatUid: chairUid,
+          id: numericId, name: person.name, status: person.status,
+          currentTask: person.currentTask, currentTaskStatus: person.currentTaskStatus,
+          activeTaskCount: person.activeTaskCount, project: person.project, seatUid: chairUid,
         });
         personIdx++;
       }
     }
 
-    // Benches
+    // ── Place benches for idle ──
     if (group.idle.length > 0) {
       const benchStartRow = startRow + WALL_ROWS + workingRowCount * WORKSTATION_ROW_HEIGHT + (workingRowCount > 0 ? 1 : 0);
       let idleIdx = 0;
@@ -236,7 +298,8 @@ function generate(persons: HulyPerson[]) {
         for (let bi = 0; bi < BENCHES_PER_ROW && idleIdx < group.idle.length; bi++) {
           const col = startCol + PADDING + bi * BENCH_SPACING;
           const benchUid = nextUid('bn');
-          furniture.push({ uid: benchUid, type: 'WOODEN_BENCH', col, row: tileRow });
+          furniture.push({ uid: benchUid, type: 'CUSHIONED_BENCH', col, row: tileRow });
+          markOccupied(col, tileRow, 1, 1);
 
           const person = group.idle[idleIdx];
           const mapKey = `${person.id}:${group.project}`;
@@ -246,17 +309,46 @@ function generate(persons: HulyPerson[]) {
             personIdMap.set(mapKey, numericId);
           }
           webviewPersons.push({
-            id: numericId,
-            name: person.name,
-            status: person.status,
-            currentTask: person.currentTask,
-            currentTaskStatus: person.currentTaskStatus,
-            activeTaskCount: person.activeTaskCount,
-            project: person.project,
-            seatUid: benchUid,
+            id: numericId, name: person.name, status: person.status,
+            currentTask: person.currentTask, currentTaskStatus: person.currentTaskStatus,
+            activeTaskCount: person.activeTaskCount, project: person.project, seatUid: benchUid,
           });
           idleIdx++;
         }
+      }
+    }
+
+    // ── Wall decorations ──
+    // Place 1-2 wall items on the wall row (row 0 of room)
+    const wallRow = startRow; // wall row = row 0
+    let wallCol = startCol + PADDING;
+    const numWallDecor = 1 + Math.floor(rand() * 2); // 1 or 2
+    for (let wd = 0; wd < numWallDecor && wallCol < startCol + ROOM_WIDTH - PADDING - 1; wd++) {
+      const item = WALL_DECOR[Math.floor(rand() * WALL_DECOR.length)];
+      // Wall items go on the wall row; they can have negative row for items taller than 1
+      furniture.push({ uid: nextUid('wd'), type: item, col: wallCol, row: wallRow });
+      // Advance past this item (assume width 2 for most wall items)
+      wallCol += 3;
+    }
+
+    // ── Floor corner plants ──
+    // Try to place a plant in bottom-right corner of the room
+    const bottomRow = startRow + roomHeight - 2; // 1 row up from bottom padding
+    const rightCol = startCol + ROOM_WIDTH - PADDING - 1;
+    if (!isOccupied(rightCol, bottomRow, 1, 1)) {
+      const plantType = FLOOR_DECOR[Math.floor(rand() * 3)]; // PLANT, PLANT_2, or CACTUS
+      furniture.push({ uid: nextUid('fd'), type: plantType, col: rightCol, row: bottomRow });
+      markOccupied(rightCol, bottomRow, 1, 2);
+    }
+
+    // Try a bin or pot near the door area (bottom-left)
+    const blCol = startCol + PADDING;
+    const blRow = startRow + roomHeight - PADDING - 1;
+    if (!isOccupied(blCol, blRow, 1, 1)) {
+      if (rand() < 0.5) {
+        const smallDecor = rand() < 0.5 ? 'BIN' : 'POT';
+        furniture.push({ uid: nextUid('fd'), type: smallDecor, col: blCol, row: blRow });
+        markOccupied(blCol, blRow, 1, 1);
       }
     }
   }
@@ -291,7 +383,6 @@ async function fetchPersons(): Promise<HulyPerson[]> {
 // ── Main ──
 async function run(): Promise<void> {
   const scriptDir = path.dirname(new URL(import.meta.url).pathname);
-  // Handle Windows paths (remove leading / from /C:/...)
   const resolvedDir = process.platform === 'win32' ? scriptDir.replace(/^\/([A-Za-z]:)/, '$1') : scriptDir;
   const assetsDir = path.resolve(resolvedDir, '..', 'webview-ui', 'public', 'assets');
   const distAssetsDir = path.resolve(resolvedDir, '..', 'dist', 'assets');
@@ -303,7 +394,6 @@ async function run(): Promise<void> {
   const { layout, persons: webviewPersons } = generate(persons);
   console.log(`[generate-layout] Layout: ${layout.cols}x${layout.rows}, ${layout.furniture.length} furniture, ${webviewPersons.length} persons`);
 
-  // Write to both locations
   for (const dir of [assetsDir, distAssetsDir]) {
     if (!fs.existsSync(dir)) {
       console.log(`[generate-layout] Skipping ${dir} (not found)`);
@@ -317,7 +407,6 @@ async function run(): Promise<void> {
   console.log(`[generate-layout] Done at ${new Date().toISOString()}`);
 }
 
-// ── Entry point ──
 const isWatch = process.argv.includes('--watch');
 
 run().catch((err) => {
