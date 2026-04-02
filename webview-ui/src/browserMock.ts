@@ -35,6 +35,17 @@ interface StaticAgent {
   project: string;
 }
 
+interface HulyPersonMock {
+  id: number;
+  name: string;
+  status: 'busy' | 'idle';
+  currentTask: string | null;
+  currentTaskStatus: string | null;
+  activeTaskCount: number;
+  project: string | null;
+  seatUid: string;
+}
+
 interface MockPayload {
   characters: CharacterDirectionSprites[];
   floorSprites: string[][][];
@@ -43,6 +54,8 @@ interface MockPayload {
   furnitureSprites: Record<string, string[][]>;
   layout: unknown;
   staticAgents: StaticAgent[];
+  useHulyPersons: boolean;
+  generatedPersons: HulyPersonMock[] | null;
 }
 
 // ── Module-level state ─────────────────────────────────────────────────────────
@@ -235,23 +248,52 @@ export async function initBrowserMock(): Promise<void> {
         decodeFurnitureFromPng(base, catalog),
       ]);
 
-  const layout = assetIndex.defaultLayout
-    ? await fetch(`${base}assets/${assetIndex.defaultLayout}`).then((r) => r.json())
-    : null;
+  // Prefer generated layout (from Huly DB), fall back to default
+  let layout = await fetchJsonOptional<unknown>(`${base}assets/generated-layout.json`);
+  if (!layout && assetIndex.defaultLayout) {
+    layout = await fetch(`${base}assets/${assetIndex.defaultLayout}`).then((r) => r.json());
+  }
 
-  // Load seat-assignments.json and transform to static agents (same logic as extension)
+  // Load generated persons (from Huly DB), fall back to seat-assignments.json
+  const generatedPersons = await fetchJsonOptional<Array<{
+    id: number;
+    name: string;
+    status: 'busy' | 'idle';
+    currentTask: string | null;
+    currentTaskStatus: string | null;
+    activeTaskCount: number;
+    project: string | null;
+    seatUid: string;
+  }>>(`${base}assets/generated-persons.json`);
+
   const staticAgents: StaticAgent[] = [];
-  const seatAssignments = await fetchJsonOptional<{
-    working: Array<{ name: string; seat: { furnitureUid: string }; tasks?: Array<{ title: string; identifier: string; status: string; priority: number }>; project?: string }>;
-    idle: Array<{ name: string; seat: { furnitureUid: string }; tasks?: Array<{ title: string; identifier: string; status: string; priority: number }>; project?: string }>;
-  }>(`${base}assets/seat-assignments.json`);
-  if (seatAssignments) {
-    let nextId = 1000;
-    for (const person of seatAssignments.working) {
-      staticAgents.push({ id: nextId++, name: person.name, seatUid: person.seat.furnitureUid, isWorking: true, tasks: person.tasks || [], project: person.project || '' });
+  if (generatedPersons) {
+    for (const p of generatedPersons) {
+      staticAgents.push({
+        id: p.id,
+        name: p.name,
+        seatUid: p.seatUid || '',
+        isWorking: p.status === 'busy',
+        tasks: p.currentTask
+          ? [{ title: p.currentTask, identifier: '', status: p.currentTaskStatus || '', priority: 0 }]
+          : [],
+        project: p.project || '',
+      });
     }
-    for (const person of seatAssignments.idle) {
-      staticAgents.push({ id: nextId++, name: person.name, seatUid: person.seat.furnitureUid, isWorking: false, tasks: person.tasks || [], project: person.project || '' });
+  } else {
+    // Fallback: load old seat-assignments.json
+    const seatAssignments = await fetchJsonOptional<{
+      working: Array<{ name: string; seat: { furnitureUid: string }; tasks?: Array<{ title: string; identifier: string; status: string; priority: number }>; project?: string }>;
+      idle: Array<{ name: string; seat: { furnitureUid: string }; tasks?: Array<{ title: string; identifier: string; status: string; priority: number }>; project?: string }>;
+    }>(`${base}assets/seat-assignments.json`);
+    if (seatAssignments) {
+      let nextId = 1000;
+      for (const person of seatAssignments.working) {
+        staticAgents.push({ id: nextId++, name: person.name, seatUid: person.seat.furnitureUid, isWorking: true, tasks: person.tasks || [], project: person.project || '' });
+      }
+      for (const person of seatAssignments.idle) {
+        staticAgents.push({ id: nextId++, name: person.name, seatUid: person.seat.furnitureUid, isWorking: false, tasks: person.tasks || [], project: person.project || '' });
+      }
     }
   }
 
@@ -263,6 +305,8 @@ export async function initBrowserMock(): Promise<void> {
     furnitureSprites,
     layout,
     staticAgents,
+    useHulyPersons: !!generatedPersons,
+    generatedPersons: generatedPersons || null,
   };
 
   console.log(
@@ -277,7 +321,7 @@ export async function initBrowserMock(): Promise<void> {
 export function dispatchMockMessages(): void {
   if (!mockPayload) return;
 
-  const { characters, floorSprites, wallSets, furnitureCatalog, furnitureSprites, layout, staticAgents } =
+  const { characters, floorSprites, wallSets, furnitureCatalog, furnitureSprites, layout, staticAgents, useHulyPersons, generatedPersons } =
     mockPayload;
 
   function dispatch(data: unknown): void {
@@ -291,7 +335,9 @@ export function dispatchMockMessages(): void {
   dispatch({ type: 'wallTilesLoaded', sets: wallSets });
   dispatch({ type: 'furnitureAssetsLoaded', catalog: furnitureCatalog, sprites: furnitureSprites });
   dispatch({ type: 'layoutLoaded', layout });
-  if (staticAgents.length > 0) {
+  if (useHulyPersons && generatedPersons) {
+    dispatch({ type: 'hulyPersons', persons: generatedPersons });
+  } else if (staticAgents.length > 0) {
     dispatch({ type: 'staticAgentsLoaded', agents: staticAgents });
   }
   dispatch({

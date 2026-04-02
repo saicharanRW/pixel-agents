@@ -683,6 +683,23 @@ export class PixelAgentsViewProvider implements vscode.WebviewViewProvider {
       };
     });
 
+    // Save persons data to assets for browser mock (npm run dev)
+    const personsCandidates = [
+      path.join(extensionPath, 'webview-ui', 'public', 'assets', 'generated-persons.json'),
+      path.join(extensionPath, 'dist', 'assets', 'generated-persons.json'),
+    ];
+    for (const filePath of personsCandidates) {
+      try {
+        const dir = path.dirname(filePath);
+        if (fs.existsSync(dir)) {
+          fs.writeFileSync(filePath, JSON.stringify(webviewPersons, null, 2), 'utf-8');
+          console.log(`[Pixel Agents] Saved generated persons to ${filePath}`);
+        }
+      } catch (err) {
+        console.error(`[Pixel Agents] Failed to save persons to ${filePath}:`, err);
+      }
+    }
+
     this.webview.postMessage({
       type: 'hulyPersons',
       persons: webviewPersons,
