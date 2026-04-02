@@ -1,8 +1,8 @@
 /**
  * Dynamic layout generator — creates an OfficeLayout from Huly project/person data.
  *
- * Each project gets its own room separated by VOID columns.
- * Room size scales based on number of persons in the project.
+ * Rooms are arranged in a uniform grid with consistent sizing.
+ * Each project gets its own room.
  * Working persons get desk+chair+PC workstations.
  * Idle persons get bench seating.
  */
@@ -14,14 +14,20 @@ const WALL = 0;
 const FLOOR = 1;
 const VOID = 255;
 
-// ── Layout constants ──
+// ── Room layout constants ──
 const WALL_ROWS = 1;
 const WORKSTATION_WIDTH = 5; // chair(1) + desk(3) + gap(1)
+const WORKSTATIONS_PER_ROW = 2;
 const WORKSTATION_ROW_HEIGHT = 2;
-const BENCH_SPACING = 2; // tiles between benches
+const BENCH_SPACING = 2;
 const BENCH_ROW_HEIGHT = 2;
+const BENCHES_PER_ROW = 4;
 const VOID_GAP = 1;
-const PADDING = 1; // left/right padding inside room
+const PADDING = 1;
+
+// Uniform room size — fits up to 6 working + 4 idle comfortably
+const ROOM_WIDTH = PADDING + WORKSTATIONS_PER_ROW * WORKSTATION_WIDTH + PADDING; // 12
+const ROOM_MIN_HEIGHT = 8;
 
 interface PlacedFurniture {
   uid: string;
@@ -73,46 +79,14 @@ function groupByProject(persons: HulyPerson[]): ProjectGroup[] {
   return Array.from(map.values()).sort((a, b) => a.project.localeCompare(b.project));
 }
 
-/** How many workstations fit per row for this room width */
-function workstationsPerRow(roomInnerWidth: number): number {
-  return Math.max(1, Math.floor(roomInnerWidth / WORKSTATION_WIDTH));
-}
-
-/** How many benches fit per row for this room width */
-function benchesPerRow(roomInnerWidth: number): number {
-  return Math.max(1, Math.floor((roomInnerWidth + BENCH_SPACING) / BENCH_SPACING));
-}
-
-/** Compute the width a room needs based on its people */
-function computeRoomWidth(group: ProjectGroup): number {
-  const totalPeople = group.working.length + group.idle.length;
-  if (totalPeople === 0) return 0; // skip empty projects
-
-  // Width needed for working people (2 workstations per row = 10 inner)
-  const wsPerRow = Math.min(group.working.length, 2);
-  const workingWidth = wsPerRow * WORKSTATION_WIDTH;
-
-  // Width needed for idle people (benches spaced 2 apart)
-  const bnPerRow = Math.min(group.idle.length, 4);
-  const idleWidth = bnPerRow > 0 ? (bnPerRow - 1) * BENCH_SPACING + 1 : 0;
-
-  const innerWidth = Math.max(workingWidth, idleWidth, 3); // min 3 inner width
-  return PADDING + innerWidth + PADDING;
-}
-
-/** Compute the height a room needs */
-function computeRoomHeight(group: ProjectGroup, roomWidth: number): number {
-  const innerWidth = roomWidth - PADDING * 2;
-  const wsPerRow = workstationsPerRow(innerWidth);
-  const bnPerRow = benchesPerRow(innerWidth);
-
-  const workingRows = Math.ceil(group.working.length / wsPerRow);
-  const idleRows = Math.ceil(group.idle.length / bnPerRow);
+function computeRoomHeight(group: ProjectGroup): number {
+  const workingRows = Math.ceil(group.working.length / WORKSTATIONS_PER_ROW);
+  const idleRows = Math.ceil(group.idle.length / BENCHES_PER_ROW);
 
   const workingHeight = workingRows * WORKSTATION_ROW_HEIGHT;
-  const idleHeight = idleRows > 0 ? 1 + idleRows * BENCH_ROW_HEIGHT : 0; // 1 gap row
+  const idleHeight = idleRows > 0 ? 1 + idleRows * BENCH_ROW_HEIGHT : 0;
 
-  return WALL_ROWS + Math.max(workingHeight + idleHeight, 2) + 1; // +1 bottom padding
+  return WALL_ROWS + Math.max(workingHeight + idleHeight, 2) + PADDING;
 }
 
 export function generateLayout(persons: HulyPerson[]): OfficeLayout {
@@ -131,18 +105,16 @@ export function generateLayout(persons: HulyPerson[]): OfficeLayout {
     };
   }
 
-  // Compute per-room dimensions
-  const roomWidths = groups.map((g) => computeRoomWidth(g));
-  const roomHeights = groups.map((g, i) => computeRoomHeight(g, roomWidths[i]));
+  // Grid dimensions
+  const gridCols = Math.ceil(Math.sqrt(groups.length));
+  const gridRows = Math.ceil(groups.length / gridCols);
 
-  const totalRows = Math.max(...roomHeights, 6);
-  let totalCols = 0;
-  const roomStartCols: number[] = [];
-  for (let i = 0; i < groups.length; i++) {
-    roomStartCols.push(totalCols);
-    totalCols += roomWidths[i];
-    if (i < groups.length - 1) totalCols += VOID_GAP;
-  }
+  // Uniform room height = max across all rooms
+  const roomHeight = Math.max(ROOM_MIN_HEIGHT, ...groups.map((g) => computeRoomHeight(g)));
+
+  // Total grid size
+  const totalCols = gridCols * ROOM_WIDTH + (gridCols - 1) * VOID_GAP;
+  const totalRows = gridRows * roomHeight + (gridRows - 1) * VOID_GAP;
 
   const tiles: number[] = new Array(totalCols * totalRows).fill(VOID);
   const tileColors: (FloorColor | null)[] = new Array(totalCols * totalRows).fill(null);
@@ -167,33 +139,31 @@ export function generateLayout(persons: HulyPerson[]): OfficeLayout {
 
   for (let gi = 0; gi < groups.length; gi++) {
     const group = groups[gi];
-    const startCol = roomStartCols[gi];
-    const rw = roomWidths[gi];
-    const rh = roomHeights[gi];
-    const innerWidth = rw - PADDING * 2;
+    const gc = gi % gridCols;
+    const gr = Math.floor(gi / gridCols);
+    const startCol = gc * (ROOM_WIDTH + VOID_GAP);
+    const startRow = gr * (roomHeight + VOID_GAP);
     const hue = ROOM_HUES[gi % ROOM_HUES.length];
     const floorColor: FloorColor = { h: hue, s: 25, b: 10, c: 0, colorize: true };
 
-    // Fill room tiles — only as tall as needed
-    for (let r = 0; r < rh && r < totalRows; r++) {
-      for (let c = 0; c < rw; c++) {
-        const col = startCol + c;
+    // Fill entire room with floor + top wall row
+    for (let r = 0; r < roomHeight; r++) {
+      for (let c = 0; c < ROOM_WIDTH; c++) {
         if (r === 0) {
-          setTile(col, r, WALL);
+          setTile(startCol + c, startRow + r, WALL);
         } else {
-          setTile(col, r, FLOOR);
-          setTileColor(col, r, floorColor);
+          setTile(startCol + c, startRow + r, FLOOR);
+          setTileColor(startCol + c, startRow + r, floorColor);
         }
       }
     }
 
-    // Place workstations
-    const wsPerRow = workstationsPerRow(innerWidth);
+    // Place workstations for working persons
     let personIdx = 0;
-    const workingRowCount = Math.ceil(group.working.length / wsPerRow);
+    const workingRowCount = Math.ceil(group.working.length / WORKSTATIONS_PER_ROW);
     for (let wr = 0; wr < workingRowCount; wr++) {
-      const tileRow = WALL_ROWS + wr * WORKSTATION_ROW_HEIGHT;
-      for (let ws = 0; ws < wsPerRow && personIdx < group.working.length; ws++) {
+      const tileRow = startRow + WALL_ROWS + wr * WORKSTATION_ROW_HEIGHT;
+      for (let ws = 0; ws < WORKSTATIONS_PER_ROW && personIdx < group.working.length; ws++) {
         const baseCol = startCol + PADDING + ws * WORKSTATION_WIDTH;
         furniture.push({ uid: nextUid('ch'), type: 'WOODEN_CHAIR_SIDE', col: baseCol, row: tileRow });
         furniture.push({ uid: nextUid('dk'), type: 'DESK_FRONT', col: baseCol + 1, row: tileRow });
@@ -202,15 +172,14 @@ export function generateLayout(persons: HulyPerson[]): OfficeLayout {
       }
     }
 
-    // Place benches
+    // Place benches for idle persons
     if (group.idle.length > 0) {
-      const bnPerRow = benchesPerRow(innerWidth);
-      const benchStartRow = WALL_ROWS + workingRowCount * WORKSTATION_ROW_HEIGHT + (workingRowCount > 0 ? 1 : 0);
+      const benchStartRow = startRow + WALL_ROWS + workingRowCount * WORKSTATION_ROW_HEIGHT + (workingRowCount > 0 ? 1 : 0);
       let idleIdx = 0;
-      const idleRowCount = Math.ceil(group.idle.length / bnPerRow);
+      const idleRowCount = Math.ceil(group.idle.length / BENCHES_PER_ROW);
       for (let br = 0; br < idleRowCount; br++) {
         const tileRow = benchStartRow + br * BENCH_ROW_HEIGHT;
-        for (let bi = 0; bi < bnPerRow && idleIdx < group.idle.length; bi++) {
+        for (let bi = 0; bi < BENCHES_PER_ROW && idleIdx < group.idle.length; bi++) {
           const col = startCol + PADDING + bi * BENCH_SPACING;
           furniture.push({ uid: nextUid('bn'), type: 'WOODEN_BENCH', col, row: tileRow });
           idleIdx++;
@@ -249,8 +218,8 @@ export function buildSeatMap(
   for (const group of groups) {
     for (const person of group.working) {
       const chairUid = nextUid('ch');
-      nextUid('dk'); // skip desk
-      nextUid('pc'); // skip PC
+      nextUid('dk');
+      nextUid('pc');
       result.set(`${person.id}:${group.project}`, { seatUid: chairUid, isWorking: true });
     }
     for (const person of group.idle) {
