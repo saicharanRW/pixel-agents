@@ -70,13 +70,13 @@
     "e2e:debug": "playwright test --config e2e/playwright.config.ts --debug"
   },
   "devDependencies": {
-    "@anthropic-ai/sdk": "^0.80.0",
+    "@anthropic-ai/sdk": "^0.88.0",
     "@playwright/test": "^1.58.2",
     "@types/node": "25.x",
     "@types/pngjs": "^6.0.5",
     "@types/vscode": "^1.105.0",
     "@vscode/test-electron": "^2.5.2",
-    "esbuild": "^0.27.2",
+    "esbuild": "^0.28.0",
     "eslint": "^10.0.3",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-simple-import-sort": "^12.1.1",
